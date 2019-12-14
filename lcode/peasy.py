@@ -49,3 +49,22 @@ class Solution:
         sum += table[s[i]]
     return sum
 
+
+  def longestCommonPrefix(strs) -> str:
+    same = ""
+    flag = True
+    if strs == []:
+      return ""
+    for i in range(len(min(strs, key=len))):
+      for j in range(len(strs)):
+        if j+1 < len(strs) :
+          if strs[j][i] == strs[j+1][i]:
+            if flag == True:
+              flag = True
+            else:
+              flag = False
+          else:
+            flag = False
+      if flag == True:
+        same += strs[0][i]
+    return same
