@@ -68,3 +68,23 @@ class Solution:
       if flag == True:
         same += strs[0][i]
     return same
+
+  def isValid(s:str) -> bool:
+   if s == "":
+    return True
+   a = []
+   for i in range(len(s)):
+     if s[i] == "(" or s[i] == "{" or s[i] == "[":
+      a.append(s[i])
+     elif s[i] == ")" and a != [] and a[-1] == "(":
+       a.pop()
+     elif s[i] == "}" and a != [] and a[-1] == "{":
+       a.pop()
+     elif s[i] == "]" and a != [] and a[-1] == "[":
+       a.pop()
+     else:
+      return False
+   if a == []:
+     return True
+   else:
+     return False
