@@ -88,3 +88,53 @@ class Solution:
      return True
    else:
      return False
+
+
+  def isValidAns(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        # The stack to keep track of opening brackets.
+        stack = []
+
+        # Hash map for keeping track of mappings. This
+        # Also makes adding more types of parenthesis e
+        mapping = {")": "(", "}": "{", "]": "["}
+
+        # For every bracket in the expression.
+        for char in s:
+
+            # If the character is an closing bracket
+            if char in mapping:
+
+                # Pop the topmost element from the stac
+                # Otherwise assign a dummy value of '#'
+                top_element = stack.pop() if stack else
+
+                # The mapping for the opening bracket i
+                # element of the stack don't match, ret
+                if mapping[char] != top_element:
+                    return False
+            else:
+                # We have an opening bracket, simply pu
+                stack.append(char)
+
+        # In the end, if the stack is empty, then we ha
+        # The stack won't be empty for cases like ((()
+        return not stack
+
+  def mergeTwoLists(l1: ListNode, l2: ListNode) -> List
+    if not l1:
+     return l2
+    if not l2:
+     return l1
+    if l1.val < l2.val:
+     l1.next = self.mergeTwoLists(l1.next, l2)
+     return l1
+    else:
+     l2.next = self.mergeTwoLists(l1, l2.next)
+     return l2
+
+
