@@ -48,7 +48,6 @@ else:
   if s != N-1:
     sum += N-s-1
   print(sum)
-'''
 
 #5
 N = int(input())
@@ -60,6 +59,18 @@ class DFactorial(self, n):
 
 print(DFactorial(N))
 
+'''
+#5ans
+N = int(input())
+if N%2 == 1:
+  print(0)
+else:
+  i = N//10
+  c = 0
+  while i != 0:
+    c += i
+    i = i//5
+  print(c)
 
 '''
 #6
