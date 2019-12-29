@@ -74,10 +74,41 @@ else:
 
 '''
 #6
+
 N, u, v = list(map(int, input().split()))
+graph = [[] for _ in range(N+1)]
 for i in range(N-1):
-  A, B
+  A, B = list(map(int, input().split()))
+  graph[A].append(B)
+  graph[B].append(A)
+#print(graph)
 
+def dfs(v):
+  dist = [-1] * (N+1)
+  dist[v] = 0
+  stack = [v]
+ # print(dist)
+  while stack:
+    now = stack.pop()
+    dw = dist[now] + 1
+#graph[]は隣接している要素
+    for ne in graph[now]:
+      if dist[ne] >= 0:
+        continue
+      dist[ne] = dw
+      stack.append(ne)
+      #print(ne)
+  return dist
 
+Taka = dfs(u)
+Ao = dfs(v)
 
-'''
+print(Taka)
+print(Ao)
+
+ans = 0
+for t, a in zip(Taka[1:], Ao[1:]):
+  if t < a:
+    ans = max(ans, a-1)
+
+print(ans)
