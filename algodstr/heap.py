@@ -39,5 +39,24 @@ class heap():
         self.list = swap(self.list, index, child_right_index)
         index = child_right_index
 
-  def pop_min(self():
+  def pop_min(self):
+    if len(self.list) == 1:
+      return self.list[0]
 
+    res = self.list[0]
+    self.list[0] = self.list.pop(-1)
+
+        """
+        最も子のノードのうちの最後の値を取り出して削除pop(-1)
+        根にもってくるために値を代入　list[0] = pop(-1)
+        pop(0)で根をとるとリストのindexがずれてヒープの形状が崩れるため、根をとるときは[0]
+        list[0]は削除だから、pop(-1)で得た必ず子になる要素を入れて形を整える
+        insertの時に使ったヒープ化処理と異なり、逆からたどる処理percolate_downを実行しヒープ性（heapify）を維持する
+        """
+    self.percolate_down()
+
+    return res
+
+def sort(self):
+  temp_list = self.list
+  return [self.pop_min() for _ in range(len(temp_list))]
