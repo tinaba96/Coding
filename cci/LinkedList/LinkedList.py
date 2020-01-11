@@ -1,7 +1,7 @@
 from random import randint 
 
 class LinkedListNode: 
-def __init__(self, value, nextNode=None, prevNode=None):
+  def __init__(self, value, nextNode=None, prevNode=None):
    self.value = value
    self.next = nextNode
    self.prev = prevNode
@@ -10,11 +10,11 @@ def __init__(self, value, nextNode=None, prevNode=None):
     return str(self.value)
 
 class LinkedList:
-  def __init__(self, value=None):
+  def __init__(self, values=None):
     self.head = None
     self.tail = None
     if values is not None:
-      self.add_mulitiple(values)
+      self.add_multiple(values)
 
   def __iter__(self):
     current = self.head
@@ -38,7 +38,7 @@ class LinkedList:
     if self.head is None:
       self.tail = self.head = LinkedListNode(value)
     else:
-      self.tail.next = LinkedListNode(value):
+      self.tail.next = LinkedListNode(value)
       self.tail = self.tail.next
       #末尾から挿入
     return self.tail
@@ -47,7 +47,7 @@ class LinkedList:
     if self.head is None:
       self.tail = self.head = LinkedListNode(value)
     else:
-      self.head = LinkedListNode(value, self.head):
+      self.head = LinkedListNode(value, self.head)
       #先頭から挿入
     return self.head
 
@@ -64,7 +64,7 @@ class LinkedList:
 class DoublyLinkedList(LinkedList):
   def add(self, value):
     if self.head is None:
-      self.tail = self.head = LinkedListNode(value, None, self.tail):
+      self.tail = self.head = LinkedListNode(value, None, self.tail)
     else:
       self.tail.next = LinkedListNode(value)
       self.tail = self.tail.next

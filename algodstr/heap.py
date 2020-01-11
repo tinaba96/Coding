@@ -60,3 +60,26 @@ class heap():
 def sort(self):
   temp_list = self.list
   return [self.pop_min() for _ in range(len(temp_list))]
+
+'''
+#実行確認
+my_list = [3, 1, 88, 15, 2, 61, 17, 2, 2, 18, 21]
+print('my initial list >>>', my_list)
+
+my_heap = heap(my_list)
+print('insert 100 to heap')
+my_heap.insert(100)
+print('add 100 to heap >>>', my_heap.list)
+
+res = my_heap.pop_min()
+print('pop_min > ', res)
+print('heap sort >>>', my_heap.sort())
+
+my initial list >>> [3, 1, 88, 15, 2, 61, 17, 2, 2, 18, 21]
+insert 100 to heap
+add 100 to heap >>> [1, 2, 17, 2, 3, 88, 61, 15, 2, 18, 21, 100]
+pop_min >  1
+heap sort >>> [2, 2, 2, 3, 15, 17, 18, 21, 61, 88, 100]
+
+
+'''
