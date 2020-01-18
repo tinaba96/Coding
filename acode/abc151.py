@@ -73,7 +73,6 @@ for i in range(len(p)):
 
 print(correct, penalty)
 
-'''
 
 #C ans
 
@@ -98,6 +97,49 @@ for _ in range(M):
         isWA[p] += 1
 
 print("%d %d"%(ACnum, WAnum))
+
+'''
+
+#D
+from collections import deque
+
+H, W = list(map(int, input().split()))
+S = []
+for i in range(H):
+  l = list(input())
+  s.append(l)
+
+q = deque()
+dh = [1, 0, -1, 0]
+dw = [0, 1, 0, -1]
+max = 0
+for i in range(H):
+  for j in range(W):
+    dist = [[-1 for m in range(W)] for n in range(H)]
+    dist[i][j] = 0
+    if s[i][j] =="#":
+      continue
+
+    q.append((i, j))
+    while q:
+      sh, sw = q.popleft()
+      for k in range(4):
+        ah = sh + dh[k]
+        aw = sw + dw[k]
+
+        if 0 <= ah < h and 0 <= aw < w:
+          if s[ah][aw] == "#":
+            continue
+          if dist[ah][aw] == -1:
+            q.append((ah,aw))
+            dist[ah][aw] = dist[sh][sw] + 1
+            if dist[ah][aw] > max:
+              max = dist[ah][aw]
+
+print(max)
+
+
+
 
 
 
