@@ -107,7 +107,7 @@ H, W = list(map(int, input().split()))
 S = []
 for i in range(H):
   l = list(input())
-  s.append(l)
+  S.append(l)
 
 q = deque()
 dh = [1, 0, -1, 0]
@@ -117,7 +117,7 @@ for i in range(H):
   for j in range(W):
     dist = [[-1 for m in range(W)] for n in range(H)]
     dist[i][j] = 0
-    if s[i][j] =="#":
+    if S[i][j] =="#":
       continue
 
     q.append((i, j))
@@ -127,8 +127,8 @@ for i in range(H):
         ah = sh + dh[k]
         aw = sw + dw[k]
 
-        if 0 <= ah < h and 0 <= aw < w:
-          if s[ah][aw] == "#":
+        if 0 <= ah < H and 0 <= aw < W:
+          if S[ah][aw] == "#":
             continue
           if dist[ah][aw] == -1:
             q.append((ah,aw))

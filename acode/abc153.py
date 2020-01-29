@@ -66,11 +66,22 @@ else:
 
   print(int(cnt+1))
 #上も正解
-'''
 
 #Dand
+print(2**len(format(int(input()), "b"))-1)
 
 
+import math
+def solve(x):
+  if x == 1:
+    return 1
+  elif x == 0:
+    return 0
+  else:
+    return 2 * solve(math.floor(x/2)) + 1
+x = int(input())
+print(solve(x))
 
+'''
 
 
