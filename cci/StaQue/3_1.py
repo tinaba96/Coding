@@ -15,7 +15,7 @@ class MultiStack:
     if self.IsEmpty(stacknum):
       raise Exception('Stack is Empty')
     value = self.array[self.IndexOfTop(stacknum)]
-    self.array[self.IndexOfTop(stacknum)] = 0
+    # self.array[self.IndexOfTop(stacknum)] = 0
 #上の一文はいらないかも
     self.sizes[stacknum] -= 1
     return value
@@ -39,18 +39,24 @@ def ThreeInOne():
   newstack = MultiStack(2)
   print(newstack.IsEmpty(1))
   newstack.Push(3, 1)
-  print(newstack.array)
-  print(newstack.sizes)
-  print(newstack.Peek(1))
+  print('array',newstack.array)
+  print('size',newstack.sizes)
+  print('peek',newstack.Peek(1))
   print(newstack.IsEmpty(1))
   newstack.Push(2, 1)
-  print(newstack.Peek(1))
-  print(newstack.Pop(1))
-  print(newstack.Peek(1))
-  newstack.Push(3, 1)
-  print(newstack.Peek(1))
-  print(newstack.array)
-  print(newstack.sizes)
+  print('array',newstack.array)
+  print('peek',newstack.Peek(1))
+  print('peek',newstack.Peek(1))
+  #newstack.Push(3, 1)
+  print('peek',newstack.Peek(1))
+  print('array',newstack.array)
+  print('size',newstack.sizes)
+
+  print('pop',newstack.Pop(1))
+  print('array',newstack.array)
+
+  print('pop',newstack.Pop(1))
+  print('array',newstack.array)
   '''
   newstack.Push(3, 1)
   print(newstack.array)
