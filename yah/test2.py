@@ -39,6 +39,18 @@ A = [[0]*4]*N
 for i in range(N):
   A[i] = list(map(str, input().split()))
 
+B = []
 
-print(max(A[:][3]))
+for i in range(N):
+  B.append(A[i][3])
+
+print('B:', B)  
+print('Bmax:', max(B))
+print('Bslice:', B[:])
+
+
+print(A[:][3])
+print(max(A[3][:]))
+
+
 
