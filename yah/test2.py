@@ -42,7 +42,7 @@ for i in range(N):
 B = []
 
 for i in range(N):
-  B.append(A[i][3])
+  B.append(int(A[i][3]))
 
 print('B:', B)  
 print('Bmax:', max(B))
@@ -50,7 +50,7 @@ print('Bslice:', B[:])
 
 
 print(A[:][3])
-print(max(A[3][:]))
+print(min(A[3][:]))
 
 
 
