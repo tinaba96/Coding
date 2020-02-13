@@ -11,14 +11,14 @@ Fizz:5 Buzz:2 Fuss:3 qwert:7 300
 '''
 
 n = list(map(str, input().split()))
-val = int(n[-1])
+val = int(n[0])
 a = [[]*2]*(len(n)-1)
 b = []
 for i in range(len(n)-1):
   a[i] = n[i].split(':')
 for i in range(len(n)-1):
-  if val%(int(a[i][1])) == 0:
-    b.append(a[i][0])
+  if val%(int(a[i][0])) == 0:
+    b.append(a[i][1])
 
 b = ' '.join(b)
 
