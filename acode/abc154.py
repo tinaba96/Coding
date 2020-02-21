@@ -24,6 +24,29 @@ for i in range(p, p+K):
     s += (j)*(1/P[i])
 print(s)
 
+#Dans
+from collections import deque
+n, k = map(int, input().split())
+p = deque(map(int, input().split()))
+
+adjacent = deque()
+for i in range(k):
+    adjacent.append(p.pop())
+
+ans = sum(adjacent)
+count = ans
+
+while p:
+    pp = p.pop()
+    count -= adjacent.popleft()
+    count += pp
+    adjacent.append(pp)
+    ans = max(ans, count)
+
+print((ans + k) / 2)
+
+
+
 '''
 #A
 
@@ -42,7 +65,7 @@ else:
 print(s, t)
 
 
-#C
+#B
 
 s = str(input())
 a = []
