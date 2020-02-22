@@ -119,11 +119,15 @@ def d_pairs():
         # a > 0 の場合
         count_pair += np.searchsorted(A, c // positive, side='right').sum()
         # a < 0 の場合 (全体から引くようにすると、見通しがよい)
-        count_pair += (N - np.searchsorted(A, (-c - 1) // (-negative), side='right')).sum()
+        count_pair += (N - np.searchsorted(A, (c + 1) // negative, side='right')).sum()
+        #ans: count_pair += (N - np.searchsorted(A, (-c - 1) // (-negative), side='right')).sum()
+        #print('tyy:', 7//-3)
+        #print(A)
+        #print((N - np.searchsorted(A, (-c - 1) // (-negative), side='right')))
         # 添字の順序に制約があることを反映する
         count_pair -= np.count_nonzero(A * A <= c)  # 「添字が同じ要素を 2 度選んだ場合」を引く
         return count_pair // 2
-
+    #print('f10:', f(10))
     # 数列から要素を 2 個選んで積を取ったとき、制約からあり得る値の範囲
     lower, upper = -10 ** 18, 10 ** 18
     while upper - lower > 1:
@@ -135,4 +139,6 @@ def d_pairs():
     return upper
 
 print(d_pairs())
+
+
 
