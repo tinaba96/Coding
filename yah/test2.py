@@ -41,6 +41,11 @@ for i in range(N):
 
 B = []
 
+for i in range(N-1):
+    if A[i][0] == A[i+1][0] and A[i][1] == A[i+1][1]:
+
+        B[]
+
 for i in range(N):
   B.append(int(A[i][3]))
 
