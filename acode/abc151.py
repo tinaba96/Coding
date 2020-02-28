@@ -98,7 +98,6 @@ for _ in range(M):
 
 print("%d %d"%(ACnum, WAnum))
 
-'''
 
 #D
 from collections import deque
@@ -137,8 +136,13 @@ for i in range(H):
               max = dist[ah][aw]
 
 print(max)
+'''
 
+#F
+N = int(input())
 
+for i in range(N):
+    x, y = list(map(int, input().split()))
 
 
 
