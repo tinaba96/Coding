@@ -1,4 +1,5 @@
-'''C = str(input())
+'''
+C = str(input())
 
 alph = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
@@ -140,9 +141,56 @@ print(max)
 
 #F
 N = int(input())
-
+l = []
 for i in range(N):
-    x, y = list(map(int, input().split()))
+    x, y = [int(j) for j in input().split()]
+    l.append((x,y))
+
+#determine the function representing the longest distance ^2 from the center point to designated N points.
+def loss(x,y):
+    maxi = 0
+    for i, j in l:
+        maxi = max(maxi, (i-x)**2 + (j-y)**2)
+    return maxi
+
+def f(x):
+    #return min l(x, y)
+    left = 0
+    right = 1000
+    num = 100
+
+    for i in range(num):
+        c1 = (2*left + right)/3
+        c2 = (left + 2*right)/3
+        if (loss(x, c1)<loss(x,c2)):
+            right = c2
+        else:
+            left = c1
+    return loss(x, left)
+
+left = 0
+right = 1000
+num = 100
+
+for i in range(num):
+    c1 = (2*left + right)/3
+    c2 = (left + 2*right)/3
+    if (f(c1)<f(c2)):
+        right = c2
+    else:
+        left = c1
+
+ans = f(left)**0.5
+print(ans)
+
+#low space complexoty but high time complexity
+#there other way of coding that is low time complexity but high space complexity
+
+
+
+
+
+
 
 
 
