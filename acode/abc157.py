@@ -96,7 +96,9 @@ else:
 '''
 #D
 N, M, K = list(map(int, input().split()))
-A = [[0]*N]*N
+#A = [[0]*N]*N
+#上記の方法だと同じリストをN個用意しているだけ
+A = [[0 for i in range(N)] for j in range(N)]
 for i in range(M):
     a, b = list(map(int, input().split()))
     A[a-1][b-1] += 1
