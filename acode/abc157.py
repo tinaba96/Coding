@@ -93,7 +93,8 @@ if ok == True:
         print(''.join(answer))
 else:
     print('-1')
-'''
+
+
 #D
 N, M, K = list(map(int, input().split()))
 #A = [[0]*N]*N
@@ -110,4 +111,58 @@ for i in range(K):
     A[c-1][d-1] += 1
 
 print(A)
+'''
+
+class UnionFind:
+    def __init__(self, n):
+        self.parent = [ -1 for _ in range(n) ]
+        self._size = n
+    def unite(self, x, y):
+        x, y = self.root(x), self.root(y)
+        if x != y:
+            if self.parent[y] < self.parent[x]:
+                x, y = y, x
+            self.parent[x] += self.parent[y]
+            self.parent[y] = x
+            self._size -= 1
+    def same(self, x, y):
+        return self.root(x) == self.root(y)
+    def root(self, x):
+        if self.parent[x] < 0:
+            return x
+        else:
+            self.parent[x] = self.root(self.parent[x])
+            return self.parent[x]
+    def size(self, x):
+        return -self.parent[self.root(x)]
+
+n, m, k = map(int, input().split())
+friends = [ [] for _ in range(n) ]
+blocks  = [ [] for _ in range(n) ]
+
+tree = UnionFind(n)
+
+for _ in range(m):
+    a, b = map(int, input().split())
+    a -= 1; b -= 1;
+    friends[a].append(b)
+    friends[b].append(a)
+    tree.unite(a, b)
+
+for _ in range(k):
+    a, b = map(int, input().split())
+    a -= 1; b -= 1;
+    blocks[a].append(b)
+    blocks[b].append(a)
+
+for i in range(n):
+    ret = tree.size(i)
+    s = set()
+    for j in friends[i]:
+        s.add(j)
+    for j in blocks[i]:
+        if tree.same(i, j):
+            s.add(j)
+    ret -= len(s)
+    print(ret-1)
 
