@@ -147,8 +147,10 @@ for i in range(N):
     l.append((x,y))
 
 #determine the function representing the longest distance ^2 from the center point to designated N points.
+#中心からの距離x軸とy軸でそれぞれ考えている。
 def loss(x,y):
     maxi = 0
+    #最大の距離
     for i, j in l:
         maxi = max(maxi, (i-x)**2 + (j-y)**2)
     return maxi
