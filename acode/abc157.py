@@ -6,6 +6,11 @@ if N%2 == 0:
     print(N//2)
 else:
     print(N//2+1)
+
+#Aans
+#(N+1)/2を使用することも可能です。
+
+
 #B
 A = list(map(int, input().split()))
 B = list(map(int, input().split()))
@@ -94,6 +99,31 @@ if ok == True:
 else:
     print('-1')
 
+#C
+#小さい数から全てを確かめる方法もあり
+
+n,m=map(int,input().split())
+l=[list(map(int,input().split())) for _ in range(m)]
+if n == 1:
+  start,end = 0,9
+elif n == 2:
+  start,end = 10,99
+else:
+  start,end = 100, 999
+
+for i in range(start, end+1):
+  flg = True
+  for j in l:
+    si = str(i)
+    if si[j[0]-1] != str(j[1]):
+      flg = False
+
+  if flg == True:
+    print(i)
+    break
+else:
+  print(-1)
+
 
 #D
 N, M, K = list(map(int, input().split()))
@@ -166,4 +196,29 @@ for i in range(n):
             s.add(j)
     ret -= len(s)
     print(ret-1)
+
+#https://www.youtube.com/watch?v=TdR816rqc3s&feature=youtu.be
+
+'''
+とあるSNSに、人1 、人2、⋯、人N が登録しています。このN 人の間には、M 組の「友達関係」と、K組の「ブロック関係」が存在します。
+i=1,2,⋯,M について、人Ai と人Bi は友達関係にあります。この関係は双方向的です。
+i=1,2,⋯,K について、人Ci と人Diはブロック関係にあります。この関係は双方向的です。
+以下の4 つの条件が満たされるとき、人a は人bの「友達候補」であると定義します。
+a≠b である。人a と人b はブロック関係に無い。人a と人bは友達関係に無い。1 以上N以下の整数から成るある数列c0,c1,c2,⋯,cL が存在し、c0=a であり、cL=b であり、i=0,1,⋯,L−1 について、人ci と人ci+1は友達関係にある。人i=1,2,...N について、友達候補の数を答えてください。
+'''
+'''
+input
+4 4 1
+2 1
+1 3
+3 2
+3 4
+4 1
+output
+0 1 0 1
+0 1 0 1
+'''
+
+
+
 
