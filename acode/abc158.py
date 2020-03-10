@@ -17,7 +17,6 @@ else:
     ans += A
 
 print(ans)
-'''
 
 #C
 import math
@@ -42,8 +41,9 @@ else:
 from collections import deque
 Str = str(input())
 Q = int(input())
-S = deque()
-S.append(Str)
+S = deque(list(Str))
+#S.append(list(Str))
+#上の方法ではダメ
 A = 0
 B = []
 C = []
@@ -52,15 +52,25 @@ for i in range(Q):
     a = list(map(str, input().split()))
     if a[0] == '1':
         if A%2==0:
-            S.extendleft(B)
-            B = []
-            S.extend(C)
-            C = []
+            if len(B)>1:
+                S.extendleft(B)
+                B = []
+            elif len(B) == 1:
+                S.extendleft(B)
+                B = []
+            if len(C) > 0:
+                S.extend(C)
+                C = []
         else:
-            S.extendleft(C)
-            C = []
-            S.extend(B)
-            B = []
+            if len(C)>1:
+                S.extendleft(C)
+                C = []
+            elif len(C) == 1:
+                S.extendleft(C)
+                C = []
+            if len(B) > 0:
+                S.extend(B)
+                B = []
         A += 1
     elif a[1] == '1':
         B.append(a[2])
@@ -69,22 +79,34 @@ for i in range(Q):
 
 if a[0] != '1':
     if A%2==0:
-        S.extendleft(B)
-        B = []
-        S.extend(C)
-        C = []
+        if len(B)>1:
+            S.extendleft(B)
+            B = []
+        elif len(B) == 1:
+            S.extendleft(B)
+            B = []
+        if len(C) > 0:
+            S.extend(C)
+            C = []
     else:
-        S.extendleft(C)
-        C = []
-        S.extend(B)
-        B = []
+        if len(C)>1:
+            S.extendleft(C)
+            C = []
+        elif len(C) == 1:
+            S.extendleft(C)
+            C = []
+        if len(B) > 0:
+            S.extend(B)
+            B = []
 
 if A%2 != 0:
     S.reverse()
 print(''.join(S))
+
 '''
-#d
-is=str(input())
+#Dans
+
+s=str(input())
 
 N=int(input())
 cnt=0
@@ -109,6 +131,7 @@ for i in range(N):
 if cnt%2==0:
   print(f+s+b)
 else:
+  #リバース処理
   ans=f+s+b
   L=len(ans)
   if L==1:
@@ -128,5 +151,5 @@ else:
       b_=''.join(list(reversed(f)))
       print(f_+b_)
 
-
+'''
 
