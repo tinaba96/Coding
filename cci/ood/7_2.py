@@ -7,7 +7,7 @@ class CallCenter():
         self.call_queue = []
         for respondent in respondents:
             respondent.callcenter = self
-            if not respondent in repondents:
+            if not respondent.call:
                 self.respondent_queue.append(respondent)
 
     def route_respondent(self, respondent):
@@ -27,7 +27,7 @@ class Call():
         self.issue = issue
         self.employee = None 
 
-    def resolve(self, issue):
+    def resolve(self, handled):
         if handled:
             self.issue = None
         self.employee.finish_call(handled)
@@ -41,12 +41,12 @@ class Employee(object):
         self.name, self.manager = name, manager
         self.call = None
 
-    def take_call(self, call)
+    def take_call(self, call):
         if self.call:
             self.escalate(call)
         else:
             self.call = call
-            self.cal.employee = self 
+            self.call.employee = self 
 
     def escalate(self, call):
         if self.manager:
@@ -70,9 +70,9 @@ class Respondent(Employee):
 class Manager(Employee):
     pass
 
-class Director(Emplyee):
+class Director(Employee):
     def __init__(self, name):
-        super(Respondent, self).__init__(name, None)
+        super(Director, self).__init__(name, None)
 
 import unittest
 
