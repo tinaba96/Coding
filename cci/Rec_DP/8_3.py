@@ -1,5 +1,7 @@
 #an array is sorted
 
+
+
 def magic_index_distinct(array):
     if len(array) == 0 or array[0] > 0 or array[-1] < len(array) -1:
         return None
@@ -9,7 +11,6 @@ def magic_index_distinct_bounds(array, lower, upper):
     if lower == upper:
         return None
     middle = (lower + upper) // 2
-    if array[middle] == middle:
         return middle
     elif array[middle] > middle:
         return magic_index_distinct_bounds(array, lower, middle)
