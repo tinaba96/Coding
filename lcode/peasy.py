@@ -1,3 +1,5 @@
+#1, 7, 9, 13, 14, 20, 21
+
 class Solution:
   def twoSum(nums, target) -> int:
     for i in range(len(nums)):
@@ -19,9 +21,9 @@ class Solution:
         else:
             return a
 
-  def isPalindrome(x: int) -> bool:
+  def isPalindrome(self, x: int) -> bool:
     a = str(x)[::-1]
-    print(a)
+    #print(a)
     if a == str(x):
       return True
     else:
