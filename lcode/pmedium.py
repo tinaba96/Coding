@@ -107,11 +107,103 @@ class Solution:
             ans = max(ans, len(arr))
 
         return ans
+        #解説：https://dev.classmethod.jp/etc/longest-substring-without-repeating-characters/
+
+    #5
+    '''
+    def longestPalindrome(self, s:str) -> str:
+        ans = ""
+        #print(len(ans))
+        for j in range(len(s)):
+            for i in range(1, len(s)+1):
+                if s[j:i] == Solution.reverse(s[j:i]):
+                    if len(ans) < len(s[j:i]):
+                        #print(ans)
+                        ans = s[j:i]
+        return ans
+
+    def reverse(s:str):
+        r  = []
+        for i in range(1, len(s)+1):
+            r.append(s[-i])
+        r = ''.join(r)
+        return r
+    '''
+    def longestPalindrome(self, s):
+        largestPalindrome = ''
+        for i in range(len(s)):
+            palindromeOdd = self.largestPalindromeIndex(s, i, i)
+            palindromeEven = self.largestPalindromeIndex(s, i, i+1)
+
+            largerPalindrome = palindromeOdd if len(palindromeOdd) > len(palindromeEven) else palindromeEven
+            largestPalindrome = largestPalindrome if len(largestPalindrome) >= len(largerPalindrome) else largerPalindrome
+        return  largestPalindrome
+
             
+    def largestPalindromeIndex(self, s, left, right):
+        leftIndex = 0
+        rightIndex = 0
+        while left >= 0 and right < len(s):
+            if s[left] == s[right]:
+                leftIndex = left
+                rightIndex = right
+            else:
+                break
+            left -= 1
+            right += 1
+        return s[leftIndex:rightIndex+1]
+
+    '''
+    def convert(self, s:str, numRows: int) -> str:
+        for i in range(numRows):
+            arr[i] = []
+        for i in range(numRows):
+            for j in range(len(arr)):
+                arr[i] = 
+    '''
+    def convert(self, s:str, numRows: int) -> str:
+        if len(s) == 0: return ''
+        if numRows <= 0: return ''
+        elif numRows == 1: return s
+        
+        resRows = ['']*numRows
+
+        i = 0
+        resRows = 0
+        step = 1
+        while 1 < len(s):
+            resRows[resRowNum] += s[i]
+
+            if (step == 1 and resRowNum == numRows -1) or (step == -1 and resRowNum == 0):
+                step = -1*step
+
+            resRowNum += step
+            i += 1
+
+        return ''
+
+
+
+
+
+
+
+
+
+
+
+
+            
+if __name__ == "__main__":
+    s = Solution()
+    print(s.convert('aacdefcaa', 3))
+
 
 
 #print(Solution.addTwoNumbers(ListNode, ListNode.ListNode2(2, 4, 3), ListNode.ListNode2(5, 6, 4)))
 #print(Solution.addTwoNumbers(ListNode, ListNode(2), ListNode(5)))
-print(Solution.lengthOfLongestSubstring(None, 'pwwkew'))
+#print(Solution.lengthOfLongestSubstring(None, 'pwwkew'))
+#print(Solution.longestPalindrome(Solution,'aacdefcaa'))
+#上のは動かない→インスタンスを作る必要あり（name == 'main'のとこ）
 
 
