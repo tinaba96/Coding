@@ -1,6 +1,13 @@
 from collections import deque
-#2
+from typing import List
 
+'''
+class List:
+    def __init__(self, x):
+        x = [x]
+'''
+
+#2
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -169,34 +176,49 @@ class Solution:
         resRows = ['']*numRows
 
         i = 0
-        resRows = 0
+        resRowNum = 0
         step = 1
-        while 1 < len(s):
+        while i < len(s):
             resRows[resRowNum] += s[i]
-
+            #print(resRows[resRowNum])
             if (step == 1 and resRowNum == numRows -1) or (step == -1 and resRowNum == 0):
                 step = -1*step
 
             resRowNum += step
             i += 1
 
-        return ''
+        return ''.join(resRows)
+    #11
+    def mymaxArea(self, height: List[int]) -> int:
+        area = 0
+        ans = 0
+        for i in range(len(height)//2+1):
+            area = (len(height)-1-i)*height[i]
+            ans = max(ans, area)
+        for i in range(len(height)//2+1, len(height)):
+            area = i*height[i]
+            ans = max(ans, area)
+        return ans
 
-
-
-
-
-
-
-
-
-
+    def maxArea(self, height: List[int]) -> int:
+        left, right = 0, len(height)-1
+        ans = 0
+        while left < right:
+            if height[left] < height[right]:
+                area = height[left]*(right-left)
+                left  = left + 1
+            else:
+                area = height[right]*(right - left)
+                right = right - 1
+            ans = max(ans, area)
+        return ans
 
 
             
 if __name__ == "__main__":
     s = Solution()
-    print(s.convert('aacdefcaa', 3))
+    #print(s.convert('PAYPALISHIRING', 3))
+    print(s.maxArea([1, 2, 4, 5, 8, 6, 2, 5, 4, 8, 3, 7]))
 
 
 
