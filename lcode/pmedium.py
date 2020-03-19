@@ -212,13 +212,91 @@ class Solution:
                 right = right - 1
             ans = max(ans, area)
         return ans
+    '''
+    Initially we consider the area constituting the exterior most lines. Now, to maximize the area, we need to consider the area between the lines of larger lengths. If we try to move the pointer at the longer line inwards, we won't gain any increase in area, since it is limited by the shorter line. But moving the shorter line's pointer could turn out to be beneficial, as per the same argument, despite the reduction in the width. This is done since a relatively longer line obtained by moving the shorter line's pointer might overcome the reduction in area caused by the width reduction.
+    '''
+
+    #17
+    '''
+    def myletterCombinations(self, digits:str) -> List[str]:
+        table = {}
+        final = []
+        table['2']  = 'abc'
+        table['3'] = 'def'
+        table['4'] = 'ghi'
+        table['5'] = 'jkl'
+        table['6'] = 'mno'
+        table['7'] = 'pqrs'
+        table['8'] = 'tuv'
+        table['9'] = 'wxyz'
+
+        ans = []*(len(table[digits[0]])*len(table[digits[1]]))
+        
+        if '0' not in digits:
+            for j in range(len(table[digits[0]])):
+                for i in range(len(table[digits[1]])):
+                    ans.append(table[digits[0]][j])
+            for k in range(len(table[digits[1]])):
+                for l in range(0, len(table[digits[0]])*len(table[digits[1]]), len(table[digits[1]])):
+                    ans[k+l] += table[digits[1]][k]
+        return ans
+    '''
+    def letterCombinations(self, digits:str) -> List[str]:
+        phone = {'2': ['a', 'b', 'c'],
+                '3': ['d', 'e', 'f'],
+                '4': ['g', 'h', 'i'],
+                '5': ['j', 'k', 'l'],
+                '6': ['m', 'n', 'o'],
+                '7': ['p', 'q', 'r', 's'],
+                '8': ['t', 'u', 'v'],
+                '9': ['w', 'x', 'y', 'z']}
+
+        def backtrack(combination, next_digits):
+            if len(next_digits) == 0:
+                ans.append(combination)
+            else:
+                for letter in phone[next_digits[0]]:
+                        backtrack(combination + letter, next_digits[1:])
+
+        ans = []
+        if digits:
+            backtrack('', digits)
+        return ans
+
+    def removeNthFromEnd(self, head:ListNode, n:int) -> ListNode:
+        current = head
+        cnt = 0
+
+        if not head.next:
+            return None
+        else:
+            while current:
+                current = current.next
+                cnt += 1
+
+            current = head
+            for i in range(cnt-n-1):
+                current = current.next
+
+            if cnt == n:
+                head = head.next
+            else:
+                delete = current.next
+                current.next = delete.next
+
+            return head
+    #22
+    def genrateParenthesis(self, n:int) -> List[int]:
 
 
             
 if __name__ == "__main__":
     s = Solution()
     #print(s.convert('PAYPALISHIRING', 3))
-    print(s.maxArea([1, 2, 4, 5, 8, 6, 2, 5, 4, 8, 3, 7]))
+    #print(s.maxArea([1, 2, 4, 5, 8, 6, 2, 5, 4, 8, 3, 7]))
+    #print(s.letterCombinations('29'))
+    #print(s.removeNthFromEndl([1, 2, 3, 4, 5], 2))
+    #リストノードの指定がうまくできない
 
 
 
