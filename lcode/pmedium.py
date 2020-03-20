@@ -286,8 +286,62 @@ class Solution:
 
             return head
     #22
-    def genrateParenthesis(self, n:int) -> List[int]:
+    def mygenrateParenthesis(self, n:int) -> List[int]:
+        ans = []
+        if n == 0:
+            return None
+        elif n == 1:
+            return '()'
+        else:
+            for i in range(n):
+                left = '('
+                left += ')'
+                 
+    def generateParenthesisBruteForce(self, n) -> List[int]:
+        def generate(A = []):
+            if len(A) == 2*n:
+                if valid(A):
+                    ans.append(''.join(A))
+            else:
+                A.append('(')
+                generate(A)
+                A.pop()
+                A.append(')')
+                generate(A)
+                A.pop()
+                #上を要チェック
+                #結構難しい
+                #To generate all sequences, we use a recursion. All sequences of length n is just '(' plus all sequences of length n-1, and then ')' plus all sequences of length n-1.
 
+        def valid(A):
+            bal = 0
+            for c in A:
+                if c == '(' : bal += 1
+                else: bal -= 1
+                if bal < 0: return False
+            return bal == 0
+
+        ans = []
+        generate()
+        return ans
+
+    def generateParenthesis(self, N):
+        ans = []
+        def backtrack(S = '', left = 0, right = 0):
+            if len(S) == 2*N:
+                ans.append(S)
+                return
+            #print(S)
+            if left < N :
+                backtrack(S+'(', left+1, right)
+            if right < left:
+                backtrack(S+')', left, right+1)
+        backtrack()
+        return ans
+
+    #31
+    def nextPermutation(self, nums: List[int]) -> None:
+        for i in 
 
             
 if __name__ == "__main__":
@@ -297,6 +351,7 @@ if __name__ == "__main__":
     #print(s.letterCombinations('29'))
     #print(s.removeNthFromEndl([1, 2, 3, 4, 5], 2))
     #リストノードの指定がうまくできない
+    print(s.generateParenthesis(3))
 
 
 
