@@ -340,10 +340,125 @@ class Solution:
         return ans
 
     #31
-    def nextPermutation(self, nums: List[int]) -> None:
-        for i in 
+    def mynextPermutation(self, nums: List[int]) -> None:
 
-            
+        def mergesort(arr):
+            if len(arr) <= 1:
+                return arr
+            mid = len(arr)//2
+            left = arr[:mid]
+            right = arr[mid:]
+
+            left = mergesort(left)
+            right = mergesort(right)
+
+            return merge(left, right)
+        
+        def merge(left, right):
+            merged = []
+            l_i, r_i = 0, 0
+
+            while l_i < len(left) and r_i < len(right):
+                if left[l_i] <= right[r_i]:
+                    merged.append(left[l_i])
+                    l_i += 1
+                else:
+                    merged.append(right[r_i])
+                    r_i += 1
+
+            if l_i < len(left):
+                merged.extend(left[l_i:])
+            if r_i < len(right):
+                merged.extend(right[r_i:])
+            return merged
+
+        #print(mergesort([2,3,5,4,1]))
+        baf = []
+        nothing = True
+        for i in reversed(range(1, len(nums))):
+            baf.append(nums[i])
+            if nums[i] > nums[i-1]:
+                baf.append(nums[i-1])
+                baf = list(baf)
+                print(baf)
+                baf = mergesort(baf)
+                print(baf)
+                change = baf[baf.index(nums[i-1])+1] 
+                print(change)
+                nums[len(nums)-len(baf)+1+baf.index(change)], nums[i-1] = nums[i-1], nums[len(nums)-len(baf)+1+baf.index(change)]
+                nums[i:] = mergesort(nums[i:])
+                #print(nums)
+                nothing = False
+                break
+        if nothing == True:
+            #nums = mergesort(nums)
+            change = True
+            while change:
+                change = False
+                for i in range(len(nums)-1):
+                    if nums[i] > nums[i+1]:
+                        nums[i], nums[i+1] = nums[i+1], nums[i]
+                        change = True
+
+        print(nums)
+        
+    def nextPermutation(self, nums: List[int]) -> None:
+        k = -1
+        i = len(nums) - 2
+        while i >= 0:
+            if nums[i] < nums[i+1]:
+                k = i
+                break
+            i -= 1
+
+        if k == -1:
+            nums.reverse()
+            return
+
+        l = k + 1
+        i = len(nums) - 1
+        while i > k+1:
+            if nums[k] < nums[i]:
+                l = i
+                break
+            i -= 1
+
+        nums[k], nums[l] = nums[l], nums[k]
+
+        nums[k+1:] = reversed(nums[k+1:])
+
+    #34
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(nums)-1
+        if target in nums:
+            while target != nums[left] or target != nums[right]:
+                mid = (left+right)//2
+                if nums[mid] > target:
+                    right = mid
+                elif nums[mid] == target:
+                    if target != nums[left]:
+                        left += 1
+                    if target != nums[right]:
+                        right -= 1
+                else:
+                    if left == mid and target != nums[left]:
+                        left += 1
+                    elif target != nums[left]:
+                        left = mid
+                    if target != nums[right]:
+                        right -= 1
+            return [left, right]
+        else:
+            return [-1, -1]
+
+    #49
+    def groupAnagrams(self, strs: List[int]) -> List[List[str]]]:
+
+ 
+
+
+
 if __name__ == "__main__":
     s = Solution()
     #print(s.convert('PAYPALISHIRING', 3))
@@ -351,7 +466,9 @@ if __name__ == "__main__":
     #print(s.letterCombinations('29'))
     #print(s.removeNthFromEndl([1, 2, 3, 4, 5], 2))
     #リストノードの指定がうまくできない
-    print(s.generateParenthesis(3))
+    #print(s.generateParenthesis(3))
+    #print(s.nextPermutation([4,2,3,5,4]))
+    print(s.searchRange([4,4,4,4,4],4))
 
 
 
