@@ -453,7 +453,30 @@ class Solution:
             return [-1, -1]
 
     #49
-    def groupAnagrams(self, strs: List[int]) -> List[List[str]]]:
+    def mygroupAnagrams(self, strs: List[int]) -> List[List[str]]:
+        ans = []
+        for ele in strs:
+            for i in range(len(strs)):
+                if ele[i] == ele[i+1]:
+
+    def groupAnagrams1(self, strs: List[int]) -> List[List[str]]:
+        ans = collections.defaultdict(list)
+        for s in strs:
+            ans[tuple(sorted(s))].append(s)
+        return ans.values()
+
+
+    def groupAnagrams2(self, strs: List[int]) -> List[List[str]]:
+        ans = collections.defaultdict(list)
+        for s in strs:
+            count = [0]*26
+            for c in s:
+                count[ord(c) - ord('a')] += 1
+            ans = [tuple(count)].append(s)
+        return ans.values.()
+
+
+
 
  
 
