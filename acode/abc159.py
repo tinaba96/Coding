@@ -49,6 +49,38 @@ for i in range(N):
         cnt += ans[arr[num]]
     #print(cnt)
 
+#Dans
+from collections import Counter
+
+N = int(input())
+A = list(map(int, input().split()))
+
+
+def comb(x):
+    if x == 0:
+        return 0
+    if x == 1:
+        return 0
+    return x * (x - 1) // 2
+
+
+d = Counter(A)
+# print(d)
+k = d.keys()
+
+# print(k)
+total = 0
+
+for kk in k:
+    total += comb(d[kk])
+
+# print(total)
+
+for a in A:
+    res = total
+    res -= comb(d[a])
+    res += comb(d[a] - 1)
+    print(res)
 
 
 '''
@@ -56,7 +88,6 @@ for i in range(N):
     for j in range(N):
         if arr[j] >= 2:
            cnt += comb(arr[j],2)
-
 '''
     
 
