@@ -67,6 +67,8 @@ class Solution:
             raise ValueError
 
         imin, imax, half_len = 0, m, (m + n + 1) // 2
+        #(m+n+1)の+1は全体の長さが奇数だったっ場合に、中間線の一個前を中間のノードにするため
+        #+1しない場合は、中間線の一個後のノードを中間ノードとして扱えば良いと思われる。
         while imin <= imax:
             i = (imin + imax) // 2
             j = half_len - i
