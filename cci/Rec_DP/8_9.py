@@ -33,10 +33,13 @@ def parens2(n, open_count=0, close_count=0, memo=None):
     elif key in memo:
         return memo[key]
     parens = []
+    #右から順に決めていく
     if open_count < n:
         parens += ["(" + end for end in parens2(n, open_count+1, close_count, memo)]
+        print('parens1', parens)
     if close_count < open_count:
         parens += [")" + end for end in parens2(n, open_count, close_count+1, memo)]
+        print('parens2', parens)
     memo[key] = parens
     print(memo)
     return parens
@@ -60,6 +63,7 @@ def parens_memo3(n, open_count, close_count, memo):
   memo[key] = parens
   return parens
 
+#一番分かりやすい
 def parens4(n, partial="", open_count=0, close_count=0):
   if open_count + close_count == 2 * n:
     return [partial]
@@ -68,6 +72,7 @@ def parens4(n, partial="", open_count=0, close_count=0):
     parens += parens4(n, partial + "(", open_count + 1, close_count)
   if close_count < open_count:
     parens += parens4(n, partial + ")", open_count, close_count + 1)
+  #print(parens)
   return parens
 
 
@@ -82,29 +87,24 @@ class Test(unittest.TestCase):
     self.assertEqual(parens1(3), ["()()()", "()(())", "(())()", "(()())", "((()))"])
     #self.assertEqual(parens1(3), ["()()()", "(())()", "()(())", "(()())", "((()))"])
   
-  '''
   def test_parens2(self):
-      self.assertEqual(parens2(1), ["()"])
+      #self.assertEqual(parens2(1), ["()"])
       self.assertEqual(parens2(2), ["(())", "()()"])
-      self.assertEqual(parens2(3), ["((()))", "(()())", "(())()", "()(())",
-        "()()()"])
+      #self.assertEqual(parens2(3), ["((()))", "(()())", "(())()", "()(())", "()()()"])
       #self.assertEqual(set(parens1(7)), set(parens2(7)))
 
-  '''
   def test_parens3(self):
     self.assertEqual(parens3(1), ["()"])
     self.assertEqual(parens3(2), ["(())", "()()"])
-    self.assertEqual(parens3(3), ["((()))", "(()())", "(())()", "()(())",
-        "()()()"])
-    self.assertEqual(set(parens1(7)), set(parens3(7)))
+    self.assertEqual(parens3(3), ["((()))", "(()())", "(())()", "()(())", "()()()"])
+    #self.assertEqual(set(parens1(7)), set(parens3(7)))
+  '''
 
   def test_parens4(self):
-    self.assertEqual(parens4(1), ["()"])
-    self.assertEqual(parens4(2), ["(())", "()()"])
-    self.assertEqual(parens4(3), ["((()))", "(()())", "(())()", "()(())",
-        "()()()"])
-    self.assertEqual(set(parens1(7)), set(parens4(7)))
-   '''
+    #self.assertEqual(parens4(1), ["()"])
+    #self.assertEqual(parens4(2), ["(())", "()()"])
+    self.assertEqual(parens4(3), ["((()))", "(()())", "(())()", "()(())", "()()()"])
+    #self.assertEqual(set(parens1(7)), set(parens4(7)))
 
 if __name__ == "__main__":
   unittest.main()
