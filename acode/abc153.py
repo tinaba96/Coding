@@ -67,7 +67,7 @@ else:
   print(int(cnt+1))
 #上も正解
 
-#Dand
+#Dans
 print(2**len(format(int(input()), "b"))-1)
 
 
