@@ -11,13 +11,13 @@ def paint_fill_color(image, c, r, new_color, old_color):
     if image[r][c] != old_color:
         return 
     image[r][c] = new_color
-    if y > 0:
+    if r > 0:
         paint_fill_color(image, c, r-1, new_color, old_color)
-    if y < len(image) - 1:
+    if r < len(image) - 1:
         paint_fill_color(image, c, r+1, new_color, old_color)
-    if x > 0:
+    if c > 0:
         paint_fill_color(image, c-1, r, new_color, old_color)
-    if x < len(image[r]) - 1:
+    if c < len(image[r]) - 1:
         paint_fill_color(image, c+1, r, new_color, old_color)
 
 
