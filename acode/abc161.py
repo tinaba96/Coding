@@ -6,6 +6,11 @@ X, Y, Z = list(map(int, input().split()))
 X, Y, Z = Z, X, Y 
 
 print(X, Y, Z)
+
+#Aans
+X, Y, Z = list(map(int, input().split()))
+print(Z, X, Y)
+
 #B
 N, M = list(map(int, input().split()))
 A = list(map(int, input().split()))
