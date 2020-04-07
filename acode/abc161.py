@@ -15,6 +15,7 @@ print(Z, X, Y)
 N, M = list(map(int, input().split()))
 A = list(map(int, input().split()))
 all_A = sum(A)
+#商の計算をしたくなければ、移行して積にすれば良い
 comp = (1/(4*M))*all_A
 A.sort(reverse=True)
 i = 0
@@ -31,6 +32,21 @@ if ans == M:
 else:
     print('No')
 
+#Bans
+def readInts():
+  return list(map(int, input().split()))
+
+n,m = readInts()
+a = readInts()
+s = sum(a)
+cnt = 0
+for i in range(n):
+  if a[i]*4*m >= s:
+    cnt += 1
+if cnt >= m: print("Yes")
+else: print("No")
+
+
 #C
 N, K = list(map(int, input().split()))
 
@@ -42,6 +58,14 @@ while True:
         break
 
 print(abs(bef))
+
+#Cans
+N, K = map(int,input().split())
+r = N%K
+a = min(r, K-r)
+print(a)
+
+
 '''
 #D
 K = int(input())
@@ -88,7 +112,23 @@ while True:
 print(arr[-1])
 
 
+'''
+#Dans
 
+k = int(input())
+ans = [1,2,3,4,5,6,7,8,9]
+now = 0
+for i in ans:
+  if now == 100000:
+    break
+  x = int(str(i)[-1])
+  for j in range(max(0,x-1),min(x+2,10)):
+    mini_ans = i * 10 + j
+    ans.append(mini_ans)
+    now += 1
+print(ans[k-1])
+
+'''
 
 
 
