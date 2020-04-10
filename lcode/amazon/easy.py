@@ -148,6 +148,31 @@ class Solution:
     def majorityElement(self, nums):
         nums.sort()
         return nums[len(nums)//2]
+    # Boyer-Moore Voting Algorithm
+    def majorityElement(self, nums):
+        count = 0
+        candidate = None
+
+        for num in nums:
+            if count == 0:
+                candidate = num
+            count += (1 if num == candidate else -1)
+        return candidate
+
+    #496
+    def nextGreaterElement(self, nums1:List[int], nums2:List[int]) -> List[int]:
+        ans = []
+        for ele in nums1:
+            flag = False
+            for i in range(nums2.index(ele), len(nums2)):
+                if ele < nums2[i]:
+                    flag = True
+                    ans.append(nums2[i])
+                    break
+            if flag == False:
+                ans.append(-1)
+
+        return ans
 
 
 if __name__ == "__main__":
