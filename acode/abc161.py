@@ -119,6 +119,7 @@ k = int(input())
 ans = [1,2,3,4,5,6,7,8,9]
 now = 0
 for i in ans:
+  #K番目で止めて方が良いと思う。
   if now == 100000:
     break
   x = int(str(i)[-1])
