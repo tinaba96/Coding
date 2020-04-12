@@ -160,6 +160,7 @@ class Solution:
         return candidate
 
     #496
+    #O(m*n)
     def nextGreaterElement(self, nums1:List[int], nums2:List[int]) -> List[int]:
         ans = []
         for ele in nums1:
@@ -173,6 +174,22 @@ class Solution:
                 ans.append(-1)
 
         return ans
+
+    #O(m*n)
+    def nextGreaterElement(self, nums1:List[int], nums2:List[int]) -> List[int]:
+        d = {}
+        ans = [-1]*len(nums1)
+        for i, num in enumerate(nums1):
+            d[num] = i
+        stack = []
+        for num in nums:
+            while stack and stack[-1] < num:
+                top = stack.pop()
+                if top in d:
+                    ans[d[top]] = num
+                stck.append(num)
+            return ans
+
 
 
 if __name__ == "__main__":
