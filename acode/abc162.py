@@ -14,6 +14,13 @@ for i in range(1, N+1):
         ans += i
 print(ans)
 
+#bans
+def S(n):
+  return n*(n+1)//2
+
+N = int(input())
+print(S(N)-S(N//3)*3-S(N//5)*5+S(N//15)*15)
+
 #C
 
 K = int(input())
@@ -47,6 +54,13 @@ for i in range(1, K+1):
         ans += gcd3(i, j, i)
         ans += gcd3(i, j, i)
 print(ans)
+
+#Cans
+import math
+g=math.gcd
+r=range(1,int(input())+1)
+print(sum(g(g(i,j),k)for i in r for j in r for k in r))
+#内包表記が早い理由と思われる。
 '''
 
 #D
@@ -103,3 +117,28 @@ ans = cntb*cntr*cntg
 
 print(ans)
     
+#Dans
+N=int(input())
+S=input()
+
+r,g,b=0,0,0
+for s in S:
+    if s=='R': r+=1
+    elif s=='G': g+=1
+    else: b+=1
+
+
+ng=0
+for i in range(N):
+    for j in range(i+1,N):
+        k=j+(j-i)
+        if k>=N: continue
+        if S[i]!=S[j] and S[j]!=S[k] and S[i]!=S[k]:
+            ng+=1
+
+ans=r*g*b
+print(ans-ng)
+
+
+
+
