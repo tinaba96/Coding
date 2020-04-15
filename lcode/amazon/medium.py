@@ -66,3 +66,6 @@ class Solution:
                     parent[rootA] = rootB
                     self.count -= 1
 
+    #新しいunionを合体する度に、それを親にしていると思われる。
+
+
