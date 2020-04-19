@@ -87,3 +87,76 @@ cB = collections.Counter(C)
 
 以上から、計算量の面では下の実装の方が賢い方法であると言える。
 '''
+
+#809
+class Solution:
+    import collections
+    def expressiveWorld(self, S: str, words: List[int]) -> int:
+        for ele in words:
+            flag = True
+            if S[0] != ele[0]:
+                flag = False
+                break
+            group = 0
+            for i in range(1, len(S)):
+                if S[i] == S[i-1]:
+                    group += 1
+                else:
+                    if ele[i] != ele[i-1]:
+                        if S[i] != ele[i]:
+                            flag = False
+                            break
+            if flag == True:
+                
+        
+        
+        
+
+
+        c = collections.Counter
+        cnt = c.Counter(S)
+        for ele in words:
+            for i in range(len(cnt)):
+
+    #ans 
+    def expressiveWords(self, S, words):
+        def RLE(S):
+            return zip(*[(k, len(list(grp)))
+                         for k, grp in itertools.groupby(S)])
+
+        R, count = RLE(S)
+        ans = 0
+        for word in words:
+            R2, count2 = RLE(word)
+            if R2 != R: continue
+            ans += all(c1 >= max(c2, 3) or c1 == c2
+                       for c1, c2 in zip(count, count2))
+
+        return ans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
