@@ -121,10 +121,16 @@ class Solution:
     #ans 
     def expressiveWords(self, S, words):
         def RLE(S):
+            print([(k, len(list(grp)))
+                         for k, grp in itertools.groupby(S)])
+            print(*([(k, len(list(grp)))
+                         for k, grp in itertools.groupby(S)]))
             return zip(*[(k, len(list(grp)))
                          for k, grp in itertools.groupby(S)])
+            
 
         R, count = RLE(S)
+        print('R',R, count) 
         ans = 0
         for word in words:
             R2, count2 = RLE(word)
@@ -134,9 +140,25 @@ class Solution:
 
         return ans
 
+'''
+"heeellooo"
+["hello", "hi", "helo"]
 
 
+[('h', 1), ('e', 3), ('l', 2), ('o', 3)]
+('h', 1) ('e', 3) ('l', 2) ('o', 3)
+R ('h', 'e', 'l', 'o') (1, 3, 2, 3)
+[('h', 1), ('e', 1), ('l', 2), ('o', 1)]
+('h', 1) ('e', 1) ('l', 2) ('o', 1)
+[('h', 1), ('i', 1)]
+('h', 1) ('i', 1)
+[('h', 1), ('e', 1), ('l', 1), ('o', 1)]
+('h', 1) ('e', 1) ('l', 1) ('o', 1)
 
+1
+
+
+'''
 
 
 
