@@ -67,18 +67,16 @@ def parens_memo3(n, open_count, close_count, memo):
 def parens4(n, partial="", open_count=0, close_count=0):
   if open_count + close_count == 2 * n:
     return [partial]
-  parens = []
+  parens = [] #important
   if open_count < n:
     parens += parens4(n, partial + "(", open_count + 1, close_count)
   if close_count < open_count:
     parens += parens4(n, partial + ")", open_count, close_count + 1)
   #print(parens)
   return parens
-
-
+  #ボトムアップかな？
 
 import unittest
-
 class Test(unittest.TestCase):
   '''
   def test_parens1(self):

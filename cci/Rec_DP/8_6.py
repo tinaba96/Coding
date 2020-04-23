@@ -3,10 +3,20 @@ def towers_of_hanoi(tower1, tower2, tower3, n=None):
         n = len(tower1.discs)
     if n == 0:
         return
+    #A タワー1からの動作
     towers_of_hanoi(tower1, tower3, tower2, n-1)
+    #B
     disc = tower1.discs.pop()
     tower3.discs.append(disc)
+    #C タワー2とタワー3の間での動作
     towers_of_hanoi(tower2, tower1, tower3, n-1)
+
+    '''
+    A：一番下のディスクを除いたn-1枚全てをtower1からtower2に移す。
+    B：これで、tower1の一番下にあるディスクを動かすことができる。故に、このデイスクをtower3に動かす。
+    C：この時、一番大きいデイスクはtower3にある。よって、tower2にあるn-1枚ノイディスクをtower3に移動させる。
+    完了
+    '''
 
 class Tower(object):
     def __init__(self, name, discs=None):
@@ -34,4 +44,5 @@ class Test(unittest.TestCase):
 if __name__ == "__main__":
   unittest.main()
 
-
+#参考
+#https://qiita.com/ka201504/items/e46d6c9bde13e61b3331
