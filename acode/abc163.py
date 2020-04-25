@@ -8,6 +8,9 @@ pi = pi4 * 4    # 3.141592153589902
 R = int(input())
 
 print(2*pi*R)
+
+#pi = acos(-1)を利用しても良い。
+
 #B
 N, M = list(map(int, input().split()))
 A = list(map(int, input().split()))
@@ -48,6 +51,9 @@ def count(N, K):
 count(N, K)
 print(ans%(10**9+7))
 '''
+
+#解説：最小値で選んだk個と最大値で選んだk個において、それそれ対応する項ごとに差をとると、n-k+1がk項出てくる。よって、k(n-k+1)+1が解になり、2乗の和の公式などをk~n+1において使用すれば、O(1)でこの問題を解くことができる。
+
 
 #Dans
 N, K = map(int, input().split())
