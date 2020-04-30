@@ -36,6 +36,17 @@ for i in range(N):
 print(len(list))
 '''
 
+#using set()
+N = int(input())
+s = set()
+for i in range(N):
+    A = str(input())
+    s.add(A)
+
+print(len(s))
+
+'''
+
 #D
 S = str(input())
 dict = {}
@@ -63,11 +74,31 @@ for ele in dict:
         cnt += dict[ele]
 #print(arr)
 print(cnt)
-'''
+
+
+
 for i in range(len(S)-3):
     for j in range(i+3, len(S)):
         if int(S[i:j+1])%2019 == 0:
             print(S[i:j+1])
 
 '''
+#Dans
+S = input()[::-1]
+dp = [0]*2019
+dp[0] = 1
+
+tmp = 0
+for i in range(len(S)):
+    #modの世界→逆元の概念が難しい
+    tmp += int(S[i])*pow(10, i, 2019)
+    tmp %= 2019
+    dp[tmp] += 1
+ans = 0
+for i in dp:
+    if i >= 2:
+        #２つ選ぶ組み合わせ
+        ans += i*(i-1)//2
+print(ans)
+
 
