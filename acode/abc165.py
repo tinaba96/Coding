@@ -166,3 +166,17 @@ for i in range(1, C+D, D):
 print(ans)
 #最初にエラーが出てた（testcase12)　原因は、range(1, C+1, D)とすると最後のi=Cの場合が計算されない場合があるからだった。range(1, C+D, D)とすることで解決。
 
+import math
+a,b,n=map(int,input().split())
+
+def func(a,b,x):
+    return math.floor(a*x/b)-a*math.floor(x/b)
+
+print(func(a,b,min(b-1,n)))
+
+'''
+f (x) = f loor(Ax/B) − A × f loor(x/B) とします。
+f(x + B) = f(x) であることは実際に代入することで容易に分かります。なので、0 ≤ x ≤ B − 1 の場合のみを考えます。
+このとき、f (x) = f loor(Ax/B) − A × f loor(x/B) = f loor(Ax/B) で、f loor(Ax/B) は広義単 調増加なので、与えられた制約 (0 ≤ x ≤ B − 1, 0 ≤ x ≤ N) の中で最も大きい x について、f(x) が求める最大値です。
+よって、答えは f (min(B − 1, N )) です。
+'''
