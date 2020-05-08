@@ -83,7 +83,6 @@ for i in range(N):
             ans += 1
 print(ans)
 
-'''
 #D
 X = int(input())
 
@@ -92,19 +91,47 @@ for A in range(100):
         if A**5-B**5 == X:
             print(A, B)
             exit()
+'''
 
 #ans
 x = int(input())
 
 for a in range(-118,120):
     for b in range(-118,120):
+        print(a**5 - b**5)
+        if a**5 - b**5 < x:
+            break
         if a**5 - b**5 == x:
             print(a, b)
             exit()
+'''
+#admin
+x = int(input())
+for diff in range(1, 250):
+  a = 1
+  while True:
+    b = a-diff
+    val = a**5 - b**5
+    if val == x:
+      print(a,b)
+      exit(0)
+    if b > 0 and  val > x:
+      break
+    a += 1
+print(-1)
+
+
+>つまり、AとBをそれぞれ1~100まで試す場合（Aループの中にBループがある場合）は、単調減少していることを利用し、xよりも小さくなった時点でbreakしたとしても、それまでに試す回数はAの値に依存しないのに対して、差を1~100まで試す場合は、外側のループが進むにつれて（差が大きくなるにつれて）、ｘを超えるまでのイテレーションが少なくて済むという点が重要というわけですね。
+はい。
+
+>ということは、後者の方が全体的な計算量（最悪ケースも含む）が少しだけ前者よりも良いという理解で良いのでしょうか。
+少しではあると思いますが、そうです。
+
+
+
 
 #違うアプローチ（友達に聞いた）
 #cpp
-'''
 #include <iostream>
 #define int long long
 using namespace std;
