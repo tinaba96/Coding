@@ -4,8 +4,8 @@
 
 #define INPUTWSIZE 4  /*入力幅*/ 
 #define INPUTLSIZE 100  /*入力長さ*/ 
-#define FILTERWSIZE 3 /*フィルタの大きさ*/
-#define FILTERLSIZE 1 /*フィルタの大きさ*/
+#define FILTERWSIZE 1 /*フィルタの幅*/
+#define FILTERLSIZE 3 /*フィルタの長さ*/
 #define FILTERNO 2 /*フィルタの個数*/
 #define POOLSIZE 3 /*プーリングサイズ*/
 #define POOLOUTSIZE 3/*プーリングの出力サイズ*/
@@ -18,9 +18,9 @@
 
 /*関数のプロトタイプの宣言*/
 void conv(double filter[FILTERWSIZE][FILTERLSIZE]
-   ,double e[][INPUTWSIZE]
+   ,double e[][INPUTLSIZE]
    ,double convout[][INPUTLSIZE]) ; /*畳み込みの計算*/
-double calcconv(double filter[][FILTERWSIZE]
+double calcconv(double filter[][FILTERLSIZE]
                ,double e[][INPUTLSIZE],int i,int j) ;
                                /*  フィルタの適用  */
 void pool(double convout[][INPUTLSIZE]
@@ -31,7 +31,7 @@ double maxpooling(double convout[][INPUTLSIZE]
 int getdata(double e[][INPUTWSIZE][INPUTLSIZE],int r[]) ;/*データ読み込み*/ 
 void showdata(double e[][INPUTWSIZE][INPUTLSIZE],int t[]
              ,int n_of_e) ;/*データ表示*/ 
-void initfilter(double filter[FILTERNO][FILTERSIZE][FILTERSIZE]) ;
+void initfilter(double filter[FILTERNO][FILTERWSIZE][FILTERLSIZE]) ;
                 /*フィルタの初期化*/
 double drnd(void) ;/* 乱数の生成     */
 double f(double u) ; /*伝達関数（シグモイド関数）*/
@@ -50,16 +50,13 @@ double f(double u) ; /*伝達関数（シグモイド関数）*/
 void print(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
           ,double wo[HIDDENNO+1]) ; /*結果の出力*/
           
-/*******************/ 
-/*    main()関数   */ 
-/*******************/ 
 int main()
 {
- double filter[FILTERNO][FILTERSIZE][FILTERSIZE] ;
+ double filter[FILTERNO][FILTERWSIZE][FILTERLSIZE] ;
                             /*フィルタ*/
  double e[MAXINPUTNO][INPUTWSIZE][INPUTLSIZE] ;/*入力データ*/
  int t[MAXINPUTNO] ;/*教師データ*/
- double convout[INPUTLSIZE][INPUTWSIZE]={0} ;/*畳み込み出力*/
+ double convout[INPUTWSIZE][INPUTLSIZE]={0} ;/*畳み込み出力*/
  double poolout[POOLOUTSIZE][POOLOUTSIZE] ;/*出力データ*/
  int i,j,m,n ;/*繰り返しの制御*/
  int n_of_e ;/*学習データの個数*/
@@ -144,10 +141,7 @@ int main()
  return 0 ;
 }
 
-/**********************/
-/*   print()関数      */
-/*   結果の出力       */
-/**********************/
+//   結果の出力
 void print(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
           ,double wo[HIDDENNO+1])
 {
@@ -162,10 +156,7 @@ void print(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
  printf("¥n") ;
 } 
 
-/**********************/
-/*  hlearn()関数      */
-/*  中間層の重み学習  */
-/**********************/
+//  中間層の重み学習 
 void hlearn(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
     ,double wo[HIDDENNO+1]
     ,double hi[],double e[POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1],double o)
@@ -181,10 +172,7 @@ void hlearn(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
  }
 }
 
-/**********************/
-/*  olearn()関数      */
-/*  出力層の重み学習  */
-/**********************/
+//  出力層の重み学習  
 void olearn(double wo[HIDDENNO+1]
     ,double hi[],double e[POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1],double o)
 {
@@ -199,10 +187,7 @@ void olearn(double wo[HIDDENNO+1]
  
 } 
 
-/**********************/
-/*  forward()関数     */
-/*  順方向の計算      */
-/**********************/
+//  順方向の計算  
 double forward(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
  ,double wo[HIDDENNO+1],double hi[],double e[POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1])
 {
@@ -227,10 +212,7 @@ double forward(double wh[HIDDENNO][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1]
  return f(o) ;
 } 
 
-/**********************/
-/*    initwo()関数    */
-/*中間層の重みの初期化*/
-/**********************/
+//中間層の重みの初期化
 void initwh(double wh[][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1])
 {
  int i,j ;/*繰り返しの制御*/
@@ -241,10 +223,7 @@ void initwh(double wh[][POOLOUTSIZE*POOLOUTSIZE*FILTERNO+1])
    wh[i][j]=drnd() ;
 } 
 
-/**********************/
-/*    initwo()関数    */
-/*出力層の重みの初期化*/
-/**********************/
+//出力層の重みの初期化
 void initwo(double wo[])
 {
  int i ;/*繰り返しの制御*/
@@ -254,24 +233,18 @@ void initwo(double wo[])
    wo[i]=drnd() ;
 } 
 
-/**********************/
-/*  initfilter()関数  */
-/* 　フィルタの初期化 */
-/**********************/
-void initfilter(double filter[FILTERNO][FILTERSIZE][FILTERSIZE])
+//　フィルタの初期化
+void initfilter(double filter[FILTERNO][FILTERWSIZE][FILTERLSIZE])
 {
  int i,j,k ;/*繰り返しの制御*/
  
  for(i=0;i<FILTERNO;++i)
-  for(j=0;j<FILTERSIZE;++j)
-   for(k=0;k<FILTERSIZE;++k)
+  for(j=0;j<FILTERWSIZE;++j)
+   for(k=0;k<FILTERLSIZE;++k)
     filter[i][j][k]=drnd() ;
 } 
 
-/*******************/
-/* drnd()関数      */
-/* 乱数の生成      */
-/*******************/
+// 乱数の生成 
 double drnd(void)
 {
  double rndno ;/*生成した乱数*/
@@ -281,11 +254,8 @@ double drnd(void)
  return rndno; 
 }
 
-/**********************/
-/*  pool()関数        */
-/* プーリングの計算   */
-/**********************/
-void pool(double convout[][INPUTSIZE]
+// プーリングの計算
+void pool(double convout[][INPUTLSIZE]
          ,double poolout[][POOLOUTSIZE]) 
 {
  int i,j ;/*繰り返しの制御*/
@@ -295,11 +265,8 @@ void pool(double convout[][INPUTSIZE]
    poolout[i][j]=maxpooling(convout,i,j) ;
 }
  
-/**********************/
-/* maxpooling()関数   */
-/* 最大値プーリング   */
-/**********************/
-double maxpooling(double convout[][INPUTSIZE]
+// 最大値プーリング  
+double maxpooling(double convout[][INPUTLSIZE]
                  ,int i,int j)
 {
  int m,n ;/*繰り返しの制御用*/
@@ -315,10 +282,7 @@ double maxpooling(double convout[][INPUTSIZE]
  return max ;
 }
                
-/**********************/
-/* showdata()関数     */
-/*入力データの表示　　*/
-/**********************/
+//入力データの表示
 void showdata(double e[][INPUTWSIZE][INPUTLSIZE],int t[],int n_of_e)
 {
  int i=0,j=0,k=0 ;/*繰り返しの制御用*/
@@ -335,10 +299,7 @@ void showdata(double e[][INPUTWSIZE][INPUTLSIZE],int t[],int n_of_e)
  }
 }
              
-/**********************/
-/*  getdata()関数     */
-/*入力データの読み込み*/
-/**********************/
+//入力データの読み込み
 int getdata(double e[][INPUTWSIZE][INPUTLSIZE],int t[])
 {
  int i=0,j=0,k=0 ;/*繰り返しの制御用*/
@@ -360,15 +321,12 @@ int getdata(double e[][INPUTWSIZE][INPUTLSIZE],int t[])
  return i ;
 }
 
-/**********************/
-/*  conv()関数        */
-/*  畳み込みの計算    */
-/**********************/
-void conv(double filter[][FILTERSIZE]
+//  畳み込みの計算
+void conv(double filter[][FILTERLSIZE]
          ,double e[][INPUTLSIZE],double convout[][INPUTLSIZE])
 {
  int i=0,j=0 ;/*繰り返しの制御用*/
- int startpoint=FILTERSIZE/2 ;/*畳み込み範囲の下限*/
+ int startpoint=FILTERLSIZE/2 ;/*畳み込み範囲の下限*/
 
  for(i=startpoint;i<INPUTWSIZE-startpoint;++i)
   for(j=startpoint;j<INPUTLSIZE-startpoint;++j)
@@ -376,15 +334,15 @@ void conv(double filter[][FILTERSIZE]
 }
 
 // フィルタの適用  
-double calcconv(double filter[][FILTERSIZE]
+double calcconv(double filter[][FILTERLSIZE]
              ,double e[][INPUTLSIZE],int i,int j)
 {
  int m,n ;/*繰り返しの制御用*/
  double sum=0 ;/*和の値*/
  
- for(m=0;m<FILTERSIZE;++m)
-  for(n=0;n<FILTERSIZE;++n)
-   sum+=e[i-FILTERSIZE/2+m][j-FILTERSIZE/2+n]*filter[m][n];
+ for(m=0;m<FILTERWSIZE;++m)
+  for(n=0;n<FILTERLSIZE;++n)
+   sum+=e[i-FILTERWSIZE/2+m][j-FILTERLSIZE/2+n]*filter[m][n];
    
  return sum ;
 }
@@ -394,5 +352,4 @@ double f(double u)
 {
  return 1.0/(1.0+exp(-u)) ;
 }
-
 
