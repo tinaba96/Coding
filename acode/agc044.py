@@ -82,6 +82,45 @@ for i in range(T):
 
     print(ans)
 
+#ans
+t = int(input())
+
+def solve(n,a,b,c,d):
+  mem = {0:0,1:d}
+  def f(n):
+    if n in mem:
+      return mem[n]
+    ret = n*d
+    if n%2 == 0:
+      ret = min(ret,a+f(n//2))
+    else:
+      ret = min(ret,a+d+f(n//2+1),a+d+f(n//2))
+
+    if n%3 == 0:
+      ret = min(ret,b+f(n//3))
+    elif n%3 == 1:
+      ret = min(ret,b+d+f(n//3))
+    else:
+      ret = min(ret,b+d+f(n//3+1))
+
+    if n%5 == 0:
+      ret = min(ret,c+f(n//5))
+    elif n%5 == 1:
+      ret = min(ret,c+d+f(n//5))
+    elif n%5 == 2:
+      ret = min(ret,c+d+d+f(n//5))
+    elif n%5 == 3:
+      ret = min(ret,c+d+d+f(n//5+1))
+    else:
+      ret = min(ret,c+d+f(n//5+1))
+    mem[n] = ret
+    return ret
+  return f(n)
+
+for _ in range(t):
+  n,a,b,c,d = map(int,input().split())
+  print(solve(n,a,b,c,d))
+
                    
 
 
