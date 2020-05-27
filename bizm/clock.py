@@ -1,5 +1,5 @@
 class Solution:
-    def clock_angle(hour, min):
+    def clock_angle(hour, min):
         ang_h = hour/6*180 + ang_m/180*15
         ang_m = min/30*180
        
