@@ -1,16 +1,16 @@
 class Solution:
-    def clock_angle(hour, min):
+    def clock_angle(self, hour, minu):
+        ang_m = minu/30*180
         ang_h = hour/6*180 + ang_m/180*15
-        ang_m = min/30*180
         diff = abs(ang_h-ang_m)
         if diff > 180:
             ans = diff%180
         else:
             ans = diff
+        return ans
 
-        print(ans)
+if __name__ == '__main__':
+    s = Solution()
+    print(s.clock_angle(15, 35))
 
-if __name__ == '_main__':
-    s = Solution
-    s.clock_angle(13, 35)
 
