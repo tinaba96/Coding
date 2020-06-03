@@ -1,3 +1,5 @@
+'''
+
 #https://techdevguide.withgoogle.com/paths/foundational/find-longest-word-in-dictionary-that-subsequence-of-given-string/
 
 
@@ -19,6 +21,8 @@ string = 'abppplee'
 dictionary = set(['able', 'ale', 'apple', 'bale', 'kangaroo'])
 
 print(find_longest_word(string, dictionary))
+
+#O(n^2)
 
 #https://techdevguide.withgoogle.com/paths/foundational/find-longest-word-in-dictionary-that-subsequence-of-given-string/
 
@@ -63,6 +67,31 @@ def find_longest_word_in_string(letters, words):
 if __name__ == '__main__':
     print subdict(sys.argv[1], sys.argv[2:])
 
+'''
+
+# brute force
+def find_longest_word(string, dictionary):
+    str_len = len(string)
+    word_len = 1
+    count = 0
+    longest_word = None
+    while word_len <= str_len:
+        #print(str_len, word_len, str_len - word_len + 1)
+        for i in range(0, str_len - word_len + 1):
+            start = i
+            end = i + word_len
+            #print(string[start:end])
+            if string[start:end] in dictionary:
+                longest_word = string[start:end]
+        word_len += 1
+
+    return longest_word
 
 
+#string = 'abppple'
+string = 'abppleeapple'
+dictionary = set(['able', 'ale', 'apple', 'bale', 'kangaroo'])
+print(find_longest_word(string, dictionary))
+
+#O(n^2)
 
