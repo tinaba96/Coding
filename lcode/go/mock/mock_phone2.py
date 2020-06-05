@@ -118,10 +118,11 @@ class Solution:
         while word_len > 0:
             is_not_in_target = True
             for i in range(len(source)-word_len+1):
-                if source[i:word_len] in target:
+                if source[i:i+word_len] in target:
                     cnt += 1
-                    target = target.replace(source[i:word_len], '')
+                    target = target.replace(source[i:i+word_len], '') #replaceだとsource[i:i+word_len]が複数あったときに、全部置換されてしまう。
                     is_not_in_target = False
+                    print(target)
                 if len(target) == 0:
                     return cnt
             if is_not_in_target:
@@ -172,6 +173,7 @@ class Solution:
             dic[i][c] = i + 1
         # For source = 'abba' the table looks like this:
 		# {3: {'a': 4}, 2: {'a': 4, 'b': 3}, 1: {'a': 4, 'b': 2}, 0: {'a': 1, 'b': 2}}
+        #次の文字のインデックスを保持している。
 
         result = 0
         ind = 0
@@ -189,6 +191,7 @@ class Solution:
 
 			# Update the index
             ind = dic[ind][char]
+            #見ている文字のインデックスを得る。
 
 		# After the last increment (two lines above), at least one valid character has been observed
         return result + 1
@@ -196,7 +199,6 @@ class Solution:
 #O(N+M)
 #space 0(M)
 
-:::python
 def shortestWay(self, source: str, target: str) -> int:
     inverted_index = collections.defaultdict(list)
     for i, ch in enumerate(source):
@@ -222,4 +224,25 @@ def shortestWay(self, source: str, target: str) -> int:
 #space O(M)
 
 
+ def shortestWay(self, source, target):
+        char_indices = defaultdict(list)
+        for i, c in enumerate(source):
+            char_indices[c].append(i)
+
+        result = 0
+        i = 0                                       # next index of source to check
+
+        for c in target:
+            if c not in char_indices:               # cannot make target if char not in source
+                return -1
+
+            j = bisect.bisect_left(char_indices[c], i)  # index in char_indices[c] that is >= i
+            if j == len(char_indices[c]):           # wrap around to beginning of source
+                result += 1
+                j = 0
+            i = char_indices[c][j] + 1              # next index in source
+
+        return result if i == 0 else result + 1     # add 1 for partial source
+
+#time 0(nlogm)
 
