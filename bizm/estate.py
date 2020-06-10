@@ -164,6 +164,8 @@ i1919076481892352.0
 減少していることを確認
 '''
 
-pred_test = ses
+pred_test = ses.run(y, feed_dict={X: feature_test})
+pred = pd.DataFrame({"TradePrice":target_test[:,0], "Predicted TradePrice": pred_test[:,0]})
+pred.head()
 
 
