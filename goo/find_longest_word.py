@@ -94,4 +94,6 @@ dictionary = set(['able', 'ale', 'apple', 'bale', 'kangaroo'])
 print(find_longest_word(string, dictionary))
 
 #O(n^2)
+#world_len = str_lenで始めた方が良いと思う。
+
 
