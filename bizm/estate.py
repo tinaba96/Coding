@@ -51,10 +51,7 @@ final_dataset = final_dataset.drop('AreaIsGreaterFlag', axis=1)
 final_dataset = final_dataset.drop('TotalFloorAreaIsGreaterFlag', axis=1)
 final_dataset = final_dataset.drop('CoverageRatio', axis=1)
 
-
 feature = np.array(final_dataset)
-
-
 
 #print(final_dataset)
 #print(feature[0:1])
@@ -86,15 +83,13 @@ def norm(data): #正規化
 feature = norm(feature)
 #print(feature)
 
-
 #rint(feature.shape)
 
+#計算をしやすくするために「１」を追加
 ones = np.ones((45118, 1))
-
 feature = np.c_[ones, feature]
 
 #print(feature.shape)
-
 
 feature_train, feature_test, target_train, target_test = train_test_split(feature, target, test_size=0.2, random_state=42)
 target_train = target_train.reshape(36094,1)
@@ -111,35 +106,33 @@ target_test = target_test.reshape(9024, 1)
 (9024, 1)
 '''
 
-
 #前処理終了
+
+#以下訓練
+
 
 #学習率
 learning_rate = 0.01
 #エポック数
 epochs = 100
-
+#特徴量の数
 n_dim = feature.shape[1]
 
-#tf.compat.v1.disable_eager_execution()
-
+#特徴量とターゲットのプレースホルダー
 X = tf.compat.v1.placeholder(tf.float32, [None,n_dim])
 Y = tf.compat.v1.placeholder(tf.float32,[None,1])
-
+#重みとバイアス
 W = tf.Variable(tf.ones([n_dim,1]))
 b = tf.Variable(0.0)
-
+#線形モデル
 y = tf.add(b, tf.matmul(X, W))
-
+#ロス関数
 loss = tf.reduce_mean(tf.square(y-Y))
-
-#training_step = tf.optimizers.SGD(learning_rate).minimize(lossg, var_list = [W, b])
-#training_step = tf.SGD(learning_rate).minimize(lossg)
-#training_step = tf.keras.optimizers.SGD(learning_rate).minimize(loss, var_list=W)
+#最適化関数
 training_step = tf.compat.v1.train.GradientDescentOptimizer(learning_rate).minimize(loss)
-        
+#初期化        
 ini = tf.compat.v1.global_variables_initializer()
-
+#訓練開始
 ses = tf.compat.v1.Session()
 ses.run(ini)
 
@@ -152,20 +145,61 @@ for epoch in range(epochs):
         W_val = ses.run(W)
         b_val = ses.run(b)
 
-print(loss_history[1])
-print(loss_history[10])
-print(loss_history[50])
-print(loss_history[99])
+#print(loss_history[1])
+#print(loss_history[10])
+#print(loss_history[50])
+#print(loss_history[99])
 '''
 i1919076481892352.0
 1305362699386880.0
 691152042852352.0
 643262821957632.0
-減少していることを確認
+#ロスが減少していることを確認
 '''
 
+#テストデータを用いた予測
 pred_test = ses.run(y, feed_dict={X: feature_test})
 pred = pd.DataFrame({"TradePrice":target_test[:,0], "Predicted TradePrice": pred_test[:,0]})
-pred.head()
+print(pred.head())
+'''
+   TradePrice  Predicted TradePrice
+0    16000000            17126626.0
+1    32000000            25770774.0
+2    47000000            42179432.0
+3    19000000            20659878.0
+4    49000000            46922748.0
+'''
+print(pred)
+print(loss)
 
+'''
+epochs = 100
+0       16000000            17126626.0
+1       32000000            25770774.0
+2       47000000            42179432.0
+3       19000000            20659878.0
+4       49000000            46922748.0
+...          ...                   ...
+9019    76000000            45838344.0
+9020    10000000            23448076.0
+9021    48000000            46205920.0
+9022    37000000            61772096.0
+9023    23000000            33670356.0
+'''
 
+'''
+epochs = 100000
+      TradePrice  Predicted TradePrice
+0       16000000            14957982.0
+1       32000000            24316224.0
+2       47000000            44155440.0
+3       19000000            19513758.0
+4       49000000            49429080.0
+...          ...                   ...
+9019    76000000            48550824.0
+9020    10000000            22750094.0
+9021    48000000            48079656.0
+9022    37000000            66729832.0
+9023    23000000            34626812.0
+
+'''
