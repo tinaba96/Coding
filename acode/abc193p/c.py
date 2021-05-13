@@ -1,18 +1,24 @@
 N = int(input())
 
-ng = 0
+g = 0
+n = N
+if N % 2 != 0:
+    n = N-1
+
+while n > 2:
+    n /= 2
+    g += 1
+
+        
+print(g)
 
 
-for i in range(N):
 
 
 
 
 
-
-
-
-print(N-ng)
+print(N-g)
 
 
 
