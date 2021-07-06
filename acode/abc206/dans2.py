@@ -41,6 +41,6 @@ class UnionFind:
         member_list[leader] = [member]
     return member_list
 Tree=UnionFind(2*10**5)
-for i in range(N):
+for i in range(N//2):
   Tree.unite(A[i]-1,A[N-1-i]-1)
 print(sum(len(v)-1for v in Tree.group_list().values()))
