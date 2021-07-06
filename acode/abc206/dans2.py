@@ -40,7 +40,6 @@ class UnionFind:
       else:
         member_list[leader] = [member]
     return member_list
-s=set()
 Tree=UnionFind(2*10**5)
 for i in range(N):
   Tree.unite(A[i]-1,A[N-1-i]-1)
