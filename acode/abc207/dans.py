@@ -3,8 +3,10 @@ if n == 1:
     print('Yes')
     exit()
 # 複素数
+#s = [print(complex(*map(int, input().split()))) for _ in range(n)]
 s = [complex(*map(int, input().split())) for _ in range(n)]
 t = [complex(*map(int, input().split())) for _ in range(n)]
+print(s)
 for i in range(n):
     for j in range(n):
         if i == j or abs(s[1] - s[0]) != abs(t[j] - t[i]):
@@ -20,3 +22,5 @@ for i in range(n):
             print('Yes')
             exit()
 print('No')
+
+
