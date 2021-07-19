@@ -27,3 +27,7 @@ for i in range(Q):
         print("Town")
     else:
         print("Road")
+
+# 参考
+# https://yunix-kyopro.hatenablog.com/entry/2021/07/11/020240?_ga=2.121161536.9506465.1625937519-1301098457.1625937519
+#クエリのたびに距離をBFSなどで求めていては計算量がO(NQ)になってしまい、間に合いません。
