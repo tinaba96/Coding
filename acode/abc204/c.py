@@ -36,6 +36,7 @@ def count(a, c):
 
 for i in range(1, N+1):
     count(i, possible_mat[i])
+    print(possible_mat[i])
 
 buf = []
 
@@ -47,7 +48,7 @@ for j in range(1, N+1):
         buf.append((j, j))
     #print('buf', buf)
 
-    ans += len(set(possible_mat[j]))
+    #ans += len(set(possible_mat[j]))
 
 an = []
 
@@ -58,3 +59,5 @@ for e in buf:
 
 print(len(an))
 
+# the reasons for WA is 'break'
+# I need to use 'continue' instead
