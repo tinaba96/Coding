@@ -52,6 +52,8 @@ for j in range(1, N+1):
 
 an = []
 
+# this in unneccesary since buf and possible_mat has only unique element
+# this takes very long time because of th append which leads to TLE
 for e in buf:
     if e not in an:
         an.append(e)
