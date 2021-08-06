@@ -34,8 +34,14 @@ possible_mat = [ [] for j in range(N+1)]
 used = [0 for i in range(N+1)]
 
 def count(used, ans, q):
-        tmp=q.pop()
+        tmp=q.pop(0)
         used[tmp] = 1
+        #print(linked_mat[tmp])
+
+ここでカウント欲しい
+
+
+        print('p',used)
         for ele in linked_mat[tmp]:
             if used[ele] == 0:
                 used[ele] = 1
@@ -48,6 +54,7 @@ def count(used, ans, q):
             return ans
         else:
             ans = count(used, ans, q)
+            #print(ans)
         return ans
 
 
@@ -57,37 +64,11 @@ for i in range(1, N+1):
     q = linked_mat[i]
     #print(q)
     ans += 1
+    used[i] = 1
     if len(q) > 0:
-        ans += count(used, ans, q)
+        ans += count(used, 0, q)
+        print(ans)
     #print(i)
 
     #print(possible_mat[i])
 
-buf = []
-
-for j in range(1, N+1):
-    #print(possible_mat[j])
-    for k in range(len(possible_mat[j])):
-        buf.append((j, possible_mat[j][k]))
-    if (j,j) not in buf:
-        buf.append((j, j))
-    #print('buf', buf)
-    #print(j, 'ok')
-
-    #ans += len(set(possible_mat[j]))
-
-an = []
-#print(len(buf))
-print(ans)
-
-i = 0
-'''
-for e in buf:
-    i += 1
-    print(i, "/", len(buf))
-    if e not in an:
-        an.append(e)
-#print('an', an)
-
-print(len(an))
-'''
