@@ -38,8 +38,7 @@ def count(used, ans, q):
         used[tmp] = 1
         #print(linked_mat[tmp])
 
-ここでカウント欲しい
-
+        print(q)
 
         print('p',used)
         for ele in linked_mat[tmp]:
@@ -47,7 +46,7 @@ def count(used, ans, q):
                 used[ele] = 1
                 q.append(ele)
                 ans += 1
-                #print('p',ans)
+                print('p',ans)
             else:
                 continue
         if len(q) == 0:
@@ -67,7 +66,7 @@ for i in range(1, N+1):
     used[i] = 1
     if len(q) > 0:
         ans += count(used, 0, q)
-        print(ans)
+        print('final',ans)
     #print(i)
 
     #print(possible_mat[i])
