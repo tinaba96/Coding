@@ -11,7 +11,7 @@ while left <= right:
     #print('right', right)
     #print('left', left)
     mid = (left+right)//2
-    print('mid', mid)
+    #print('mid', mid)
     tmp = 0
     cnt = 0
     minus = 0
@@ -44,6 +44,5 @@ while left <= right:
             right = mid-1
 print(mid)
             
-
-
+#think about the # of K after looking all the A instead of L-A[a]
 
