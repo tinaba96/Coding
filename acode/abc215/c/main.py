@@ -56,7 +56,7 @@ if len(S) >= 5:
     K = K - 24*t
         
 if len(S) >= 4:
-    t = K // ((6+1)//d)
+    t = K // ((6+1))
     if t != 0:
         ans.append(A[t])
         A.pop(A.index(A[t]))
@@ -66,7 +66,7 @@ if len(S) >= 4:
     K = K - 6*t
 
 if len(S) >= 3:
-    t = K // ((2+1)//d)
+    t = K // ((2+1))
     if t != 0:
         ans.append(A[t])
         A.pop(A.index(A[t]))
@@ -76,7 +76,7 @@ if len(S) >= 3:
     K = K - 2*t
     
 if len(S) >= 2:
-    t = K // ((1+1)//d)
+    t = K // ((1+1))
     if t != 0:
         ans.append(A[t])
         A.pop(A.index(A[t]))
@@ -85,7 +85,7 @@ if len(S) >= 2:
         A.pop(A.index(A[0]))
     K = K - 1*t
 
-
     ans.append(A[0])
 print(ans)
+
 
