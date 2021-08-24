@@ -10,6 +10,7 @@ for i in range(N-1):
     dic[b][a] = 1
     #print(dic)
 
+ans = 0
 dep = 0
 
 def dfs(used, start):
@@ -19,13 +20,16 @@ def dfs(used, start):
             dep += 1
             dfs(used, i)
         else:
-        continue
+            continue
 
 
 
-for i in dic:
-    used = [0 for i in range(N)]
-    print(used)
+for i in range(1,N+1):
+    used = [0 for j in range(N)]
+    #print(used)
+    dfs(used, i)
+    ans = max(ans, dep)
 
+print(ans+1)
 
 
