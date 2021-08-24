@@ -13,22 +13,27 @@ for i in range(N-1):
 ans = 0
 dep = 0
 
-def dfs(used, start):
+def dfs(used, start, dep, ans):
+
     for i in dic[start]:
         if used[start] == 0:
             used[start] = 1
             dep += 1
-            dfs(used, i)
+            ans = max(ans, dep)
+            #print('a',ans)
+            ans = dfs(used, i, dep, ans)
         else:
             continue
-
+    return ans
 
 
 for i in range(1,N+1):
-    used = [0 for j in range(N)]
+    used = [0 for j in range(N+1)]
     #print(used)
-    dfs(used, i)
-    ans = max(ans, dep)
+    dep = 0
+    ans = dfs(used, i, dep, ans)
+    
+
 
 print(ans+1)
 
