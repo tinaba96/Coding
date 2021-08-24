@@ -10,9 +10,16 @@ for i in range(N-1):
     dic[b][a] = 1
     #print(dic)
 
+dep = 0
 
-
-#def dfs(used, cnt, start):
+def dfs(used, start):
+    for i in dic[start]:
+        if used[start] == 0:
+            used[start] = 1
+            dep += 1
+            dfs(used, i)
+        else:
+        continue
 
 
 
