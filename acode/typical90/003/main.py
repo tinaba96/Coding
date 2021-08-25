@@ -14,18 +14,18 @@ ans = 0
 dep = 0
 
 def dfs(used, start, dep, ans):
-
     for i in dic[start]:
-        if used[start] == 0:
-            used[start] = 1
+        if used[i] == 0:
+            used[i] = 1
             dep += 1
             ans = max(ans, dep)
-            #print('a',ans)
+            print('d',dep, '---', i)
             ans = dfs(used, i, dep, ans)
         else:
             continue
     return ans
 
+#print('dic',dic[1])
 
 for i in range(1,N+1):
     used = [0 for j in range(N+1)]
