@@ -16,12 +16,12 @@ dep = 0
 def dfs(used, start, dep, ans):
     for i in range(N+1):
         if dic[start][i] == 1:
-            print(i,'->', used)
+            #print(i,'->', used)
             if used[i] == 0:
                 used[i] = 1
                 dep += 1
                 ans = max(ans, dep)
-                print('d',dep, '---', i)
+                #print('d',dep, '---', i)
                 ans = dfs(used, i, dep, ans)
                 break
             else:
