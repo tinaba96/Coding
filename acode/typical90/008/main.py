@@ -27,16 +27,19 @@ for n in range(N):
         m["o"] += 1
     if flag == "o" and S[n] != "o":
         flag = "d"
+        continue
 
     if flag == "d" and S[n] == "d":
         m["d"] += 1
     if flag == "d" and S[n] != "d":
         flag = "e"
+        continue
 
     if flag == "e" and S[n] == "e":
         m["e"] += 1
     if flag == "e" and S[n] != "e":
         flag = "r"
+        continue
 
     if flag == "r" and S[n] == "r":
         m["r"] += 1
