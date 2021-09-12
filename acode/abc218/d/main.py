@@ -1,10 +1,14 @@
+from collections import defaultdict
+
+ma = defaultdict(list)
+
 N = int(input())
-ma = [[] for j in range(N)]
-p = {}
+#ma = [[] for j in range(10**9)]
+#p = {}
 for i in range(N):
     x, y = list(map(int, input().split()))
     ma[x].append(y)
-    #p[x].add(str(y))
+    #p[x] = y
 cnt = 0
 ans = []
 for i in range(len(ma)):
@@ -20,7 +24,5 @@ for i in range(len(ans)):
         cnt += 1
 print(cnt)
 
-
-
-
+#why this does not work
 
