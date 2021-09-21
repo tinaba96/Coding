@@ -1,6 +1,6 @@
 N = int(input())
-A, B, C = list(map(int, input().split()))
+A = list(map(int, input().split()))
 
-
+A.sort()
 
 
