@@ -5,7 +5,7 @@ Q = int(input())
 for e in range(Q):
     E = int(input())
     px = -E/T*L
-    py = E/T*L
+    py = E/T*L*2
     
 
     
