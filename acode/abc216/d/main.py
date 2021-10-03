@@ -17,10 +17,10 @@ for i in range(N):
         dic[a[0]] = 1
 
 
-print(dic)
+#print(dic)
 indexArr = [0] * M 
 
-for k in dic:
+for k in dic: 
     if dic[k] == 2:
         ind = top.index(k) # it is better to have an array to keep the index instead of this
         top.pop(ind)
@@ -33,6 +33,7 @@ for k in dic:
             dic[listArr[ind][indexArr[ind]]] = 1
             top.append(listArr[ind][indexArr[ind]])
             
+        # for the secoand item
         ind = top.index(k)
         top.pop(ind)
         indexArr[ind] += 1
@@ -43,12 +44,11 @@ for k in dic:
             dic[listArr[ind][indexArr[ind]]] = 1
             top.append(listArr[ind][indexArr[ind]])
 
-
 def func(key):
     dic[key] += 1
     ind = top.index(key)
     top.pop(ind)
-    indexArr[key] += 1
+    indexArr[ind] += 1
     if listArr[ind][indexArr[ind]] in dic:
         func(listArr[ind][indexArr[ind]])
     else:
@@ -56,9 +56,9 @@ def func(key):
         top.append(listArr[ind][indexArr[ind]])
 
 if top == []:
-    print('Yes')
+  print('Yes')
 else:
-    print('No')
+  print('No')
 
 #this is already complex but you need at least another conditional branch whether the cylinder becamoe empty or not.
     
