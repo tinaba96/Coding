@@ -33,6 +33,7 @@ def insert(tree, key):
         tree["key"].insert(index, block[k])
         tree["child"].insert(index+1, block[k+1:])
         tree["child"][index] = block[:k]
+    print(tree)
 
 def lower_bound(tree, key):
     index = [None, None]
@@ -52,8 +53,8 @@ def prev(tree, index):
 def index_to_key(tree, index):
     if index[1] == len(tree["child"][index[0]]):
         return tree["key"][index[0]]
-    if index[0] == len(tree["key"]):
-        return None
+        if index[0] == len(tree["key"]):
+            return None
     else:
         return tree["child"][index[0]][index[1]]
 
@@ -68,12 +69,12 @@ def get_answer(vals):
 
     for i in range(q):
         key = query[i][1]
-    if query[i][0] == 1:
-        insert(tree, key)
-    else:
-        r = lower_bound(tree, key)
-        l = prev(tree, r)
-        answer.append(index_to_key(tree, r) - index_to_key(tree, l))
+        if query[i][0] == 1:
+            insert(tree, key)
+        else:
+            r = lower_bound(tree, key)
+            l = prev(tree, r)
+            answer.append(index_to_key(tree, r) - index_to_key(tree, l))
 
     return answer
 
