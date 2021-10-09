@@ -33,6 +33,7 @@ def insert(tree, key):
         tree["key"].insert(index, block[k])
         tree["child"].insert(index+1, block[k+1:])
         tree["child"][index] = block[:k]
+        print('yes')
     print(tree)
 
 def lower_bound(tree, key):
@@ -53,8 +54,8 @@ def prev(tree, index):
 def index_to_key(tree, index):
     if index[1] == len(tree["child"][index[0]]):
         return tree["key"][index[0]]
-        if index[0] == len(tree["key"]):
-            return None
+        #if index[0] == len(tree["key"]):
+        #    return None
     else:
         return tree["child"][index[0]][index[1]]
 
@@ -86,4 +87,4 @@ if __name__ == '__main__':
     ans = get_answer(vals)
     [print(x) for x in ans]
 
-
+# key is the index where the wood is cut
