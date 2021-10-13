@@ -11,6 +11,7 @@ for i in range(N):
     #p[x] = y
 cnt = 0
 ans = []
+print(ma)
 for i in range(len(ma)):
     for j in range(len(ma[i])):
         for k in range(i+1, len(ma)):
