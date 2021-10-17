@@ -17,21 +17,22 @@ for i in range(M):
 def app(arr, q):
     #print('def')
     q.sort()
-    while q and qu:
-        while q[0] > qu[0]:
-            e = qu.pop(0)
-            arr.append(e)
-            if table[e] != []:
-                app(arr, table[e])
+    while q[0] > qu[0]:
+        e = qu.pop(0)
+        arr.append(e)
+        if table[e] != []:
+            app(arr, table[e])
+        if q[0] == [] or qu[0] == []:
+            break
 
-        if q == [] or qu == []:
-            return
-        e = q.pop(0)
-        if e not in arr:
-            qu.pop(qu.index(e))
-            arr.append(e)
-            if table[e] != []:
-                app(arr, table[e])
+    if q == [] or qu == []:
+        return
+    e = q.pop(0)
+    if e not in arr:
+        qu.pop(qu.index(e))
+        arr.append(e)
+        if table[e] != []:
+            app(arr, table[e])
 
 arr = []
 #print(table)
