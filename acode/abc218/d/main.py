@@ -25,5 +25,4 @@ for i in range(len(ans)):
         cnt += 1
 print(cnt)
 
-#why this does not work
 
