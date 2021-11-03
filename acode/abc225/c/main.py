@@ -8,7 +8,8 @@ for n in range(N):
             exit()
     st = B[0]
     if n == 0:
-        if st%7+ M >= 8:
+        #if (st%7 == 0 and M > 1) or st%7+ M-1 >= 8:
+        if st%7+ M >= 8: # this is wrong. above is correct
             print('No')
             exit()
     for m in range(1, M):
