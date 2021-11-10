@@ -7,6 +7,7 @@ mp = [[] for i in range(10)]
 for i in range(N):
     u, v = list(map(int, input().split()))
     mp[u].append(v)
+    mp[v].append(u)
 
 p = list(map(int, input().split()))
 
@@ -45,5 +46,5 @@ def check(q, p, empty):
 
 check(mp[empty], p, empty)
 
-# this way, you only see the one way edges
+# if you try this way to consider the both way of edges, there will be infinite loop
 
