@@ -24,3 +24,7 @@ if len(ans)!=N:
 else:
     print(*ans)
 
+#命題
+# https://rikeilabo.com/proposition-formula
+
+
