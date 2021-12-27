@@ -23,6 +23,7 @@ if max(c.values()) >= 3:
 elif 1 not in c.values():
     print('No')
     exit()
+# this does not exclude the cycle strictl;y
 
 print('Yes')
 
