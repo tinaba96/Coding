@@ -23,7 +23,8 @@ if max(c.values()) >= 3:
 elif 1 not in c.values():
     print('No')
     exit()
-# this does not exclude the cycle strictl;y
+# this does not exclude the cycle strictly
+# better to use union find
 
 print('Yes')
 
