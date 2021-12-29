@@ -58,8 +58,22 @@ arr = [0 for i in range(N)]
 
 for m in range(M):
     A, B = list(map(int, input().split()))
+    if uf.same(A, B):
+        print('No')
+        exit()
     uf.union(A, B)
+    arr[A] += 1
+    arr[B] += 1
 
 print(uf)
+print(arr)
+
+for i in range(1, N+1):
+    if arr[i] > 2:
+        print('No')
+        exit()
+
+print('Yes')
+
 
 
