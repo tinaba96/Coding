@@ -52,3 +52,5 @@ for ele in list(itertools.permutations(range(N))):
 
 print('No')
 
+
+
