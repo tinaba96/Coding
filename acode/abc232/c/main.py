@@ -4,8 +4,9 @@ if M == 0:
     print('Yes')
     exit()
 
+# this should be M+1 instead of N+1
 mapA = [[] for i in range(N+1)]
-mapC = [[] for j in range(M+1)]
+mapC = [[] for j in range(N+1)]
 
 for i in range(N):
     A, B = list(map(int, input().split()))
@@ -37,10 +38,11 @@ for ele in list(itertools.permutations(range(N))):
 #print('sa')
 #print(AA)
 #print(mapC)
-    for i in range(1, len(mapA)):
-        #print('A', AA[i])
-        #print('C', mapC[P[i-1]])
-        if set(AA[i]) != set(mapC[P[i-1]]):
+    for i in range(len(mapA)):
+        print('A', set(AA[i]))
+        print('C', set(mapC[i]))
+        if set(AA[i]) != set(mapC[i]):
+        #if set(AA[i]) != set(mapC[P[i-1]]):
             #print('No')
             flag = False
             
