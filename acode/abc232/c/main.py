@@ -29,16 +29,23 @@ for ele in list(itertools.permutations(range(N))):
     for i in range(N):
         P[i] += 1
 
-    AA = [[0 for i in range(len(mapA[j]))] for j in range(len(mapA))]
+    AA = [[] for j in range(len(mapA))]
 
     for i in range(len(mapA)):
         for j in range(len(mapA[i])):
             AA[i][j] = P.index(mapA[i][j])+1
 
-    print('sa')
-    print(P)
-    print(AA)
-    print(mapC)
+    # You nees to do it as follows
+    #for i in range(len(mapA)):
+    #    for j in range(len(mapA[i])):
+    #        tmp = P.index(mapA[i][j])+1
+    #        AA[P.index(i)+1].append(tmp)
+
+
+    #print('sa')
+    #print(P)
+    #print(AA)
+    #print(mapC)
     for i in range(len(mapA)):
         #print('A', set(AA[i]))
         #print('C', set(mapC[i]))
