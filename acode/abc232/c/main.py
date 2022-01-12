@@ -4,11 +4,11 @@ if M == 0:
     print('Yes')
     exit()
 
-# this should be M+1 instead of N+1
+# this should be N+1 instead of M+1
 mapA = [[] for i in range(N+1)]
 mapC = [[] for j in range(N+1)]
 
-for i in range(N):
+for i in range(M):
     A, B = list(map(int, input().split()))
     mapA[A].append(B)
     mapA[B].append(A)
@@ -35,12 +35,13 @@ for ele in list(itertools.permutations(range(N))):
         for j in range(len(mapA[i])):
             AA[i][j] = P.index(mapA[i][j])+1
 
-#print('sa')
-#print(AA)
-#print(mapC)
+    print('sa')
+    print(P)
+    print(AA)
+    print(mapC)
     for i in range(len(mapA)):
-        print('A', set(AA[i]))
-        print('C', set(mapC[i]))
+        #print('A', set(AA[i]))
+        #print('C', set(mapC[i]))
         if set(AA[i]) != set(mapC[i]):
         #if set(AA[i]) != set(mapC[P[i-1]]):
             #print('No')
