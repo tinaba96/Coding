@@ -11,12 +11,15 @@ for i in range(N):
 val = 1
 d = 0
 ans = []
+# 復習で追加
+ans_ans
 
-def cal(i, j, val, d, ans):
+def cal(i, j, val, d, ans, ans_ans):
     val *= mp[i][j]
     if i+1 == N:
         if val == X:
             ans.append(1)
+            ans_ans += 1
         #print(val)
         return
     for k in range(len(mp[i+1])):
@@ -29,6 +32,6 @@ for p in range(len(mp[0])):
     cal(0, p, val, d, ans)
 
 print(len(ans))
-#なぜanshはintでは無理なのか
+#なぜansはintでは無理なのか
 
 
