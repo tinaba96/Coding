@@ -15,6 +15,8 @@ for i in range(N):
     else:
     #print(val)
         ans += c[val]
+    # delete no longer use
+    # this should not be done at last since there is a case that search for same one except itself
     c[A[-i-1]] -= 1
 print(ans)
 
