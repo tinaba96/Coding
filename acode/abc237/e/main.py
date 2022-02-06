@@ -33,4 +33,8 @@ print(edg[1])
 dfs(1, edg[1], 0, pas)
 print(ans)
 
+#it is impposible to solve using dfs according to the video editorial
+# since there are wights betwwen the node
+
+#However, you can use it as shown in ans2.py if you dont use the video editorial approach
 
