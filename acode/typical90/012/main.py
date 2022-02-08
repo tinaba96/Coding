@@ -1,59 +1,88 @@
+from collections import defaultdict
+
 H, W = list(map(int, input().split()))
 Q = int(input())
-ma = [[0 for i in range(W+1)] for j in range(H+1)]
+ma = [[0 for i in range(W+2)] for j in range(H+2)]
 box = set()
 
-class UF:
+
+class UnionFind():
     def __init__(self, n):
-        self._n = n
-        self.parent_or_size = [-1] * n
+        self.n = n
+        self.parents = [-1] * n
 
-    def merge(self, a, b):
-        assert 0 <= a < self._n
-        assert 0 <= b < self._n
-        x, y = self.leader(a), self.leader(b)
-        if x == y: return x
-        if -self.parent_or_size[x] < -self.parent_or_size[y]: x, y = y, x
-        self.parent_or_size[Fjx] += self.parent_or_size[y]
-        self.parent_or_size[y] = x
-        return x
+    def find(self, x):
+        if self.parents[x] < 0:
+            return x
+        else:
+            self.parents[x] = self.find(self.parents[x])
+            return self.parents[x]
 
-    def same(self, a, b):
-        assert 0 <= a < self._n
-        assert 0 <= b < self._n
-        return self.leader(a) == self.leader(b)
+    def union(self, x, y):
+        x = self.find(x)
+        y = self.find(y)
 
-    def leader(self, a):
-        assert 0 <= a < self._n
-        if self.parent_or_size[a] < 0: return a
-        self.parent_or_size[a] = self.leader(self.parent_or_size[a])
-        return self.parent_or_size[a]
+        if x == y:
+            return
 
-    def size(self, a):
-        assert 0 <= a < self._n
-        return -self.parent_or_size[self.leader(a)]
+        if self.parents[x] > self.parents[y]:
+            x, y = y, x
 
-    def groups(self):
-        leader_buf = [self.leader(i) for i in range(self._n)]
-        result = [[] for _ in range(self._n)]
-        for i in range(self._n): result[leader_buf[i]].append(i)
-        return [r for r in result if r != []]
+        self.parents[x] += self.parents[y]
+        self.parents[y] = x
 
+    def size(self, x):
+        return -self.parents[self.find(x)]
+
+    def same(self, x, y):
+        return self.find(x) == self.find(y)
+
+    def members(self, x):
+        root = self.find(x)
+        return [i for i in range(self.n) if self.find(i) == root]
+
+    def roots(self):
+        return [i for i, x in enumerate(self.parents) if x < 0]
+
+    def group_count(self):
+        return len(self.roots())
+
+    def all_group_members(self):
+        group_members = defaultdict(list)
+        for member in range(self.n):
+            group_members[self.find(member)].append(member)
+        return group_members
+
+    def __str__(self):
+        return '\n'.join(f'{r}: {m}' for r, m in self.all_group_members().items())
+
+uf = UnionFind(2000*2000+1)
+
+#print(uf)
 
 for i in range(Q):
     q = list(map(int, input().split()))
     if q[0] == 1:
         ma[q[1]][q[2]] = 1
-        box.add((q[1], q[2]))
-        print(box)
+        if ma[q[1]-1][q[2]] == 1:
+            uf.union(q[1]*(W)+q[2], (q[1]-1)*(W)+q[2])
+        if ma[q[1]][q[2]-1] == 1:
+            uf.union(q[1]*(W)+q[2], (q[1])*(W)+q[2]-1)
+        if ma[q[1]+1][q[2]] == 1:
+            uf.union(q[1]*(W)+q[2], (q[1]+1)*(W)+q[2])
+        if ma[q[1]][q[2]+1] == 1:
+            uf.union(q[1]*(W)+q[2], (q[1])*(W)+q[2]+1)
+
     else:
         if ma[q[1]][q[2]] == 1 and ma[q[3]][q[4]] == 1:
-            print('Yes')
+            if uf.find(q[1]*(W)+q[2]) == uf.find(q[3]*(W)+q[4]):
+                print('Yes')
+            else:
+                print('No')
         else:
             print('No')
 
         
-
 
 
 

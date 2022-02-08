@@ -21,9 +21,9 @@ def dfs(used, start, dep, ans):
                 used[i] = 1
                 dep += 1
                 ans = max(ans, dep)
-                print('d',dep, '---', i)
+                #print('d',dep, '---', i)
                 ans = dfs(used, i, dep, ans)
-                break
+                dep -= 1
             else:
                 continue
     return ans
@@ -33,7 +33,7 @@ def dfs(used, start, dep, ans):
 for i in range(1,N+1):
     used = [0 for j in range(N+1)]
     #print(used)
-    print('---new--- (', i, ')')
+    #print('---new--- (', i, ')')
     dep = 0
     used[i] = 1
     ans = dfs(used, i, dep, ans)

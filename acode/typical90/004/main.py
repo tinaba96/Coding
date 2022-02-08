@@ -11,10 +11,30 @@ for h in range(H):
 
 #print(m)
 warr = [] 
-for k in range(W):
-    warr.append(sum(m[k]))
+harr = [] 
+for k in range(H):
+    harr.append(sum(m[k]))
 
-print(warr)
+#print(warr[0])
+
+for p in range(W):
+    tmp = 0
+    for q in range(H):
+        tmp += m[q][p]
+    warr.append(tmp)
+
+#print(harr[0])
+
+for i in range(H):
+    for j in range(W):
+        ans[i][j] = harr[i] + warr[j] - m[i][j]
+
+
+for i in range(H):
+    tmp = [str(a) for a in ans[i]]
+    print(" ".join(tmp))
+#print(' '.join(ans[0]))
+
 
 
 
