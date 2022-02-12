@@ -22,8 +22,8 @@ for i in range(M):
     dislike[y].append(x)
 
 #l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-for v in itertools.permutations(l, N):
-    print(v)
+#for v in itertools.permutations(l, N):
+#    print(v)
 
 
 
