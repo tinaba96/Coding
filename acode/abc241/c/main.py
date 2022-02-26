@@ -162,16 +162,14 @@ for j in range(N):
             print('Yes')
             exit()
 
-print('No')
 
-'''
 # reverse
 for i in range(N):
     o = 0
     x = 0
-    lefttop = 0
-    rightbottom = 5
-    for j in range(0, 6, -1):
+    righttop = N-1
+    leftbottom = N-6
+    for j in range(6, 0, -1):
         if i+j >= i+6:
             break
         if mp[j][i+j] == '#':
@@ -183,23 +181,23 @@ for i in range(N):
         print('Yes')
         exit()
         
-    for j in range(0, N-6, -1):
-        if i+lefttop >= N:
+    for j in range(N-6, 0, -1):
+        if i+righttop < 0:
             break
-        if mp[lefttop][i+lefttop] == '#':
+        if mp[N-righttop][i+righttop] == '#':
             x -= 1
         else:
             o -= 1
-        lefttop += 1
+        righttop -= 1
 
         if o <= 2 and (o+x >= 6):
             print('Yes')
             exit()
 
-        rightbottom += 1
-        if i+rightbottom >= N:
+        leftbottom -= 1
+        if i+leftbottom < 0:
             break
-        if mp[rightbottom][rightbottom+i] == '#':
+        if mp[N-leftbottom][leftbottom+i] == '#':
             x += 1
         else:
             o += 1
@@ -208,4 +206,4 @@ for i in range(N):
             print('Yes')
             exit()
 
-'''
+print('No')
