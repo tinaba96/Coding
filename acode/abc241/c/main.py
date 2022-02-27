@@ -169,10 +169,10 @@ for i in range(N):
     x = 0
     righttop = N-1
     leftbottom = N-6
-    for j in range(6, 0, -1):
+    for j in range(6):
         if i+j >= i+6:
             break
-        if mp[j][i+j] == '#':
+        if mp[j][N-1-i-j] == '#':
             x += 1
         else:
             o += 1
@@ -181,10 +181,11 @@ for i in range(N):
         print('Yes')
         exit()
         
-    for j in range(N-6, 0, -1):
-        if i+righttop < 0:
+    for j in range(N-6):
+        if i+righttop < 0 or i+righttop >= N:
             break
-        if mp[N-righttop][i+righttop] == '#':
+        #print('bef', N-righttop-1, i+righttop)
+        if mp[N-righttop-1][i+righttop] == '#':
             x -= 1
         else:
             o -= 1
@@ -195,9 +196,9 @@ for i in range(N):
             exit()
 
         leftbottom -= 1
-        if i+leftbottom < 0:
+        if i+leftbottom < 0 or i+leftbottom >= N:
             break
-        if mp[N-leftbottom][leftbottom+i] == '#':
+        if mp[N-leftbottom-1][leftbottom+i] == '#':
             x += 1
         else:
             o += 1
@@ -206,4 +207,53 @@ for i in range(N):
             print('Yes')
             exit()
 
+for i in range(N):
+    o = 0
+    x = 0
+    righttop = N-1
+    leftbottom = N-6
+   # if i == 2 or i == 3:
+        #print('-------')
+    for j in range(6):
+        if N-1-i-j < 0:
+            break
+        #print('first', i+j, N-1-j)
+        if mp[i+j][N-1-j] == '#':
+            x += 1
+        else:
+            o += 1
+
+    if o <= 2 and (o+x >= 6):
+        print('Yes')
+        exit()
+        
+    for j in range(N-6):
+        if N-righttop-1+i < 0 or N-righttop-1+i >= N:
+            break
+        #print('bef', N-righttop-1+i, righttop)
+        if mp[N-righttop-1+i][righttop] == '#':
+            x -= 1
+        else:
+            o -= 1
+        righttop -= 1
+
+        if o <= 2 and (o+x >= 6):
+            print('Yes')
+            exit()
+
+        leftbottom -= 1
+        if N-leftbottom-1+i < 0 or N-leftbottom-1+i >= N:
+            break
+        #print('aft', N-lefttop-1+i, lefttop)
+        if mp[N-leftbottom-1+i][leftbottom] == '#':
+            x += 1
+        else:
+            o += 1
+
+        if o <= 2 and (o+x >= 6):
+            print('Yes')
+            exit()
 print('No')
+
+# there are still some WA, it is still weird
+
