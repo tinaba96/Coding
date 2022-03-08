@@ -6,33 +6,21 @@ N = int(input())
 
 cnt = 0
 
-mp = [[-1 for i in range(10)] for j in range(10000)]
+mp = [[-1 for i in range(10)] for j in range(10000000)]
 
-def memo(l, n, f):
-    global cnt
+# 残りrで最後がdのとき、残りの埋め方
+def memo(r, d):
 
-
-    if l == N-1:
-        cnt += 1
-        mp[l][f] = cnt
-    elif l == N:
-        return
-
-    if mp[l][n] != -1:
-        if N-l > l:
-            l += l
-            cnt += mp[l][n]
-        
     if n != 1 and n != 9:
-        memo(l+1, n-1, f)
-        memo(l+1, n, f)
-        memo(l+1, n+1, f)
+        val += memo(r-1, d-1)
+        val += memo(r-1, d)
+        val += memo(r-1, d+1)
     elif n == 1:
-        memo(l+1, n, f)
-        memo(l+1, n+1, f)
+        val += memo(r-1, d)
+        val += memo(r-1, d+1)
     elif n == 9:
-        memo(l+1, n-1, f)
-        memo(l+1, n, f)
+        val += memo(r-1, d-1)
+        val += memo(r-1, d)
 
 ans = 0
 
@@ -42,5 +30,5 @@ for i in range(1, 10):
 
 print(cnt)
 
-
+# i think it is possible to do it from left to right like what i tried in main.py
 
