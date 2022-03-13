@@ -24,12 +24,18 @@ for i in range(len(S)):
         cntR += 1
 
 for i in range(len(LR)):
+    # binary search if cntU < cntL+cntR
+    print(i)
+
+# if cntU == cntL+cntR
+# depends on number of L and R
+
+# if cntU > cntL+cntR
+# devide number of node in current level with number of node in taget level. quotient will be the position of the node in target level
 
 
-
-
-print(cntL)
-print(cntR)
+print(cntU)
+print(cntL+cntR)
 p = int(x)+cntR+cntL-cntU
 val = 2**(cntR+cntL-cntU)
 print(ini*val + 2**p)
