@@ -39,7 +39,7 @@ def f(node, cnt, xcnt):
                     tmp += f(e, cnt-1, (xcnt+1)%2)%mod
 
         else:
-            if (xcnt+1)%2 != 0:
+            if (xcnt+1)%2 != 0: # this is xcnt not xcnt+1
 
                 if memo[e][cnt-1][1] != 0:
                     tmp += memo[e][cnt-1][1]
