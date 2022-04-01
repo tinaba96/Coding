@@ -15,7 +15,7 @@ mod = 998244353
 
 
 # node にcntで到着できた場合の数
-def f(node, cnt, kcnt):
+def f(node, cnt, kcnt): # this is same as 全探索
     if cnt == 0:
         if node == S and kcnt%2 == 0:
             return 1
