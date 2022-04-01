@@ -28,7 +28,7 @@ def f(node, cnt, xcnt):
         if e == X:
             if (xcnt+1)%2 != 0:
 
-                if memo[e][cnt-1][1] != 0: # I think this might not be ready which leads to WA
+                if memo[e][cnt-1][1] != 0:
                     tmp += memo[e][cnt-1][1]
                 else:
                     tmp += f(e, cnt-1, (xcnt+1)%2)%mod
