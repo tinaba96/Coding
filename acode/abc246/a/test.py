@@ -31,5 +31,6 @@ if S[0] in a:
 else:
     print(S[1], S[0])
 
+# this is going to be RE becase there will be the case that the answer will be same x anf y (ex. ans = (1, 1))
 
 
