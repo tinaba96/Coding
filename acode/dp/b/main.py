@@ -1,4 +1,4 @@
-# this is same as 全探索i
+# this is same as 全探索
 
 import sys
 sys.setrecursionlimit(10 ** 9)

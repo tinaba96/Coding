@@ -19,13 +19,21 @@
       "id": "dp_b",
       "label": "B",
       "title": "Frog 2",
-      "url": "https://atcoder.jp/contests/dp/tasks/dp_b"
+      "url": "https://atcoder.jp/contests/dp/tasks/dp_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests"
+      }
     },
     {
       "id": "dp_c",
       "label": "C",
       "title": "Vacation",
-      "url": "https://atcoder.jp/contests/dp/tasks/dp_c"
+      "url": "https://atcoder.jp/contests/dp/tasks/dp_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests"
+      }
     },
     {
       "id": "dp_d",
