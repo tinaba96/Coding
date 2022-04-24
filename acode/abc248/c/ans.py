@@ -6,13 +6,15 @@ mod=998244353
 
 A=[]
 B=[]
+
+# starting from x = 1 from the video editorial point of view.
 for i in range(K):
     if i<M:
         A.append(1)
     else:
         A.append(0)
     B.append(0)
-
+print(A)
 C=tuple(B)
 
 for i in range(N-1):
