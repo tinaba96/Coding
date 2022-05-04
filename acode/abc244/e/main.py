@@ -61,4 +61,7 @@ def f(node, cnt, xcnt):
     
 print(f(T, K, 0))
 
+# algorithm itself is OK. It will be AC using C++
+# however recurision is very slow for python and pypy so if u use these languages it is better to solve by DP using "for" loops instead of recursion
+# since loop is better for Python and Pypy than recursion, it wil not be TLE
 
