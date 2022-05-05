@@ -287,31 +287,51 @@
       "id": "typical90_ac",
       "label": "029",
       "title": "Long Bricks（★5）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ac"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ac",
+      "directory": {
+        "path": "029",
+        "testdir": "tests"
+      }
     },
     {
       "id": "typical90_ad",
       "label": "030",
       "title": "K Factors（★5）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ad"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ad",
+      "directory": {
+        "path": "030",
+        "testdir": "tests"
+      }
     },
     {
       "id": "typical90_ae",
       "label": "031",
       "title": "VS AtCoder（★6）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ae"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ae",
+      "directory": {
+        "path": "031",
+        "testdir": "tests"
+      }
     },
     {
       "id": "typical90_af",
       "label": "032",
       "title": "AtCoder Ekiden（★3）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_af"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_af",
+      "directory": {
+        "path": "032",
+        "testdir": "tests"
+      }
     },
     {
       "id": "typical90_ag",
       "label": "033",
       "title": "Not Too Bright（★2）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ag"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_ag",
+      "directory": {
+        "path": "033",
+        "testdir": "tests"
+      }
     },
     {
       "id": "typical90_ah",
