@@ -47,4 +47,7 @@ sorted: 1 5 5 5 5 8 (-> "5" of index 4 can be realized anytime even if mp[] only
 '''
 # wait above comment is not important
 
+# if mistakenly pass the condition because of set(), it will 100% fail on the other following number. because if the answer is "no":, there will be at least one pair that need to be replaced to be "yes". Thus even though one is mistakenly pass, the other will surely fail.
+
+
 #therfore, there is no problem that we use set() instead of array.
