@@ -27,7 +27,7 @@ def cnt(v):
 
 
 
-for i in range(N+1):
+for i in range(N**2+1):
     if math.sqrt(i)%1 != 0:
         continue
     else:
@@ -48,5 +48,8 @@ print(now)
 
 print(cnt(N))
 
+tot = 0
+for e in l:
+    tot += cnt(e)
 
-
+print(tot)
