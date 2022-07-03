@@ -1,5 +1,6 @@
 X, A, D, N = list(map(int, input().split()))
 
+# you need this because you are comparing with the value to take care of minus version and plus version. However, if you consider index like the video tutorial, you don't need to compare like this
 mi = min(A, A + (N-1)*D)
 ma = max(A, A + (N-1)*D)
 

@@ -22,7 +22,7 @@ for i in range(N):
 
 for _ in range(Q):
     q = int(input())
-    if q <= mi:c # this is needed because it becomes cul[-1] if index=0. it should be 0 and you dont need these conditions
+    if q <= mi:c # this is needed because it becomes cul[-1] if index=0. it should be 0 and you dont need these conditions (see update.py)
         print(abs(N*q-tot))
     elif ma <= q:
         print(abs(N*q-tot))
