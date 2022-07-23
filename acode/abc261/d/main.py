@@ -7,6 +7,7 @@ for i in range(M):
     C, M = list(map(int, input().split()))
     bonus[C] = M
 
+ans = 0
 
 
 
