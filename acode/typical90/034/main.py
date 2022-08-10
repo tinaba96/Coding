@@ -1,24 +1,27 @@
+from collections import defaultdict
+
 N, K = list(map(int, input().split()))
 a = list(map(int, input().split()))
 
-mp = set()
+
+d = defaultdict(int)
+
 l = 0
 r = 0
-mp.add(a[l])
+
+d[r] = 1
 
 ans = 0
 
 while r < N-1:
     r += 1 
-    if a[r] not in mp:
-        if len(mp) != K:
-            mp.add(r)
+    if a[r] not in d:
+        if len(d) != K:
+            d[r] += 1
         else:
             while l <= r:
                 l += 1
-                if a[l-1] != a[l]:
-                   mp.remove(a[l-1])
-                   break
+                d[l-1] -= 1
     ans = max(ans, r-l)
 
 
