@@ -17,7 +17,8 @@ while r < N-1:
             while l <= r:
                 l += 1
                 if a[l-1] != a[l]:
-                    break
+                   mp.remove(a[l-1])
+                   break
     ans = max(ans, r-l)
 
 
