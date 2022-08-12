@@ -1,3 +1,4 @@
+import math
 from collections import defaultdict
 
 A, B = list(map(int, input().split()))
@@ -7,10 +8,15 @@ large = 10**18
 
 def fac(x):
     r = defaultdict(int)
-    for i in range(2, x):
+    for i in range(2, int(math.sqrt(x)) + 1):
         while x % i == 0:
-            x /= i
+            x //= i
             r[i] += 1
+
+    if x != 1:
+        r[x] += 1
+    if len(r) == 0:
+        r[x] += 1
     return r
 
 """nを素因数分解"""
@@ -19,7 +25,8 @@ def fac(x):
 def factorization(n):
     arr = []
     temp = n
-    for i in range(2, int(-(-n**0.5//1))+1):
+    for i in range(2, int(n**0.5//1)+1):
+    # for i in range(2, int(-(-n**0.5//1))+1):
         if temp%i==0:
             cnt=0
             while temp%i==0:
@@ -30,19 +37,32 @@ def factorization(n):
     if temp!=1:
         arr.append([temp, 1])
 
-    if arr==[]:
+    if arr == []:
         arr.append([n, 1])
 
     return arr
 
-factorization(24) 
+#print(fac(3124) )
+#print(factorization(3124) )
 
 ## [[2, 3], [3, 1]] 
 ##  24 = 2^3 * 3^1
         
 
+factorA = fac(A) 
+factorB = fac(B) 
 
-            
+ans = 0
+
+for a in factorA:
+    cnt = 0
+    if a in factorB:
+        cnt = min(factorA[a], factorB[a])
+        ans += a**cnt
+
+print(ans)
+        
+    
         
     
 
