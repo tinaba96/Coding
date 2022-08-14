@@ -30,21 +30,36 @@ for i in range(H):
         if B[0][0] == A[i][j]:
             first.append((i, j))
 
+cols = []
+
 for ele in first:
     h = ele[0]
     w = ele[1]
 
-    cnt = 1
     for k in range(H2-1):
+        cnt = 1
+        temp = [w]
         for ee in range(ele[1], W):
             if A[h][ee] == B[k][cnt]:
+                temp.append(ee)
                 cnt += 1
                 if cnt == W2:
+                    cols.append(temp)
                     break
-        if cnt != W2:
-            print('No')
+#print(cols)
 
+finalFlag = True
 
+for x in cols:
+    flg = True
+    for yp in range(1,H2):
+        for y in range(W2):
+            if B[yp][y] != x[y]:
+                flg = False
+        if not flg:
+            break
+    if flg:
+        print('Yes')
 
-
+print('No')
 
