@@ -34,9 +34,15 @@ for ele in first:
     h = ele[0]
     w = ele[1]
 
+    cnt = 1
     for k in range(H2-1):
         for ee in range(ele[1], W):
-            if A[h][ee] == B[k][w]:
+            if A[h][ee] == B[k][cnt]:
+                cnt += 1
+                if cnt == W2:
+                    break
+        if cnt != W2:
+            print('No')
 
 
 
