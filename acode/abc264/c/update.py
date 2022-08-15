@@ -46,20 +46,20 @@ for ele in first:
                 if cnt == W2:
                     cols.append(temp)
                     break
-#print(cols)
+print(cols)
 
 finalFlag = True
 
 for x in cols:
     flg = True
     cnt = 0
-    for hh in range(1,H2): # is this correct?
+    for hh in range(1,H2):
         ff = True
         for y in range(W2):
             if B[hh][y] != x[y]: # is this correct?
                 ff = False
                 flg = False
-        if not f:
+        if not ff:
             break
         else:
             cnt += 1
