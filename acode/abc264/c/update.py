@@ -53,16 +53,18 @@ finalFlag = True
 for x in cols:
     flg = True
     cnt = 0
-    for hh in range(1,H): # is this correct?
+    for hh in range(1,H2): # is this correct?
         ff = True
         for y in range(W2):
             if B[hh][y] != x[y]: # is this correct?
-                f = False
+                ff = False
+                flg = False
         if not f:
             break
         else:
             cnt += 1
-    if cnt == H2:
+    # if cnt == H2:
+    if flg:
         print('Yes')
 
 print('No')
