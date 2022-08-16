@@ -55,7 +55,7 @@ for x in cols:
     cnt = 0
     for hh in range(1,H2):
         ff = False
-        for k in range(H):
+        for k in range(H):  # this is not considering the order of hh
             if B[hh][0] == A[k][x[0]]: # you have to look each colomn 
                 flgO = True
                 ff = True
