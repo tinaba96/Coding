@@ -46,7 +46,7 @@ for ele in first:
                 if cnt == W2:
                     cols.append(temp)
                     break
-print(cols)
+#print(cols)
 
 finalFlag = True
 
@@ -54,18 +54,29 @@ for x in cols:
     flg = True
     cnt = 0
     for hh in range(1,H2):
-        ff = True
-        for y in range(W2):
-            if B[hh][y] != x[y]: # is this correct?
-                ff = False
-                flg = False
+        ff = False
+        for k in range(H):
+            if B[hh][0] == A[k][x[0]]: # you have to look each colomn 
+                flgO = True
+                ff = True
+                for o in range(1, W2):
+                    if A[k][x[o]] != B[hh][o]:
+                        #print(A[k][o])
+                        #print(B[hh][o])
+                        #print('o', o)
+                        flgO = False
+                if flgO == False:
+                    flg = False
+                    break
         if not ff:
+            flg = False
             break
         else:
             cnt += 1
     # if cnt == H2:
     if flg:
         print('Yes')
+        exit()
 
 print('No')
 
