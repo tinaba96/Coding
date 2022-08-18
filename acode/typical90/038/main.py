@@ -51,8 +51,8 @@ def factorization(n):
 factorA = fac(A)
 factorB = fac(B) 
 
-print(factorA)
-print(factorB)
+#print(factorA)
+#print(factorB)
 
 ans = A
 
@@ -75,7 +75,7 @@ else:
     
         
     
-
+# lcm(a, b) = a*b/gcd(a, b)
 
 
 
