@@ -47,20 +47,30 @@ def factorization(n):
 
 ## [[2, 3], [3, 1]] 
 ##  24 = 2^3 * 3^1
-        
 
-factorA = fac(A) 
+factorA = fac(A)
 factorB = fac(B) 
 
-ans = 0
+print(factorA)
+print(factorB)
+
+ans = A
 
 for a in factorA:
     cnt = 0
     if a in factorB:
-        cnt = min(factorA[a], factorB[a])
-        ans += a**cnt
+        cnt = max(0, factorB[a]-factorA[a])
+        ans *= a**cnt
 
-print(ans)
+for b in factorB:
+    if b not in factorA:
+        ans *= b**factorB[b]
+
+
+if ans > large:
+    print('Large')
+else:
+    print(ans)
         
     
         
