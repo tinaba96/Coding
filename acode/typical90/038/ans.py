@@ -12,3 +12,4 @@ if l > 10**18 // B:
 else:
     print(l * B)
 
+# lcm(a, b) = a*b/gcd(a, b)
