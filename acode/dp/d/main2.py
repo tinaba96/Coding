@@ -17,8 +17,8 @@ Value: 今の最大価値
 mp = [[0,0] for i in range(N)]
 
 for j in range(N-1):
-    mp[j+1][0] = max(mp[j][0], mp[j][1])
-    mp[j+1][1] = max(mp[j][0], mp[j][1])
+    mp[j+1][0] = max(mp[j][0], mp[j][1]+d[])
+    mp[j+1][1] = max(mp[j][0], mp[j][1]+)
 
 
 
