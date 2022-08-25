@@ -1,3 +1,5 @@
+# original
+
 N, W = list(map(int, input().split()))
 
 d = []
@@ -15,23 +17,23 @@ Value: 今の最大価値
 '''
 
 #mp = [[0, d[0][1]] for i in range(N)]
-mp = [[0 for n in range(N)] for w in range(W)]
+mp = [[0 for n in range(N)] for w in range(W+1)]
 
 mp[d[0][0]][0] = d[0][1]
 
 # 配るDP
-for j in range(N-1):
-    for k in range(W):
-        mp[d
+for j in range(1, N):
+    for k in range(W+1):
+        if d[j][0]+k <= W:
+            #print(mp[k+d[j][0]][j])
+            mp[k+d[j][0]][j] = max(mp[k+d[j][0]][j], mp[k][j-1]+d[j][1])
+        mp[k][j] = max(mp[k][j], mp[k][j-1])
 
+#print(mp)
+ans = 0
 
-    mp[j+1][0] = max(mp[j][0], mp[j][1])
+for a in range(W+1):
+    ans = max(ans, mp[a][N-1])
 
-    mp[j+1][1] = max(mp[j][0], mp[j][1]+d[j])
-
-
-
-
-
-
+print(ans)
 
