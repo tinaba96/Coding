@@ -16,7 +16,7 @@ for t in range(1, 10**5):
     for x in range(5):
         if x == 0:
             #print(t, x)
-            dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], )
+            dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x+1]+mp[t][x])
         else:
             dp[t][x] = max(dp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x-1]+mp[t][x])
 
