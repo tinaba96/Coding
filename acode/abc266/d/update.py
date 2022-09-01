@@ -15,12 +15,28 @@ dp = [[0 for i in range(5)] for j in range(10**5+1)]
 for t in range(1, 10**5):
     for x in range(5):
         if x == 0:
-            #print(t, x)
-            dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x+1]+mp[t][x])
+            if t < 2:
+                dp[t][x] = max(dp[t][x], dp[t-1][x]+mp[t][x])
+            else:
+                dp[t][x] = max(dp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x+1]+mp[t][x])
+        elif x == 4:
+            if t >= 4:
+                dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], dp[t-1][x]+mp[t][x])
+            else:
+                continue
         else:
-            dp[t][x] = max(dp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x-1]+mp[t][x])
+            if t >= 4:
+                dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x+1]+mp[t][x])
+            elif x < t:
+                dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], dp[t-1][x]+mp[t][x], dp[t-1][x+1]+mp[t][x])
+            elif x == t:
+                dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x], dp[t-1][x]+mp[t][x])
+            elif x == t+1:
+                dp[t][x] = max(dp[t][x], dp[t-1][x-1]+mp[t][x])
 
-#print(dp)
+
+
+#print(dp[:5])
 ans = 0
 for a in range(5):
     ans = max(ans, dp[-2][a])
