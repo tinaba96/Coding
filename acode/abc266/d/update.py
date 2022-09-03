@@ -9,6 +9,7 @@ for i in range(N):
 
 
 # dp[t][x] t 秒後の位置xの最大値
+# もらうDP
 
 dp = [[0 for i in range(5)] for j in range(10**5+1)]
 
@@ -42,6 +43,7 @@ for a in range(5):
     ans = max(ans, dp[-2][a])
 
 print(ans)
+
 
 
 
