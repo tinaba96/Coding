@@ -27,12 +27,8 @@ for k in range(N-M):
     val += M*A[r]
     ans = max(ans, val)
 
-
-
-
-
-
-
 print(ans)
+
+# you can also use histogram according to video editorial
 
 
