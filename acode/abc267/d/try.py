@@ -23,5 +23,6 @@ for a in range(N+1):
     ans = max(ans, dp[a][M])
 
 print(dp[N][M])
+#print(ans)
 
 
