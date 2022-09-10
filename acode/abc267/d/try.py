@@ -3,7 +3,7 @@ A = list(map(int, input().split()))
 
 # dp[i][m] iまで決めた上で、選んだ数mの時の最大ち
 
-INF = 100100100100
+INF = 10**100  # 10**12 also AC
 
 dp = [[-INF for i in range(M+1)] for j in range(N+1)]
 
@@ -16,15 +16,18 @@ for x in range(N):
         dp[x+1][t] = max(dp[x+1][t], dp[x][t])
 
 
+
 #for i in range(N+1):
 #    print(dp[i])
-
+'''
 ans = -INF
 for a in range(N+1):
     ans = max(ans, dp[a][M])
 
-#print(dp[N][M])
 print(ans)
+'''
+
+print(dp[N][M])
 
 
 
