@@ -15,14 +15,15 @@ for x in range(N):
             dp[x+1][t+1] = max(dp[x+1][t+1], dp[x][t]+((t+1)*A[x]))
         dp[x+1][t] = max(dp[x+1][t], dp[x][t])
 
-#for i in range(N+1):
-#    print(dp[i])
+
+for i in range(N+1):
+    print(dp[i])
 
 ans = 0
 for a in range(N+1):
     ans = max(ans, dp[a][M])
 
 print(dp[N][M])
-#print(ans)
+print(ans)
 
 
