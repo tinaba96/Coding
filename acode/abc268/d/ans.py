@@ -14,7 +14,7 @@ def solve(n, m, s, t, min_chars=3, max_chars=16):
         #print(res)
         return res
     num = max_chars - len("".join(s))
-    for v in permutations(s):
+    for v in permutations(s): # since we use permutation, it is no need to use used[] like video editorial
         for x in dfs(v, 1, num, v[0]):
             if satisfied(x):
                 return x
