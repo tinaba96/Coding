@@ -23,8 +23,10 @@ def count(ans):
             exit()
         ans.append(mp[ans[-1]][k])
         count(ans)
-        p = ans.pop()
+        if len(ans) > 0:
+            p = ans.pop()
 
 count(ans)
+
 
 
