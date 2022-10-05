@@ -25,10 +25,12 @@ def search(st, left, i):
     if memo[left-mp[i-1][0]][i] != -1:
         memo[left-mp[i-1][0]][i] = search(st+'H', left-mp[i-1][0], i+1)
 
-
     if memo[left-mp[i-1][1]][i] != -1:
         memo[left-mp[i-1][1]][i] = search(st+'T', left-mp[i-1][1], i+1)
 
+    if memo[left-mp[i-1][0]][i] == -1 and memo[left-mp[i-1][1]][i] == -1:  # by adding this, no TLE anymore
+        return -1
+    
 
 search('', S, 1)
 print('No')
