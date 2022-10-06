@@ -1,3 +1,5 @@
+# using memoization recursion instead of DP
+
 import sys
 sys.setrecursionlimit(500005)
 #import pypyjit # this is for solving slow issue for pypy when using recursion but python will not need this (test will fail but submit works)
@@ -15,7 +17,7 @@ for r in range(N):
 memo = [[0 for i in range(N+1)] for j in range(S+1)]
 
 def search(st, left, i):
-    if left == 0:
+    if i == N+1 and left == 0:
         print('Yes')
         print(st)
         exit()
