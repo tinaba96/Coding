@@ -1,3 +1,8 @@
+# i think the algorithm is correct
+# but recursion is too heavy in this case for python
+# therefore we should use queue and while loop
+
+
 import sys
 sys.setrecursionlimit(500005)
 #import pypyjit # this is for solving slow issue for pypy when using recursion but python will not need this (test will fail but submit works)
