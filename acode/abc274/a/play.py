@@ -1,10 +1,10 @@
-print(round(0.50, 0))
+print(round(2.50, 0))
 
-print(format(0.5, '.0f'))
+print(format(2.5, '.0f'))
 
-print("{:.0f}".format(0.5))
+print("{:.0f}".format(2.5))
 
 
 # https://camp.trainocate.co.jp/magazine/python-round/
-
+# https://www.cc.kyoto-su.ac.jp/~yamada/programming/float.html
 
