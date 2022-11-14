@@ -39,3 +39,6 @@ for g in range(N):
         cnt += 1
 
 print(cnt)
+
+# you have to think of minimum count
+
