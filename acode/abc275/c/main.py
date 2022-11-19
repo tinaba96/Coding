@@ -16,21 +16,21 @@ for i in range(9):
     for j in range(9):
         for p in range(9):
             for q in range(9):
-                if mp[i][j] == mp[p][q] and mp[i][j] == '#':
-                    d = int(10*math.sqrt((i-p)**2 + (j-q)**2))
+                if mp[i][j] == mp[p][q] and mp[i][j] == '#': # find 2 points
+                    d = int(10*math.sqrt((i-p)**2 + (j-q)**2)) # get length
                     for ta in range(9):
                         for tb in range(9):
-                            if mp[ta][tb] == '#':
-                                d2 = int(10*math.sqrt((p-ta)**2 + (q-tb)**2))
-                                if d == d2:
+                            if mp[ta][tb] == '#': # 3rd point should also be #
+                                d2 = int(10*math.sqrt((p-ta)**2 + (q-tb)**2)) # get length
+                                if d == d2: # if both length is same
                                     for h in range(9):
-                                        for w in range(9):
-                                            if mp[h][w] == '#':
-                                                d3 = int(10*math.sqrt((h-ta)**2 + (w-tb)**2))
+                                        for w in range(9): # 4th point
+                                            if mp[h][w] == '#': # whether 4th length is also #
+                                                d3 = int(10*math.sqrt((h-ta)**2 + (w-tb)**2)) 
                                                 d4 = int(10*math.sqrt((i-ta)**2 + (j-tb)**2))
 
                                                 #if d4 == d3 and i != p and p != ta and ta != h and j != q and q != tb and tb != w:
-                                                if d2 == d3 and d3 == d4:
+                                                if d2 == d3 and d3 == d4: #checking all 4 length are same
                                                     #print('o')
                                                     ans += 1
                                                 #if d2 == d3 and d4 == d3 and (i,j) != (p,q) and (p,q) != (ta, tb) and (ta,tb) != (h, w) and (h,w) != (i, j):
@@ -48,7 +48,10 @@ for i in range(9):
                                                     #ans += 1
 print((ans+1)//4)
 
-
+# same length for 4 lines is not the only condition for squares
+# also length of both diagonal is also not enough
+# it is better to use rotation just like a video tutorial 
+# https://www.youtube.com/watch?v=WHAC0LfyPcw
 
 # https://sugim48.hatenadiary.org/entry/20141007/1412679470
 '''
