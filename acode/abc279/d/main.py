@@ -17,7 +17,7 @@ def ch(x):
         return 1
 
 left = 0
-right = 10**6+1
+right = 10**6+1 # This is the cause. -> too small bigger number can also be available in this case. (video editorial)
 
 
 while True:
