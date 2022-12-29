@@ -4,16 +4,17 @@ sys.setrecursionlimit(500005)
 #pypyjit.set_param('max_unroll_recursion=-1')
 
 
-S = str(input())
-T = str(input())
+N = int(input())
+S = list(map(int, input().split()))
 
-for i in range(len(S)):
-    if S[i] != T[i]:
-        print(i+1)
-        exit()
-print(len(S)+1)
+A = []
+A.append(S[0])
+
+for i in range(1, N):
+    A.append(S[i]-S[i-1])
+
+print(*A)
 
 
-# 正当性 Justification 
-# https://atcoder.jp/contests/abc280/editorial/5305
-# video editorial
+
+
