@@ -30,7 +30,7 @@ c = collections.Counter(fac)
 set_f = set(fac)
 sf = sorted(fac)
 
-#print(set_f)
+print(c)
 #print(sf)
 
 '''
@@ -48,13 +48,14 @@ for ele in c:
         continue
     cnt = 0
     while val >= 0:
-        cnt += 1
+        cnt += 1 #case 2^9, 2 22 222, 222
         if cnt > 2:
             sp += max((ele**(cnt-1) - ele**(cnt-2))//ele - 1, 0)
         k = val
         val -= cnt
-    #print(k)
-    #print(sp)
+    print(k)
+    print(sp)
+    print(cnt)
     #print(max(0, k-sp))
     add = 0
     if k - sp > 0 :
