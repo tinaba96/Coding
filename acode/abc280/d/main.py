@@ -30,7 +30,7 @@ c = collections.Counter(fac)
 set_f = set(fac)
 sf = sorted(fac)
 
-print(c)
+#print(c)
 #print(sf)
 
 '''
@@ -50,12 +50,11 @@ for ele in c:
     while val >= 0:
         cnt += 1 #case 2^9, 2 22 222, 222
         if cnt > 2:
-            sp += max((ele**(cnt-1) - ele**(cnt-2))//ele - 1, 0)
+            sp += max((ele**(cnt-1) - ele**(cnt-2))//ele - 1, 0) # case 2^3 - 2^2, there is a number that can be divided by 2 between 2^3 and 2^2. this process is to count this
         k = val
         val -= cnt
     print(k)
     print(sp)
-    print(cnt)
     #print(max(0, k-sp))
     add = 0
     if k - sp > 0 :
@@ -71,5 +70,5 @@ for ele in c:
 
 print(ans)
 
-
-
+# you can use 197120 as an example
+# in this way, number like 12 which can be divided by 2 twice can not be considered well
