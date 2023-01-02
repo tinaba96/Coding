@@ -9,9 +9,9 @@ int main() {
 		while(k%p==0)k /= p, a++;
 		n=0;
 		while(a>0){
-			n+=p;
+			n+=p; // N' = pi, 2pi, ....
 			x=n;
-			while(x%p==0)x /= p,a--;
+			while(x%p==0)x /= p,a--; // recursion
 		}
 		ans=max(ans,n);
 	}
