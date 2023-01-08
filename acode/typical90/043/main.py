@@ -21,16 +21,18 @@ v = [[0, 1], [0, -1], [-1, 0], [1, 0]] #di
 
 
 def dfs(r, c, di, cnt):
-    print(r, c)
-    print(mp[r-1][c-1])
+    #print(r, c)
+    #print(mp[r-1][c-1])
 
-    if r <= 0 or c <= 0 or r > W or c > H or mp[r-1][c-1] == '#':
+    if r <= 0 or c <= 0 or r > H or c > W or mp[r-1][c-1] == '#':
         return
     if r == rt and c == ct:
-        print(cnt)
+        print(cnt-1) # reduce first count
         exit()
     for d in range(4):
-        print('ch: ', d)
+        #print('ch: ', d)
+        if d+di == 1 or d+di == 5:
+            continue
         nr = r + v[d][0]
         nc = c + v[d][1]
         if di == d:
@@ -39,7 +41,7 @@ def dfs(r, c, di, cnt):
             dfs(nr, nc, d, cnt+1)
     return
 
-dfs(rs, cs, 3, 0)
+dfs(rs, cs, 10, 0)
 
 
 
