@@ -24,7 +24,7 @@ path = ''
 def dfs(p, e):
     #print(p, e)
     if p in al:
-        return # is this really correct?
+        return # is this really correct? -> it will return even if the search is in the middile?
     al.add(p)
     if len(al) > 10**6:
         print(10**6)
