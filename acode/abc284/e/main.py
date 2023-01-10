@@ -24,7 +24,7 @@ path = ''
 def dfs(p, e):
     #print(p, e)
     if p in al:
-        return
+        return # is this really correct?
     al.add(p)
     if len(al) > 10**6:
         print(10**6)
