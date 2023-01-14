@@ -6,25 +6,20 @@ sys.setrecursionlimit(500005)
 
 
 N, M = list(map(int, input().split()))
-
-
 mp = [[] for n in range(N+1)]
-
 for i in range(M):
     u, v = list(map(int, input().split()))
     mp[u].append(v)
     mp[v].append(u)
 
-pas = [False for f in range(N)]
-
 al = set()
-
-path = ''
+cnt = 0
 
 def dfs(p, e):
-    #print(p, e)
+    global cnt
     if p not in al:
         al.add(p)
+    cnt += 1
     if len(al) > 10**6:
         print(10**6)
         exit()
@@ -35,9 +30,9 @@ def dfs(p, e):
     return
 
 dfs('1', 1)
-#print(al)
-print(len(al))
-#print('o' if 'a' in 'lie' else 'p')
+print(cnt)
 
 # WA: 全探索ができていない？
 # TLE: len(al)やstr(n) in p に時間を要している？　それともpythonの再帰だから？
+# len(al) can costs almost 10**6 specially at the end.
+# str(n) in p costs O(len(p)) which is O(N) at maximum
