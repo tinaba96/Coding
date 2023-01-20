@@ -96,7 +96,7 @@ for e in mp:
 print('Yes')
 
 
-
+# Union Find also can be used (also numbering each node every time you visit) <- video editorial
 
 
 
