@@ -51,11 +51,11 @@ for j in range(N):
     am = ch(jo[j:N+j])
     #print(am)
     
-    if  am >= 1:
-        whi = min(B*am, A*j)
-        numBB = (cntP - am)*B
-        #print(numBB)
-        ans = min(ans, whi + numBB)
+    #if  am >= 1:
+    whi = min(B*am, A*j) #this is to check whether A is right dicision than B -> if B is better, this will be convered by another loop 
+    numBB = (cntP - am)*B
+    #print(numBB)
+    ans = min(ans, whi + numBB) 
 
 #print(base)
 #print(ans)
