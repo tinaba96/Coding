@@ -32,8 +32,9 @@ flag = True
 
 N, M = map(int, input().split())
 if M != N - 1:
-    print("No")
-    exit()
+    flag = False
+    #print("No")
+    #exit()
 
 check = UnionFind(N)
 edges = [0] * N
