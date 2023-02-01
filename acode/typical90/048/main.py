@@ -16,12 +16,24 @@ N, K = list(map(int, input().split()))
 mp = []
 
 for i in range(N):
-    a, b = list(map(int, input().split()))
-    mp.append((a,b))
+    A, B = list(map(int, input().split()))
+    mp.append((A,B))
 
-# dp[i][j] 
+dp = [[0 for x in range(K+1)] for z in range(N+1)]
+# dp[p][q] pまでみた時の残りq分
+dp[0][K] = 0
 
 
+for k in range(N):
+    nk = k+1
+    for j in range(K+1):
+        dp[nk][j] = max(dp[nk][j], dp[k][j])
+        if j-mp[k][1] >= 0:
+            dp[nk][j-1] = max(dp[nk][j-1], dp[k][j]+mp[k][1]) # part
+        if j-mp[k][0] >= 0:
+            dp[nk][j-2] = max(dp[nk][j-2], dp[k][j]+mp[k][0]) # full
+
+print(dp)
 
 
 
