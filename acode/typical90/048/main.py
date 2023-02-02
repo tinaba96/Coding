@@ -28,9 +28,9 @@ for k in range(N):
     nk = k+1
     for j in range(K+1):
         dp[nk][j] = max(dp[nk][j], dp[k][j])
-        if j-mp[k][1] >= 0:
+        if j-1 >= 0:
             dp[nk][j-1] = max(dp[nk][j-1], dp[k][j]+mp[k][1]) # part
-        if j-mp[k][0] >= 0:
+        if j-2 >= 0:
             dp[nk][j-2] = max(dp[nk][j-2], dp[k][j]+mp[k][0]) # full
 
 print(dp)
