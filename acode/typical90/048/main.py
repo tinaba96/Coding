@@ -33,7 +33,7 @@ for k in range(N):
         if j-2 >= 0:
             dp[nk][j-2] = max(dp[nk][j-2], dp[k][j]+mp[k][0]) # full
 
-print(dp)
+print(dp[N][0])
 
 
 
