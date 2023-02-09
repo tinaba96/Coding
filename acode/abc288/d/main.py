@@ -10,9 +10,46 @@ from collections import Counter
 from collections import defaultdict
 #d = defaultdict(int)
 
+import copy
 
-N = int(input())
-A = list(map(int, input().split()))
+
+N, K = list(map(int, input().split()))
+oA = list(map(int, input().split()))
+
+Q = int(input())
+
+for i in range(Q):
+    A = oA.copy()
+    l, r = list(map(int, input().split()))
+    leng = r-l+1
+    for p in range(leng-1): #Q
+        target = A[p+l-1] - A[p+l]
+        if p+l-1+K-1 >= r:
+            break
+        for g in range(K):
+            if p+l+g-1 == r:
+                break
+            A[p+l+g-1] += target
+
+    #print(A)
+    flg = True
+    base = A[l-1]
+    print(A)
+    for c in range(leng):
+        if A[l+c-1]-base != 0:
+            print('No')
+            flg = False
+            break
+
+    if flg:
+        print('Yes')
+
+
+
+
+
+
+    
 
 
 
