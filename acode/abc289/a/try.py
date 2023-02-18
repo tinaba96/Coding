@@ -24,7 +24,5 @@ ans = bin(S ^ 2**11-1)
 #print(ans)
 print(ans[len(ans)-l:])
 
-print(S)
-print(len(str(S)))
-
 # or: 1 | 1 = 1 -> it will not reverse 
+# should se xor
