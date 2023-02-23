@@ -27,7 +27,7 @@ for m in range(M):
 
 ans = 0
 
-model = 2**M-1
+model = 2**N-1
 status = 0
 
 
@@ -35,16 +35,19 @@ cor = set()
 
 def dfs(status, seen):
     global ans
-    #print(status, ' : ', model)
-    if status == model:
-        cor.add(str(list(seen)))
+    #print(seen)
+    #print(bin(status), ' : ', bin(model))
+    if status == model: # 条件を満たした場合カウント -> このやり方でやるのであれば、二重にここに訪れることはできない
+        #print('this', seen)
+        #cor.add(str(list(seen))) # seen should also includes the one that you did not choose so this is not correct
         #print(bin(status))
         #print('sa')
         ans += 1
 
-    if len(seen) == M:
+    if len(seen) == M: # "seen" represents how many group have you pocked up and doesn't include when you didn't pick up.
         return
-    for h in range(M):
+    m = max(seen)
+    for h in range(m, M):
         if h not in seen:
             seen.add(h)
             tmp_status = status
@@ -59,15 +62,23 @@ def dfs(status, seen):
 #print(mp)
 for p in range(M):
     seen = set()
+    status = 0
     #jprint(bin(smp[p]))
-    if smp[p] & (1 << 0):
+    #if smp[p] & (1 << 0): # x=1 を含む集合からスタート
+        #print(bin(smp[p]))
         #print('yrs')
-        status |= smp[p] # 和集合
-        seen.add(p)
-        #print(bin(status))
-        dfs(status, seen)
+    status |= smp[p] # 和集合
+    seen.add(p) # 確認済み集合
+    #print(bin(status))
+    dfs(status, seen)
 
 
 print(ans)
-print(len(cor))
-# why different
+#print(len(cor))
+# why different -> because same value was added to cor
+# very complicated and unclear about the definition of "seen" and how you handle it
+
+# status == model で条件を満たした時点でカウントするならば、網羅的に見ていく必要がある。前から順番にたどっていく方法だと、前の方は含まず、後ろの方は含むというケースを考慮できない。
+# 一方で、"seen"を、選ぶ選ばないに関わらず見たものとして扱うならば、条件を満たして時点でカウントするというやり方は間違い。全て最後まで、seenした時に初めて条件に合うか検証できる。
+
+
