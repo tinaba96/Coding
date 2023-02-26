@@ -26,3 +26,6 @@ for i in range(min(len(A), K)):
         print(ans)
         exit()
 print(ans)
+
+
+# video editorial use "while" and "set" 
