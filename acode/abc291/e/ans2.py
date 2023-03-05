@@ -16,9 +16,9 @@ def dfs(n):
 
 
     for next in g[n]:
-        length[n] = max(length[n], dfs(next)+1) # counting from last -> aim is to similar to ans[] in ans.py
+        length[n] = max(length[n], dfs(next)+1) # counting from last -> aim is similar to ans[] in ans.py
 
-    print(length)
+    #print(length)
     
     seq.append(n)
     return length[n]
