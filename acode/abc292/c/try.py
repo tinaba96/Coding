@@ -15,7 +15,8 @@ import math
 def count(n):
     ok = 1
     mid = math.sqrt(n)
-    if mid**2 == n:
+    if int(mid)**2 == n:
+    #if mid**2 == n:
         ok = 0
     val = 0
     if n == 2 or n == 3:
