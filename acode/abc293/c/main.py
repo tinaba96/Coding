@@ -25,7 +25,7 @@ ans = 0
 
 def search(y, x, path):
     global ans
-    if (y,x) == (H-1, W-1):
+    if (y,x) == (H-1, W-1): #
         ans += 1
     if y < H-1:
         if mp[y+1][x] in path:
