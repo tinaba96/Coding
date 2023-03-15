@@ -40,6 +40,7 @@ def search(y, x, path):
         path.add(mp[y][x+1])
         search(y, x+1, path)
         path.remove(mp[y][x+1])
+    #print(path)
     return 
 
 
