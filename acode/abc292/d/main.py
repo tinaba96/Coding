@@ -83,19 +83,34 @@ seen = [False for g in range(N+1)]
 
 #print(tot_num)
 
-print(uf)
+#print(uf)
 #print(uf.all_group_members().items())
-print(uf.all_group_members().values())
 
-ans = False
+#print(uf.all_group_members().values())
 
-for w in uf.all_group_members():
+#print(num)
+
+ans = True
+
+for w in uf.all_group_members().values():
+#for w in uf.all_group_members().values():
+    #print(w)
     y = 0
-    for b in range(len(w)):
-        print(w[b])
-    print('-')
+    l = len(w)
+    for b in range(l):
+        y += num[b+1]
+        #print(w[b])
+    y /= 2
 
+    #print('y: ', int(y))
+    #print('l: ', l)
 
+    if int(y) != l:
+        ans = False
     
+    #print('-')
+
+print(ans)
+
 
 
