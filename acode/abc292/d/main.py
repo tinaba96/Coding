@@ -90,7 +90,7 @@ seen = [False for g in range(N+1)]
 
 #print(num)
 
-ans = True
+ans = 'Yes'
 
 for w in uf.all_group_members().values():
 #for w in uf.all_group_members().values():
@@ -106,7 +106,7 @@ for w in uf.all_group_members().values():
     #print('l: ', l)
 
     if int(y) != l:
-        ans = False
+        ans = 'No'
     
     #print('-')
 
