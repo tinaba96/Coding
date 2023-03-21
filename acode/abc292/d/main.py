@@ -83,7 +83,7 @@ seen = [False for g in range(N+1)]
 
 #print(tot_num)
 
-#print(uf)
+print(uf)
 #print(uf.all_group_members().items())
 
 #print(uf.all_group_members().values())
@@ -95,10 +95,13 @@ ans = 'Yes'
 for w in uf.all_group_members().values():
 #for w in uf.all_group_members().values():
     #print(w)
+    if w == [0]:
+        #print('a')
+        continue
     y = 0
     l = len(w)
     for b in range(l):
-        y += num[b+1]
+        y += num[b+1] # this is wrong for second time or futher
         #print(w[b])
     y /= 2
 
