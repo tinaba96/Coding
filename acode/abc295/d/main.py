@@ -11,19 +11,22 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
+def check(string):
+    tar = list(string)
+    c = Counter(tar)
+    for ele in c:
+        if c[ele] != 2:
+            return False
+    return True
+
+
+
 A = str(input())
 
+mp = {}
 
-ind = 0
-ans = 0
+for i in range(len(A)):
+    mp[A[i]] += 1
 
-while True:
-    if ind+1 >= len(A):
-        break
-    if A[ind] == A[ind+1]:
-        ans += 1
-        ind += 2
-    else:
-        ind += 1
 
 
