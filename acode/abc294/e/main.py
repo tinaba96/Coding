@@ -33,7 +33,7 @@ for i in range(N1):
 # for example for v == 1
 # N1: 00110001
 # N2: 00000111
-# and then N1 AND N@ -> 00000001
+# and then N1 AND N2 -> 00000001
 # which means this is the overrapped part
 # finally you do this for all v and sum up.
 # however this is O(N*L) which is too big -> N: min(num of unique v for N1, num of unique v for N2) -> only common v -> maximum 10**5
