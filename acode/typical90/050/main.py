@@ -11,8 +11,26 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-N = int(input())
-A = list(map(int, input().split()))
+N, L = list(map(int, input().split()))
+
+mod = 10**9+7
+
+st = [0 for i in range(N+1)]
+
+st[0] = 1
+
+for i in range(N):
+    st[i+1] += st[i]
+    if i+L < N+1:
+        st[i+L] += st[i]
+
+print(st[N] % mod)
+
+
+
+
+
+
 
 
 
