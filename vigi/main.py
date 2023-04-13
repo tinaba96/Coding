@@ -17,8 +17,11 @@ def solution(intervals):
             index += 1
             continue
         else:
-            ans.append(s)
-            print([s, e])
+            #jprint([s, e])
+            tmp = ''
+            tmp = str(s)+str(e)
+            tmp = ','.join(tmp)
+            ans.append([tmp])
         
         s = now_s
         e = now_e
@@ -27,11 +30,13 @@ def solution(intervals):
     tmp = ''
     tmp = str(s)+str(e)
     tmp = ','.join(tmp)
-    tmp = tmp.replace("'","")
+    #tmp = tmp.replace("'","")
     t = []
     t.append(tmp)
     ans.append(t)
-    #print(str(ans).replace("'",""))
+    #print([s, e])
+    ans = str(ans).replace("'","")
+    return ans
 
 
 #A = list(map(list, input().split()))
