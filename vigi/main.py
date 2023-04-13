@@ -13,7 +13,7 @@ def solution(intervals):
         #print(e)
 
         if e >= now_s:
-            e = now_e
+            e = max(e, now_e)
             index += 1
             continue
         else:
@@ -31,7 +31,7 @@ def solution(intervals):
     t = []
     t.append(tmp)
     ans.append(t)
-    print(ans)
+    #print(str(ans).replace("'",""))
 
 
 #A = list(map(list, input().split()))
@@ -40,6 +40,6 @@ import ast
 input_str = input()
 input_list = ast.literal_eval(input_str)
 
-print(input_list)
+#print(input_list)
 
-print(solution(input_str))
+print(solution(input_list))
