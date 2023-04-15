@@ -37,6 +37,7 @@ right = start
 #print('v: ', v)
 #print('start: ', start)
 
+#1
 while True:
     left -= 1
     right += 1
@@ -48,6 +49,7 @@ while True:
     else:
         ans = min(ans, val)
 
+#2
 l = start
 while True:
     l -= 1
@@ -63,5 +65,16 @@ while True:
 print(ans)
 
 
+# No.1, 2 will not cover everything.
+'''
+ex) if start = 8
+#1 will check 7*9=63, 6*10=60, 5*11=55, ....
+#2 will check 7*8=56, 6*8=48, ....
+However,
+you should check also
+6*9=54, 5*9=45, 5*10=50, and so on
+which takes a lot of time
+'''
+# approach of video tutorial is needed to have AC
 
 
