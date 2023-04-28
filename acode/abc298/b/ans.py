@@ -13,4 +13,4 @@ def solve():
 
 print("Yes" if solve() else "No")
 
-
+# transpose by zip() and reverse -> this is same as rotate (see video editorial)
