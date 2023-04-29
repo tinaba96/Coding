@@ -45,7 +45,7 @@ for q in range(Q):
         j = x[2]
         #heapq.heappush(box[j],i)
         #heapq.heappush(card[i],j)
-        ind = bisect.bisect_left(box[j], i)
+        ind = bisect.bisect_left(box[j], i) # try to do this but realized this doesn't make any difference
 
     if x[0] == 2:
         i = x[1]
