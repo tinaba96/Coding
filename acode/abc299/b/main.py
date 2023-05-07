@@ -29,4 +29,12 @@ for i in range(N):
 
 print(ans)
 
+# you can also use points for 3 different color and use pair() to compare one by one like the video editorial
+'''
+3 different color
+1. T
+2. C[0]
+3. others
+'''
+
 
