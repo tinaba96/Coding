@@ -9,9 +9,9 @@ for _ in range(M):
     G[v].append(u)
 
 K = int(input())
-color = [1] * N
+color = [1] * N # all black
 just = defaultdict(list)
-for _ in range(K):
+for _ in range(K): # BFS for K vertex
     p, d = map(int, input().split())
     p -= 1
 
@@ -34,7 +34,7 @@ for _ in range(K):
 
 if sum(color) == 0: exit(print('No'))
 
-for p in just.keys():
+for p in just.keys(): # judge -> guranteed that node (<d) is white
     flag = False
     for j in just[p]:
         if color[j] == 1: flag = True
@@ -43,3 +43,5 @@ for p in just.keys():
 
 print('Yes')
 print(''.join(map(str, color)))
+
+# similar to video editorial
