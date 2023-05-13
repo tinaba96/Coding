@@ -45,6 +45,7 @@ for h in range(2, H-2):
             else:
                 cnt += 1
                 flg = True
+                # no need to check 4 of them according to the explanation. see video editorial
                 for g in range(4):
                     if mp[h-cnt][w-cnt] != '#':
                         flg = False
