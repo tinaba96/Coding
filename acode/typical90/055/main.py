@@ -11,8 +11,14 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-N = int(input())
+N, P, Q = list(map(int, input().split()))
 A = list(map(int, input().split()))
+
+
+A = [e%P for e in A]
+
+#print(A)
+
 
 
 
