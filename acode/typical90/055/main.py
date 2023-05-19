@@ -26,8 +26,17 @@ for i in range(N):
     for j in range(i+1, N):
         for k in range(j+1, N):
             for l in range(k+1, N):
-                v = A[i]*A[j]*A[l]*A[k] % P
-                key = (Q//v)%P
+                for m in range(l+1, N):
+                    v = A[i]*A[j]%P
+                    v %= P
+                    v *= A[l]
+                    v %= P
+                    v *= A[k]
+                    v %= P
+                    v *= A[m]
+                    v %= P
+                    if v == Q:
+                        ans += 1
 
 
 
