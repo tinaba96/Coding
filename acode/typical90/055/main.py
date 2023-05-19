@@ -29,7 +29,6 @@ for i in range(N):
                 v = A[i]*A[j]*A[l]*A[k] % P
                 key = (Q//v)%P
 
-                    ans += 1
 
 
 print(ans)
