@@ -50,3 +50,6 @@ while True:
         break
 
 print(ans)
+
+# there is case that this approach will not work
+
