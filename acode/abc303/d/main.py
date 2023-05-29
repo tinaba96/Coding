@@ -37,6 +37,7 @@ for j in range(1, N):
 print(min(dp[N-1]))
 
 
-
+# memoization recursion is also possible (see the video editorial)
+# but python might be TLE since recursion is not fast for pypy3 (could not find this memoization recursion approach in atcoder submission)
 
 
