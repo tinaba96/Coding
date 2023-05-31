@@ -1,4 +1,4 @@
-#尺取り法i
+#尺取り法
 
 import sys
 sys.setrecursionlimit(500005)
