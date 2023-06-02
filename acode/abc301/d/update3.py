@@ -76,7 +76,18 @@ flag = False
 
 last_q = -1
 
+mid_q = -1 # this is new
+flag_mid = False # this is new
+point = -1
+
 for i in range(len(S)):
+
+    if S[i] == '1' and tt[i] == '0':
+        flag = True
+        if mid_q == -1:
+            mid_q = last_q
+            point = i
+
     if S[i] == '0' and tt[i] == '1':
         flag = True
 
@@ -94,9 +105,13 @@ for i in range(len(S)):
 int_aa = int(aa, 2)
 
 # this was one of the cause of WA but this is not enough -> check below
-if last_q != -1 and int_aa > N:
+if mid_q != -1 and int_aa > N:
     list_aa = list(aa)
-    list_aa[last_q] = '0'
+    list_aa[mid_q] = '0'
+    for p in range(mid_q+1, point+1):
+        if S[p] == '?':
+            list_aa[p] = '1'   # this is needed. to cover necessary "?"
+
     int_aa = int(''.join(list_aa), 2)
 
 print(int_aa)
