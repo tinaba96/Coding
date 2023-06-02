@@ -51,7 +51,7 @@ for i in range(1,len(P)-1):
         if (P[j]**2)*P[i]*(P[i+1]**2)>N:
             break
         temp = (P[j]**2)*P[i]
-        ok=i
+        ok=i # this value is not ok for value c
         ng=len(P)
         # 二分探索
         while abs(ok-ng)>1:
@@ -63,5 +63,6 @@ for i in range(1,len(P)-1):
         #print(P[j],P[i],P[ok])
         ans+=ok-i
 print(ans)
+# similar to video editorial
 '''
 
