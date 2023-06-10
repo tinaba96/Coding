@@ -83,6 +83,12 @@ LINE openchat
 
 
 
+reply
+while ループが何回繰り返されるか（=キューに頂点が追加される回数が何回か）を考えてみる。すべての頂点間に辺がある場合どうか。
+
+
+
+
 ありがとうございます。以下が自分なりに考えた考察になります。
 
 (1) 全ての頂点が連結する場合は、最初の頂点が処理された時点で、全ての頂点(N)がキューに入り、順に取り出され実行されます。そして、その一つ一つも、連結する全頂点（N)をキューに挿入することになるので、O(N^2)くらいかと思います。
@@ -101,10 +107,12 @@ LINE openchat
 
 
 
-reply
-while ループが何回繰り返されるか（=キューに頂点が追加される回数が何回か）を考えてみる。すべての頂点間に辺がある場合どうか。
-
 -> No specific Reply
+
+'''
+
+'''
+In the case of (3) above, the time complexity would be O(N^3/3^3). Since N = 2000, it would be 8*10**9/27 which is a bit too much already. I hope above idea is mostly correct and some of the cases has quite big time complexity. Therefore, this approach makes some test cases TLE.
 
 '''
 
