@@ -99,3 +99,4 @@ else:
                 print(i+1, j+1)
                 exit()
 
+    # this part will be same as ans.py
