@@ -45,7 +45,8 @@ for q in range(Q):
     v = bisect.bisect_right(A, l)
     if v%2 == 0:
         val = A[v] - l
-    v2 = bisect.bisect(A, r)
+    v2 = bisect.bisect(A, r) # this is same with bisect_right
+    #print('v2: ', v2)
     if v2%2 == 0:
         val += r - A[v2-1]
     #print(cum)
