@@ -20,7 +20,9 @@ for _ in range(k):
     que.append((-d, u))
 while que:
     d, u = heappop(que)
-    d = -d
+    d = -d # use negative for heapq
+    if seen[u] != d: # this is not necessary since the number of pair that is going to be pushed to heapq will be same (maximum 2M times)
+        continue # if we did not implement this, it will still AC -> each v in heapq (max 2M Vs) will have loop for the connected node which will not update the val in "seen" -> worst case O(2M*M) or O(2M*max(connected node))
     for v in G[u]:
         if seen[v] >= d - 1: continue
         seen[v] = d - 1
@@ -33,3 +35,7 @@ for i in range(n):
 
 print(len(ret))
 print(*ret)
+
+
+# FYI
+# https://www.youtube.com/watch?v=_tRLPjky9SQ
