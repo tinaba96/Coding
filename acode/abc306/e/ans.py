@@ -32,8 +32,9 @@ for i in range(q):
             ans += y - mp[x]
             heappush(q1, [y, x])
         else:
-            while q2 and (q2[0][0] != -mp[q2[0][1]] or q2[0][1] == x or q2[0][1] in st):
-                heappop(q2)
+            #while q2 and (q2[0][0] != -mp[q2[0][1]] or q2[0][1] == x or q2[0][1] in st):
+            while q2 and (q2[0][0] != -mp[q2[0][1]] or q2[0][1] in st):
+                heappop(q2) # skip unnecessary one (not updated or exist in st)
             if not q2 or y >= -q2[0][0]:
                 ans += y - mp[x]
                 heappush(q1, [y, x])
@@ -46,7 +47,7 @@ for i in range(q):
                 heappush(q2, [-y, x])
                 ans += ly - mp[x]    
     else:
-        while q1 and (q1[0][0] != mp[q1[0][1]] or q1[0][1] == x or q1[0][1] not in st):
+        while q1 and (q1[0][0] != mp[q1[0][1]] or q1[0][1] not in st):
             heappop(q1)
         if y > q1[0][0]:
             ly, lx = heappop(q1)
