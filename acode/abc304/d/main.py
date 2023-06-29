@@ -29,8 +29,8 @@ B = int(input())
 
 y = list(map(int, input().split()))
 
-mpX = [[] for i in range(A+1)] # this should be A+1 not N+1
-mpY = [0 for i in range(B+1)]
+mpX = [[] for i in range(N+1)]
+mpY = [0 for i in range(N+1)]
 
 import bisect
 
@@ -44,13 +44,13 @@ d = defaultdict(int)
 
 for z in range(len(mpX)):
     for h in mpX[z]:
+        cnt += 1
         t = bisect.bisect(y,h)
         d[t] += 1
         if d[t] > ma:
             ma = d[t]
 
     for c in d:
-        cnt += 1 # this one was the cause of WA
         if d[c] < mi:
             mi = d[c]
         #print(d[c])
