@@ -10,22 +10,26 @@ from collections import Counter
 from collections import defaultdict
 #d = defaultdict(int)
 
+from collections import deque
+
 
 Q = int(input())
-S ='1'
+ans = 1
+deq = deque()
+deq.append(1)
+
 for q in range(Q):
     x = list(map(int, input().split()))
+    ans %= 998244353 # this is needed. otherwise, the ans will be too big to calculate
+    #ans %= 998244353*998244353 # 多倍長ではないのでこれでもAC
     if x[0] == 1:
-        c = str(x[1]) # O(N)
-        S += c # O(N) -> adding string will take O(N) (length of the sting) since string is the immutable that you have to create a new one  -> so this part will end up having O(Q**2)
-        if len(S) > 10**10:
-            i = int(S) # O(N)
-            S = str(i%998244353)
+        deq.append(x[1])
+        ans = 10*ans+x[1] # this is heavy if you don't take the mod every loop -> 10**(6*10**5) maximum 多倍長は思い　10**19(2**63)以下にするべき。
     if x[0] == 2:
-        S = S[1:] # this one also O(N) -> N is the length of the slice
+        v = deq.popleft()
+        ans -= v*pow(10, len(deq), 998244353)
     if x[0] == 3:
-        i = int(S) #O(N)
-        print(i%998244353)
+        print(ans%998244353)
 
 
 
