@@ -35,10 +35,10 @@ for i in range(q):
             #while q2 and (q2[0][0] != -mp[q2[0][1]] or q2[0][1] == x or q2[0][1] in st):
             while q2 and (q2[0][0] != -mp[q2[0][1]] or q2[0][1] in st):
                 heappop(q2) # skip unnecessary one (not updated or exist in st)
-            if not q2 or y >= -q2[0][0]:
+            if not q2 or y >= -q2[0][0]: # if x should be in q1
                 ans += y - mp[x]
                 heappush(q1, [y, x])
-            else:
+            else: # if x should be  in q2
                 ly, lx = heappop(q2)
                 ly = -ly
                 st.remove(x)
@@ -46,10 +46,10 @@ for i in range(q):
                 heappush(q1, [ly, lx])
                 heappush(q2, [-y, x])
                 ans += ly - mp[x]    
-    else:
+    else: # if x is not in st
         while q1 and (q1[0][0] != mp[q1[0][1]] or q1[0][1] not in st):
-            heappop(q1)
-        if y > q1[0][0]:
+            heappop(q1)  # number of val that are pushed to heapq is Q times in total -> pop() will also be Q at maximum in total -> ならし計算量O(Q) -> 全体計算量O(QlogN+Q)
+        if y > q1[0][0]: # new val from q2 will be insert to q1
             ly, lx = heappop(q1)
             st.remove(lx)
             ans += y - ly
@@ -61,3 +61,13 @@ for i in range(q):
             heappush(q2, [-y, x])      
     mp[x] = y
     print(ans)
+
+'''
+set() is used for check whether it is in q1.
+
+using heapq, you can not remove the element. -> remove using set()
+so I thought I should use set() but it is hard to keep the top K element using set() -> use heapq
+it is hard to change the value that are already in heapq which is not minumun -> use two heapq (shown in line 42-48)
+
+heapqは削除ができないため、挿入のみしていく。その代わりに削除されたかどうかをset()で管理していく。
+'''

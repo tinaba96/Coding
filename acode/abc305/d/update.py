@@ -43,6 +43,8 @@ for q in range(Q):
     val = 0
     l, r = list(map(int, input().split()))
     v = bisect.bisect_right(A, l)
+    if v == N:
+        v -= 1
     if v%2 == 0:
         val = A[v] - l
     v2 = bisect.bisect(A, r) # this is same with bisect_right
@@ -54,18 +56,5 @@ for q in range(Q):
     val += cum[v2-1] - cum[v]
     print(val)
 
-
-
-'''
-7
-0 240 720 1320 1440 1800 2160
-1
-2160 2160
-
-output: out of range
-
-
-* above case will WA
-'''
 
 

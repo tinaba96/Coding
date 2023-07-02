@@ -1,0 +1,15 @@
+1. used heaqp
+2. realized I cannot delete the specific val from heapq
+3. tried using set() instead so that I could delete the specific val with O(1)
+4. but realized I cannot get minimum val from set() with less than O(N)
+-> WA
+
+After the contest
+5. I can use set() and heapq at the same time
+6. In the contest, I though it is time consuming if we check one by one in the set() as we push every val in heapq (not pushing only necessary val into heapq but also unnecessary ones) .
+7. However, if we count the times that we are going to push val into heapq, it is maximum Q times which will also be the maximum times to be popped out. so it will be Q times in "total" which will not be heavy process
+8. I thought I have to keep the val in heapq that are only necessary. That is why I was thinking how to remove the specific val in
+heapq -> but actually it was not necessary. we can just keep them inside the heapq since the time complexty is not that big for this.
+9. Therefore, we can use set() and heapq at the same time to solve this problem
+
+

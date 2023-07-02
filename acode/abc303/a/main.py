@@ -35,4 +35,7 @@ for i in range(N):
 print('Yes')
 
 
+# normalization is effective (see the video editorial)
+
+
 

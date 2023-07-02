@@ -11,29 +11,9 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-p, q = list(map(str, input().split()))
+A, B = list(map(int, input().split()))
 
-list = 'ABCDEFG'
-
-v = [3, 1, 4, 1, 5, 9]
-#index = v.index(5)
-#print(index)
-
-s = 0
-e = 0
-for i in range(7):
-    if list[i] == p:
-        s = i
-    if list[i] == q:
-        e = i
-
-
-ans = 0
-for a in range(min(s,e), max(s, e)):
-    #print(a)
-    ans += v[a]
-
-print(ans)
+print((A-1)//B+1)
 
 
 

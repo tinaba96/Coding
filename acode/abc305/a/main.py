@@ -11,29 +11,18 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-p, q = list(map(str, input().split()))
+N = int(input())
 
-list = 'ABCDEFG'
+v = N % 10
 
-v = [3, 1, 4, 1, 5, 9]
-#index = v.index(5)
-#print(index)
-
-s = 0
-e = 0
-for i in range(7):
-    if list[i] == p:
-        s = i
-    if list[i] == q:
-        e = i
+if v < 3:
+    print(N//10 *10)
+elif v < 8:
+    print(N//10 *10 +5)
+else:
+    print(N//10 * 10 +10)
 
 
-ans = 0
-for a in range(min(s,e), max(s, e)):
-    #print(a)
-    ans += v[a]
-
-print(ans)
 
 
 

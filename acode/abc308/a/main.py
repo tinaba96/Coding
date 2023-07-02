@@ -11,29 +11,15 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-p, q = list(map(str, input().split()))
+S = list(map(int, input().split()))
 
-list = 'ABCDEFG'
+ans = 'Yes'
+prev = 0
 
-v = [3, 1, 4, 1, 5, 9]
-#index = v.index(5)
-#print(index)
-
-s = 0
-e = 0
-for i in range(7):
-    if list[i] == p:
-        s = i
-    if list[i] == q:
-        e = i
-
-
-ans = 0
-for a in range(min(s,e), max(s, e)):
-    #print(a)
-    ans += v[a]
+for i in S:
+    if i%25 != 0 or i > 675 or 100 > i or prev > i:
+        ans = 'No'
+    prev = i
 
 print(ans)
-
-
 

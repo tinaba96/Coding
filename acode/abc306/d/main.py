@@ -18,6 +18,8 @@ for i in range(N):
     x, y = list(map(int, input().split()))
     mp.append((x, y))
 
+INF = 10**12+1
+
 dp = [[0,0] for i in range(N+1)]
 
 dp[0][0] = 0
@@ -25,12 +27,15 @@ dp[0][1] = 0
 
 for i in range(N):
     Y = mp[i][1]
-    # these can be global (video editorial)
-    dp[i+1][1] = dp[i][1]
-    dp[i+1][0] = dp[i][0]
+    #print(Y)
+    #print(dp[0][1])
     if mp[i][0] == 0:
+        #dp[i+1][0] = max(dp[i+1][0], dp[i][0]+Y)
+        #dp[i+1][0] = max(dp[i+1][0], dp[i][1]+Y)
         dp[i+1][0] = max(dp[i][0], max(dp[i][0]+Y, dp[i][1]+Y))
+        dp[i+1][1] = dp[i][1]
     if mp[i][0] == 1:
+        dp[i+1][0] = dp[i][0]
         dp[i+1][1] = max(dp[i][1], dp[i][0]+Y)
 
 #print(dp)
