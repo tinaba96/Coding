@@ -24,6 +24,7 @@ mp = [0 for i in range(X+1)]
 for b in B:
     mp[b] = -1
 
+'''
 for e in A:
     if e > X:
         continue
@@ -31,9 +32,10 @@ for e in A:
         continue
     else:
         mp[e] = 1
-
 A.sort()
 #print(A)
+'''
+mp[0] = 1
 
 for j in range(X+1):
     if mp[j] == 1:

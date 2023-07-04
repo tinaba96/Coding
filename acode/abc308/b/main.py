@@ -11,13 +11,19 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-S = int(input())
-l = len(str(S))
+N, M = list(map(int, input().split()))
+C = list(map(str, input().split()))
+D = list(map(str, input().split()))
+P = list(map(int, input().split()))
 
-#print(bin(S | 10**2))
-#print(bin(~S))
-ans = bin(S | 11111111111)
-#print(format(~x & 0b1111, '04b'))
-print(bin(ans))
+ans = 0
 
-# or: 1 | 1 = 1 -> it will not reverse 
+for p in C:
+    if p not in D:
+        ans += P[0]
+    else:
+        ind = D.index(p)
+        ans += P[1+ind]
+   # print(ind)
+
+print(ans)

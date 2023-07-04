@@ -11,13 +11,31 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-S = int(input())
-l = len(str(S))
+N = int(input())
+S = str(input())
 
-#print(bin(S | 10**2))
-#print(bin(~S))
-ans = bin(S | 11111111111)
-#print(format(~x & 0b1111, '04b'))
-print(bin(ans))
+A = 0
+T = 0
 
-# or: 1 | 1 = 1 -> it will not reverse 
+S = list(S)
+
+for i in S:
+    if i == 'T':
+        T += 1
+    else:
+        A += 1
+
+if T > A:
+    print('T')
+    exit()
+elif A > T:
+    print('A')
+    exit()
+
+
+if S[-1] == 'T':
+    print('A')
+else:
+    print('T')
+
+

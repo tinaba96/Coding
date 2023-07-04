@@ -11,19 +11,23 @@ from collections import defaultdict
 #d = defaultdict(int)
 
 
-S = int(input(), 2)
-l = len(str(S))
-
-#print(bin(S | 10**2))
-#print(bin(2**7-1))
-#print(S)
-ans = bin(S ^ 2**11-1)
+N = int(input())
+A = list(map(int, input().split()))
 
 
+ans = [A[0]]
+i = 1
+
+while True:
+    if A[i] > ans[-1]:
+        for a in range(A[i]-ans[-1]):
+            ans.append(ans[-1]+1)
+    if A[i] < ans[-1]:
+        for a in range(ans[-1]-A[i]):
+            ans.append(ans[-1]-1)
+    i += 1
+    if i == N:
+        break
 
 
-#print(format(~x & 0b1111, '04b'))
-#print(ans)
-print(ans[len(ans)-l:])
-
-# or: 1 | 1 = 1 -> it will not reverse 
+print(*ans)
