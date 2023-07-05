@@ -35,18 +35,19 @@ used = [0 for i in range(N+1)]
 
 def count(used, ans, q):
         tmp=q.pop(0)
-        used[tmp] = 1
+        #print('pop', tmp)
         #print(linked_mat[tmp])
+        used[tmp] = 1
 
-        print(q)
+        #print('first', ans)
 
-        print('p',used)
+        #print('p',used)
         for ele in linked_mat[tmp]:
             if used[ele] == 0:
                 used[ele] = 1
                 q.append(ele)
                 ans += 1
-                print('p',ans)
+                #print('middle',ans)
             else:
                 continue
         if len(q) == 0:
@@ -60,14 +61,14 @@ def count(used, ans, q):
 for i in range(1, N+1):
     for k in range(N+1):
         used[k] = 0
-    q = linked_mat[i]
-    #print(q)
+    #print('initial', used)
+    q = [i]
+    #print('q',q)
     ans += 1
     used[i] = 1
-    if len(q) > 0:
-        ans += count(used, 0, q)
-        print('final',ans)
+    #print('beforefinal', ans)
+    ans += count(used, 0, q)
     #print(i)
-
-    #print(possible_mat[i])
+#print(possible_mat[i])
+print(ans)
 

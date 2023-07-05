@@ -19,3 +19,10 @@ for i in range(0, len(sorted_t)):
 
 print(max(a,b))
 
+'''
+In this way, some cases will not work
+ex.
+6
+6 5 10 3 7 3
+'''
+

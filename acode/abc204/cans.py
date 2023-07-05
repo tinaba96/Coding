@@ -12,7 +12,10 @@ for i in range(n):
   todo=[i]
   cnt=1
   while len(todo)>0:
+    # maybe DFS
     tmp=todo.pop()
+    # maybe BFS
+    #tmp=todo.pop(0)
     for j in G[tmp]:
       if seen[j]==False:
         seen[j]=True

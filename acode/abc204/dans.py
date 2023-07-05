@@ -1,3 +1,4 @@
+#dp
 n=int(input())
 t=list(map(int,input().split()))
 dp=1
@@ -10,6 +11,7 @@ for i in range(tot+1):
 print(ans)
 
 
+'''
 
 #another ans
 def main():
@@ -42,4 +44,4 @@ def main():
 
 main()
 
-
+'''
