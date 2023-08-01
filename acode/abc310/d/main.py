@@ -52,7 +52,7 @@ def solv(vi, q):
     return
 
 
-for c in cases:
+for c in cases:  # o(T!)
     visit = [0 for i in range(N+1)]
     for i in c:
         visit[i] = 1
