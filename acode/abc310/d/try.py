@@ -48,7 +48,9 @@ def solv(vi, q):
         if i != v and i not in mp[v]:
             visit[i] = 1
             q.append(i)
-            solv(vi, q)
+            solv(visit, q)
+            #visit[i] = 0
+            q.pop_back
     return
 
 
@@ -60,10 +62,8 @@ for c in cases:  # o(T!)
         e = list(e)
         solv(visit, e)
 
-
 print(cnt)
 
 # this will count duplicated case
 # maybe you need to do numbering to each node
-
 
