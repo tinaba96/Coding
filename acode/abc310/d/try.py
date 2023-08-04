@@ -33,24 +33,29 @@ cases = list(itertools.combinations(l, T))
 visit = [0 for i in range(N+1)]
 
 cnt = 0
+ans = set()
 
 def solv(vi, q):
     global cnt
-    if len(q) == 0:
-        return
-    v = q.pop()
+    global ans
+    #if len(q) == 0:
+    #    return
+    v = q
+    #v = q.pop()
     if sum(vi) == N:
         cnt += 1
+        ans.add(str(vi))
         return
     for i in range(1, N+1):
         if visit[i] == 1:
             continue
-        if i != v and i not in mp[v]:
+        #if i != v and i not in mp[v]:
+        if i not in mp[v]:
             visit[i] = 1
-            q.append(i)
-            solv(visit, q)
-            #visit[i] = 0
-            q.pop_back
+            #q.append(i)
+            solv(visit, i)
+            visit[i] = 0
+            #q.pop_back
     return
 
 
@@ -60,9 +65,11 @@ for c in cases:  # o(T!)
         visit[i] = 1
     for e in itertools.permutations(c):
         e = list(e)
-        solv(visit, e)
+        solv(visit, e[0])
+        #solv(visit, e)
 
-print(cnt)
+print(len(ans))
+#print(cnt)
 
 # this will count duplicated case
 # maybe you need to do numbering to each node
