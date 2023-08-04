@@ -1,3 +1,5 @@
+# same as video editorial
+
 N, T, M = map(int, input().split())
 relations = [[] for _ in range(N)]
 for _ in range(M):
@@ -18,11 +20,13 @@ def dfs(state, p, t):
         if state[other] in nxt:
             nxt.remove(state[other])
     for ti in nxt:  # ti is team index
-        state[p] = ti
-        if ti == t:
-            dfs(state.copy(), p+1, min(t+1, T-1))
+        state[p] = ti # p belongs to team ti
+        if ti == t: # t is the new empty team
+            dfs(state, p+1, min(t+1, T-1))
+            #dfs(state.copy(), p+1, min(t+1, T-1))
         else:
-            dfs(state.copy(), p+1, t)
+            dfs(state, p+1, t)
+            #dfs(state.copy(), p+1, t)
         state[p] = None
 
 dfs([None]*N, 0, 0)
