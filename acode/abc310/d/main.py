@@ -45,18 +45,21 @@ def solv(vi, q):
     for i in range(1, N+1):
         if visit[i] == 1:
             continue
-        if i != v and i not in mp[v]:
+        if i != v and i not in mp[v]: # you have to check all the team member (not only v)
             visit[i] = 1
             q.append(i)
             solv(vi, q)
+            # pop and visit[i] = 0 is needed
     return
 
 
-for c in cases:  # o(T!)
+for c in cases:  # o(nCt) -> 10C5 = 252
     visit = [0 for i in range(N+1)]
     for i in c:
         visit[i] = 1
-    for e in itertools.permutations(c):
+
+    # O(T!) -> 10! = 3628800
+    for e in itertools.permutations(c): # this is not needed (solv() is already incorrect but solve() is doing the similar operations)
         e = list(e)
         solv(visit, e)
 
@@ -64,6 +67,7 @@ for c in cases:  # o(T!)
 print(cnt)
 
 # this will count duplicated case
-# maybe you need to do numbering to each node
+# maybe you need to do numbering to each node (to identify the team)
 
-
+# if you want to implement BFS, you should use either recurrsion or while&queue
+# here, you are implementing both and making confusions
