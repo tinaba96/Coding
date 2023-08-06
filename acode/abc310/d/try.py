@@ -50,7 +50,7 @@ def solv(vi, q):
         if visit[i] == 1:
             continue
         #if i != v and i not in mp[v]:
-        if i not in mp[v]:
+        else:
             visit[i] = 1
             #q.append(i)
             solv(visit, i)
@@ -73,4 +73,5 @@ print(len(ans))
 
 # this will count duplicated case
 # maybe you need to do numbering to each node
+# we should also keep the data that which player is in which team in order to find "dislike" relations mp
 
