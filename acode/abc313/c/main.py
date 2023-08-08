@@ -34,8 +34,8 @@ for i in range(N):
 
 print(max(mi, pl))
 
+#print(cnt)
 '''
-print(cnt)
 if cnt%2 != 0:
     print((cnt+1)//2)
 else:
