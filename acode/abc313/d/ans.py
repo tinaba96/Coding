@@ -13,7 +13,7 @@ for i in range(k+1):
     base.append(qa(q))
 ans=[0]*(k+1)
 # 1~K+1の偶奇
-sm=sum(base)%2
+sm=sum(base)%2 # Kが奇数だからこの値は全体の合計を意味する
 # K+1個とK個の差でSiの偶奇を求める
 for i in range(k+1):
     ans[(k+i)%(k+1)]=sm^base[i]
