@@ -39,5 +39,3 @@ else:
 
 
 
-# 問題文確認
-#  This was AC if spaces and newlines were ignored. Please use --ignore-spaces (-S) option or --ignore-spaces-and-newline (-N) option.
