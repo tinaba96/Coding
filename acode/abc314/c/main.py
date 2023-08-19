@@ -21,7 +21,7 @@ ans = [[] for j in range(N)]
 for i in range(N):
     mp[C[i]].append(i) 
 
-for m in range(M):
+for m in range(M): # this is no need
     l = len(mp[C[m]])
     mp[C[m]] = [mp[C[m]][-1]] + mp[C[m]][:l-1]
 
