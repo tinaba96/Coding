@@ -17,7 +17,6 @@ Q = int(input())
  
 
 mp = [] 
-one = []
 two = 0
 three = 0
 
@@ -27,7 +26,7 @@ for q in range(Q):
     x = int(x)
     mp.append((t,x,c))
     if t == 1:
-        one.append(q)
+        S[x-1] = c
     elif t == 2:
         two = q
     else:
@@ -39,20 +38,12 @@ if two > three:
     flg = 'small'
     p = two
 
-for i in range(p+1):
-    t, x, c = mp[i]
-    if t == 1:
-        S[x-1] = c
-
 if p != 0:
     if flg == 'big':
         S = [i.upper() for i in S]
     else:
         S = [i.lower() for i in S]
 
-if p+1 >= Q:
-    print(''.join(S))
-    exit()
 for i in range(p+1, Q):
     t, x, c = mp[i]
     if t == 1:
@@ -60,9 +51,4 @@ for i in range(p+1, Q):
     
 
 print(''.join(S))
-
-
-
-
-
 
