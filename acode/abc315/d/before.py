@@ -1,13 +1,3 @@
-# sample 2 のケースを落とすために、試行錯誤した。
-# 2x2まではこのアプローチで行けるが、それ以上やると、行から実行するのか、列から実行するのかで、答えが変わってしまう。
-# 2x2以降は、それぞれのパターンをやることでACするかも。
-# ただ、高い確率でTLEする可能性あり
-# TLEの原因はおそらくここになく、そもそものアプローチがTLEだと思われる。
-# なぜなら、同じことを2回書くことで対策したが、2回書いても書かなくても、提出時に表示された実行時間に差はなかったから。
-
-# --> 実際に削除していかないことで、上記の2x2の問題は対処できる。 (see video editorial)
-
-
 import sys
 sys.setrecursionlimit(500005)
 #sys.setrecursionlimit(10**9)
@@ -38,7 +28,6 @@ for i in range(H):
 
 sd = set()
 
-minus = 0
 
 while True:
     final = False
@@ -66,20 +55,10 @@ while True:
             d.append(h)
 
     d.sort(reverse=True)
-
-    if len(d) > 0:
-        check = mp[d[-1]][0]
-        #print(check)
-
     for e in d:
         del mp[e]
 
-    if len(mp) == 1 and H-len(d) == 1:
-        if check in mp[0]:
-            minus = mp[0].count(check)
-
     H -= len(d)
-
 
     #d = []
     #sd = set()
@@ -111,7 +90,6 @@ while True:
     #print(sd)
     if final == False:
         break
-
     
 
 lsd = list(sd)
@@ -128,12 +106,11 @@ for e in lsd:
 ans = 0
 for i in range(len(mp)):
     ans += len(mp[i])
-print(ans-minus)
+#print(ans)
 
 
 
 
-'''
 # another case
 H = oH
 W = oW
@@ -164,11 +141,11 @@ while True:
             final = True
             #d.append(w)
             sd.add(w)
-
-    # no need
+    '''
     for e in d:
         for h in range(H):
             mp[h] = mp[h][:e] + mp[h][e+1:]
+    '''
 
     #W -= len(d)
 
@@ -224,6 +201,4 @@ ans2 = 0
 for i in range(len(mp)):
     ans2 += len(mp[i])
 print(min(ans, ans2))
-'''
 
-# the time complexity for this is O(HW(H+W)) (see video editorial)
