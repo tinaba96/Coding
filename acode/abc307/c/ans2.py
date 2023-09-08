@@ -18,8 +18,8 @@ B=normalize(convert(HB,WB,[input() for i in range(HB)]))
 HX,WX=map(int,input().split())
 X=normalize(convert(HX,WX,[input() for i in range(HX)]))
 ans=False
-for i in range(-HX,HX):
-  for j in range(-WX,WX):
+for i in range(-HX+1,HX):
+  for j in range(-WX+1,WX):
     ans|=normalize(A.union((i+y,j+x) for (y,x) in B))==X
 
 if ans:
