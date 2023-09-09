@@ -52,5 +52,5 @@ print(b)
 print(x)
 
 
-
+# for binary solution, see ans3.py
 
