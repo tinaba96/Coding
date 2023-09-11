@@ -28,18 +28,19 @@ def solve(base, tmp, seen):
     global ans
     seen[base-1] = True
     ans = max(ans, tmp)
+    cnt = 0
     for b, c in mp[base]:
+        cnt += 1
+        print('base: ', base, 'cnt: ', cnt)
         #print(b,c)
         if seen[b-1] == True:
             continue
-        tmp += c
         #tmp = max(solve(b, tmp, seen), tmp)
-        solve(b, tmp, seen)
+        solve(b, tmp+c, seen)
         #seen[b-1] = False
-        #tmp -= c
-
     return max(ans, tmp)
         
+print(mp)
 
 final = 0
 for i in range(N):
@@ -49,13 +50,13 @@ for i in range(N):
     tmp = 0
     seen[i] = True
     final = max(final, solve(base, tmp, seen))
-
-
+    print('i: ', i+1, 'final: ', final)
+    print('------')
 
 print(final)
 print(ans)
 
-
+# seen がグローバルに変更されている
 
 
 
