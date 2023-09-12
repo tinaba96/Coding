@@ -1,3 +1,6 @@
+# コピーによる、完全な参照渡し（オブジェクトへの参照私ではなく。）
+
+
 import sys
 sys.setrecursionlimit(500005)
 #sys.setrecursionlimit(10**9)
@@ -31,16 +34,17 @@ def solve(base, tmp, seen):
     cnt = 0
     for b, c in mp[base]:
         cnt += 1
-        print('base: ', base, 'cnt: ', cnt)
+        #print('base: ', base, 'cnt: ', cnt)
         #print(b,c)
         if seen[b-1] == True:
             continue
         #tmp = max(solve(b, tmp, seen), tmp)
-        solve(b, tmp+c, seen)
+        seenCp = seen[:]
+        solve(b, tmp+c, seenCp)
         #seen[b-1] = False
     return max(ans, tmp)
         
-print(mp)
+#print(mp)
 
 final = 0
 for i in range(N):
@@ -50,10 +54,10 @@ for i in range(N):
     tmp = 0
     seen[i] = True
     final = max(final, solve(base, tmp, seen))
-    print('i: ', i+1, 'final: ', final)
-    print('------')
+    #print('i: ', i+1, 'final: ', final)
+    #print('------')
 
-print(final)
+#print(final)
 print(ans)
 
 
