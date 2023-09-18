@@ -47,10 +47,16 @@ def dfs(left, seen, nd):
     for i in range(len(need)):
         if seen[i] == True:
             continue
+
         seen[i] = True
         d, z = need[i]
+
         #print(d, z)
         #dp[z] = min(dp[z], dp[i] + d)
+
+        # 選ばないという選択肢
+        dfs(left, seen, nd)
+
         dfs(left-z, seen, nd+d)
         seen[i] = False
 
