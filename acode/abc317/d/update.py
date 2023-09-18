@@ -30,7 +30,9 @@ if tot_x > tot-tot_x:
 
 tot_y = tot-tot_x
 #dif = tot_y - tot_x
-dif = tot//2 + 1
+
+#dif = tot//2 + 1
+dif = (tot-1)//2 + 1
 
 # dp[x] 残りxの時の値
 
@@ -39,8 +41,13 @@ dp = [10**6 for i in range(dif+1)]
 dp[0] = 0
 ans  = 10**6
 
+print(len(need))
+
 def dfs(left, seen, nd):
     global ans
+    print('left: ', left)
+    print('seen: ', seen)
+    print('nd: ', nd)
     if left <= 0:
         ans = min(ans, nd)
         return
@@ -69,4 +76,14 @@ print(ans)
 
 
 # 実装しきれんかった、、計算量もOK?
+'''
+4
+1878 2089 16
+1982 1769 13
+2148 1601 14
+2189 2362 15
+'''
+
+# 動作を一から確認する。
+
 
