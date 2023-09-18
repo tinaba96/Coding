@@ -39,9 +39,6 @@ dp = [10**6 for i in range(dif+1)]
 dp[0] = 0
 ans  = 10**6
 
-#print(need)
-#print(dif)
-
 def dfs(left, seen, nd):
     global ans
     if left <= 0:
