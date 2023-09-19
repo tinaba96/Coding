@@ -32,7 +32,8 @@ tot_y = tot-tot_x
 #dif = tot_y - tot_x
 
 #dif = tot//2 + 1
-dif = (tot-1)//2 + 1
+#dif = (tot-1)//2 + 1
+dif = (tot-1)//2 + 1 - tot_x
 
 # dp[x] 残りxの時の値
 
@@ -41,13 +42,24 @@ dp = [10**6 for i in range(dif+1)]
 dp[0] = 0
 ans  = 10**6
 
-print(len(need))
+#print(len(need))
+
+#memo = [[False for i in range()
+memo = set()
+# memo.add((43, 'sdf'))
+
 
 def dfs(left, seen, nd):
     global ans
-    print('left: ', left)
-    print('seen: ', seen)
-    print('nd: ', nd)
+    global memo
+    #print('left: ', left)
+    #print('seen: ', seen)
+    #print('nd: ', nd)
+    if (left, str(seen)) in memo:
+        return
+    else:
+        memo.add((left, str(seen)))
+
     if left <= 0:
         ans = min(ans, nd)
         return
@@ -62,7 +74,7 @@ def dfs(left, seen, nd):
         #dp[z] = min(dp[z], dp[i] + d)
 
         # 選ばないという選択肢
-        dfs(left, seen, nd)
+        #dfs(left, seen, nd)
 
         dfs(left-z, seen, nd+d)
         seen[i] = False
@@ -71,7 +83,9 @@ for i in range(len(need)):
     seen = [False]*(len(need)+1)
     dfs(dif, seen, 0)
 
+#print(memo)
 #print(dp)
+
 print(ans)
 
 
