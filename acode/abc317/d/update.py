@@ -52,13 +52,16 @@ memo = set()
 def dfs(left, seen, nd):
     global ans
     global memo
+
     #print('left: ', left)
     #print('seen: ', seen)
     #print('nd: ', nd)
-    if (left, str(seen)) in memo:
-        return
-    else:
-        memo.add((left, str(seen)))
+
+    #if (left, str(seen)) in memo:
+    #    return
+    #else:
+        # memo.add((left, str(seen)))  # TLE -> too big for memo
+
 
     if left <= 0:
         ans = min(ans, nd)
@@ -75,6 +78,7 @@ def dfs(left, seen, nd):
 
         # 選ばないという選択肢
         #dfs(left, seen, nd)
+
 
         dfs(left-z, seen, nd+d)
         seen[i] = False
