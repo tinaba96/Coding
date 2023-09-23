@@ -57,13 +57,14 @@ def dfs(left, seen, nd):
     #print('seen: ', seen)
     #print('nd: ', nd)
 
-    if (left, seen) in memo:
+    if (left, seen) in memo: # zの値で評価できない
         return
 
     if left <= 0:
         ans = min(ans, nd)
         return
-    for i in range(len(need)):
+    # for i in range(len(need)):
+    for i in range(seen+1, len(need)):
         if i <= seen:
             continue
 
