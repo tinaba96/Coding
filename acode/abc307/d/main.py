@@ -35,13 +35,13 @@ for i in range(N):
         ind2.append(i)
         if len(ind) != 0:
             left = ind.pop()
-            imp.append((left, i))
+            imp.append((left, i)) 
 
     else:
         mag.add(i)
 
     
-for a, b in imp: # this is TLE
+for a, b in imp: # this is TLE  O(N^2)
     #print(a, b)
     for i in range(a, b+1):
         list.add(i)
