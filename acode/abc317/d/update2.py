@@ -57,8 +57,8 @@ def dfs(left, seen, nd):
     #print('seen: ', seen)
     #print('nd: ', nd)
 
-    if (left, seen) in memo: # zの値で評価できない
-        return
+    #if (left, seen) in memo: # zの値で評価できない
+    #    return
 
     if left <= 0:
         ans = min(ans, nd)
@@ -104,6 +104,6 @@ print(ans)
 
 # minをとってないということは計算すべき部分を飛ばしている？
 
-# マス自体は100 x 10^5 だが、遷移がNあるため、全体の計算量は約O(10^5 * 100 * 100)
+# マス自体は100 x 10^5 だが、遷移がNあるため、全体の計算量は約O(10^5 * 100 * 100)  -> TLE
 
 
