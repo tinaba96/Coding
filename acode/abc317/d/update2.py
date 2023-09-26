@@ -62,12 +62,16 @@ def dfs(left, seen, nd):
 
     if left <= 0:
         ans = min(ans, nd)
+        #print(seen, ': ', nd)
         return
-    # for i in range(len(need)):
-    for i in range(seen+1, len(need)):
-        if i <= seen:
+    for i in range(len(need)):
+    #for i in range(seen+1, len(need)):
+        #if i <= seen:
+        #    continue
+        if seen[i] == True:
             continue
 
+        seen[i]  = True
         d, z = need[i]
 
         #print(d, z)
@@ -78,14 +82,17 @@ def dfs(left, seen, nd):
         # 選ばないという選択肢
         #dfs(left, seen, nd)
 
-        dfs(left-z, i, nd+d)
+        #dfs(left-z, i, nd+d)
+        dfs(left-z, seen, nd+d)
+        seen[i] = False
 
-    memo.add((left, seen))
+    #memo.add((left, seen))
 
 
 for i in range(len(need)):
     seen = [False]*(len(need)+1)
-    dfs(dif, -1, 0)
+    dfs(dif, seen, 0)
+    #dfs(dif, -1, 0)
 
 #print(memo)
 #print(dp)
