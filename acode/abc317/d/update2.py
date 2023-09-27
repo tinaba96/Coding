@@ -40,7 +40,8 @@ dif = (tot-1)//2 + 1 - tot_x
 
 dp = [10**6 for i in range(dif+1)]
 dp[0] = 0
-ans  = 10**6
+ans  = 10**6 # this is too small. should be more than 10^9
+ans  = 10**10
 
 #print(len(need))
 
