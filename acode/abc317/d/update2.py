@@ -40,7 +40,7 @@ dif = (tot-1)//2 + 1 - tot_x
 
 dp = [10**6 for i in range(dif+1)]
 dp[0] = 0
-ans  = 10**6 # this is too small. should be more than 10^9
+# ans  = 10**6 # this is too small. should be more than 10^9
 ans  = 10**10
 
 #print(len(need))
@@ -110,8 +110,9 @@ print(ans)
 '''
 
 
-# minをとってないということは計算すべき部分を飛ばしている？
+# minをとってないということは計算すべき部分を飛ばしている？ -> WA
 
 # マス自体は100 x 10^5 だが、遷移がNあるため、全体の計算量は約O(10^5 * 100 * 100)  -> TLE
 
+# 本来であれば最小値をまず求めてから遷移をするが、この実装だと最小値とは限らないのに最後まで遷移しており、無駄が発生している。
 
