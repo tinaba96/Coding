@@ -49,6 +49,7 @@ ans  = 10**10
 memo = set()
 # memo.add((43, 'sdf'))
 
+l = len(need)
 
 def dfs(q):
     global ans
@@ -66,37 +67,49 @@ def dfs(q):
 
     left, ind, nd = q.popleft()
 
-    if ind < N and smallest[ind][left] < nd:
+    #print(ind, left)
+    #print(smallest)
+    if ind < l and smallest[ind][left] < nd:
+        dfs(q)
         return
 
     if left <= 0:
         ans = min(ans, nd)
         #print(seen, ': ', nd)
+        dfs(q)
         return
 
-    d, z = need[i]
+    d, z = need[ind]
+
+    if ind+1 == l:
+        dfs(q)
+        return
 
     if smallest[ind+1][left] > nd:
         q.append((left, ind+1, nd))
         smallest[ind+1][left] = nd
 
-    if smallest[ind+1][left] > nd+d:
+    if smallest[ind+1][left-z] > nd+d:
         q.append((left-z, ind+1, nd+d))
-        smallest[ind+1][left] = nd+d
+        smallest[ind+1][left-z] = nd+d
 
     #memo.add((left, seen))
     dfs(q)
 
-smallest = [[10^10 for i in range(N)] for j in range(10^5+1)]
+smallest = [[10**10 for i in range(10**5+1)] for j in range(N)]
 
 seen = [False]*(len(need)+1)
 q = deque([])
+d, z = need[0]
+q.append((dif-z, 0, d))
 q.append((dif, 0, 0))
+#q.append((dif, 0, 0))
 dfs(q)
 
 #dfs(dif, 0, 0)
 
 print(ans)
+#print(q)
 
 
 # minをとってないということは計算すべき部分を飛ばしている？
