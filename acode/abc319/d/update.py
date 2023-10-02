@@ -35,7 +35,7 @@ def ch(ind):
 
     for ele in L:
         if v-ele < 0:
-            v = ind
+            v = ind # initialize
             cnt += 1
             if cnt > M:
                 return False
