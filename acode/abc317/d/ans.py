@@ -39,4 +39,4 @@ for i in range(N):
 need = (all_seat//2)+1
 print(min(dp[N][need:]))
 
-
+# similar to video editorial
