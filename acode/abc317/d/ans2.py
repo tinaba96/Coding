@@ -23,3 +23,5 @@ data = [tuple(map(int, input().split())) for _ in range(N)]
 
 print(minimum_voters_to_win(N, data))
 
+# smart way in terms of space complexity -> video editorial
+
