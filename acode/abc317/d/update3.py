@@ -21,7 +21,7 @@ dif = (tot-1)//2 + 1 - tot_x
 
 dp = [10**6 for i in range(dif+1)]
 dp[0] = 0
-ans  = 10**13
+ans  = 10**13 # ans can be 10^9*100
 l = len(need)
 
 def dfs(q):
@@ -53,7 +53,6 @@ def dfs(q):
             smallest[ind][left-z] = nd+d
     else:
         ans = min(ans, nd+d)
-
     dfs(q)
 
 smallest = [[10**13 for i in range(dif+1)] for j in range(N)] # memo
@@ -62,3 +61,8 @@ q.append((dif, -1, 0))
 dfs(q)
 
 print(ans)
+
+# There is no WA
+# the reason for TLE is just because of python. reccursion can be slow for python
+# the time complexity is O(10^5*N*2) -> O(10^5*100*2)
+
