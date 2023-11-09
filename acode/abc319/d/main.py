@@ -23,34 +23,36 @@ cumsum = []
 tmp = 0
 for l in L:
     cumsum.append(tmp+l)
-    tmp += l
+    tmp += l+1
 
-#print(cumsum)
+print(cumsum)
 import bisect
 
 def ch(ind):
-    cnt = 1
+    arr = cumsum
+    cnt = 0
     v = ind
+    while True:
+        cnt += 1
+        if cnt > M:
+            return False
+        g = bisect.bisect_right(arr, v)
+        arr = arr[g:]
+
+        if len(arr) == 0:
+            return False
+
+        v = ind+arr[0]-1
+        print(cnt)
+        print(arr)
+        
+        if v > cumsum[-1]:
+            return True
 
 
-    for ele in L:
-        if v-ele < 0:
-            v = ind # initialize
-            cnt += 1
-            if cnt > M:
-                return False
-        elif v-ele != 0:
-            v -= 1
-        v -= ele
+print(ch(24))
 
-    return True
 
-while True: # binary search? (size of Li is 10^9 so we need binary seach but why WA?)
-    if ch(mini):
-        print(mini)
-        exit()
-    else:
-        mini += 1
-    
+# 二分探索を使って求めらると思ったが、今の状態だと空白がうまく扱えていない
+# 空白も入れてcumsumを考えるとどこから単語がスタートするか分からない
 
-# O(N*logN)
