@@ -13,10 +13,10 @@ for s in range(1<<h1):
             continue
         c = []
         for i in range(h1):
-            if s>>(h1-1-i)&1:
+            if s>>i&1:
                 c.append([])
                 for j in range(w1):
-                    if t>>(w1-1-j)&1:
+                    if t>>j&1:
                         c[-1].append(a[i][j])
         if c == b:
             print("Yes")

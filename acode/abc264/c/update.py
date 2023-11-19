@@ -53,9 +53,10 @@ finalFlag = True
 for x in cols:
     flg = True
     cnt = 0
+    ind = 0
     for hh in range(1,H2):
         ff = False
-        for k in range(H):  # this is not considering the order of hh
+        for k in range(ind, H):  # this is not considering the order of hh
             if B[hh][0] == A[k][x[0]]: # you have to look each colomn 
                 flgO = True
                 ff = True
@@ -67,11 +68,18 @@ for x in cols:
                         flgO = False
                 if flgO == False:
                     flg = False
+                else:
+                    flg = True
                     break
         if not ff:
             flg = False
             break
         else:
+            if k == H-1:
+                if hh != H2-1:
+                    flg == False
+                break
+            ind = k
             cnt += 1
     # if cnt == H2:
     if flg:
