@@ -3,7 +3,7 @@ sys.setrecursionlimit(5000050)
 import pypyjit # this is for solving slow issue for pypy when using recursion but python will not need this (test will fail but submit works)
 pypyjit.set_param('max_unroll_recursion=-1')
 
-
+# A = list(map(int, input().split()))
 N, x, y = list(map(int, input().split()))
 A = list(map(int, input().split()))
 
