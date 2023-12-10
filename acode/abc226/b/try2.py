@@ -5,7 +5,7 @@ cnt = 0
 a = set()
 for i in range(N):
     L = list(map(int, input().split()))
-    a.add(str(L))
+    a.add(tuple(L))
 
 print(len(a))
 

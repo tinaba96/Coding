@@ -5,7 +5,7 @@ cnt = 0
 a = [[] for i in range(N+1)]
 for i in range(N):
     L = list(map(int, input().split()))
-    #print(a[L[0]])
+    print(a[L[0]])
     if L in a[L[0]]:
             cnt += 1
     else:
@@ -14,5 +14,6 @@ for i in range(N):
 print(N-cnt)
 
 
-
+# TLE
+# you need to use set or tuple
 
