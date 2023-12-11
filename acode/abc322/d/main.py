@@ -167,7 +167,7 @@ lC += op(C3)
 
 
 for a in lA:
-    #pri(a) # you see this output 
+    #pri(a) # you see this output is something wrong
     #print('----')
     for b in lB:
         for c in lC:
