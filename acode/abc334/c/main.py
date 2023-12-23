@@ -47,5 +47,7 @@ for i in range(1, mid, 2):
 for i in range(mid+1, K, 2):
     right += A[i]-A[i-1]
 
-#
+# 除くidを基準にleftとrightの合計を計算しておき、除くidを徐々にずらしていく。
+# 最終的に合計の最小値を求める。
+
     
