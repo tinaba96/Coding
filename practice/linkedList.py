@@ -5,5 +5,7 @@ class Node:
         self.value = null
 
 N = Node()
+N.prev = null
+N.next = null
 
 
