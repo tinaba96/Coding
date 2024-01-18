@@ -1,8 +1,9 @@
 class Node:
-    def _init__(self, n):
+    def _init__(self):
         self.prev = null
         self.next = null
-        self.value = value
+        self.value = null
 
-N = Node(10)
+N = Node()
+
 
