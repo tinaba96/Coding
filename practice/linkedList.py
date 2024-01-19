@@ -1,11 +1,28 @@
 class Node:
-    def _init__(self):
+    def __init__(self):
         self.prev = null
         self.next = null
         self.value = null
 
+# ini
 N = Node()
-N.prev = null
-N.next = null
+N.prev = N
+N.next = N
+
+# insert v after p
+def insertNode(v, p): 
+    #
+    
+
+# deleting v
+def deleteNode(v):
+    #
+
+# print linked list as an array
+def printLinkedList(N):
+    #
+
+
+
 
 
