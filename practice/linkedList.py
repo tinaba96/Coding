@@ -11,8 +11,10 @@ N.next = N
 
 # insert v after p
 def insertNode(v, p): 
-    #
-    
+    p.next = v
+    v.prev = p
+    v.next = p.next
+
 
 # deleting v
 def deleteNode(v):
