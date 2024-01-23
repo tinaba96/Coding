@@ -33,3 +33,4 @@ def merge(left, right):
     return merged
 
 print(msort(arr))
+
