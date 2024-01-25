@@ -28,14 +28,22 @@ if dfs (0, 0):
     print('Yes')
 else:
     print('No')
+
+# O(2**N)
 '''
+
+
 for i in range(2**N):
     ans = 0
-    b = bin(i)
-    for l in range(2, len(b)):
+    #print('--------')
+    t = bin(i)
+    b = t[2:]
+    for j in range(N-len(b)):
+        b = '0'+b
+    #print(b)
+    for l in range(len(b)):
         if b[l] == '1':
             ans += A[l-2]
-            print(ans)
             if k == ans:
                 print('Yes')
                 exit()
@@ -44,6 +52,7 @@ for i in range(2**N):
 print('No')
 
         
+# O(N*2**N)
 
 
 
