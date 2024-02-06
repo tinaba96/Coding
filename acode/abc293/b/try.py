@@ -23,12 +23,11 @@ for i in range(K):
         sX.remove(X[i])
 
 
-print(len(sX))
-
 ans = list(sX)
 
 ans.sort()
 
+print(len(ans))
 print(*ans)
 
 

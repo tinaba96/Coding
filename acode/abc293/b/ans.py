@@ -1,3 +1,5 @@
+# python
+
 import numpy as np
  
 N = int(input())
@@ -7,7 +9,8 @@ A = list(map(int, input().split()))
 called = np.zeros(N)
  
 for i in range(N):
-    if called[i] == 0:
+    if called[i] == 0 and called[A[i]-1] == 0:
+    #if called[i] == 0:
         called[A[i]-1] = 1
  
 uncalled = []
@@ -16,4 +19,5 @@ for i in range(N):
         uncalled.append(str(i+1))
  
 print(len(uncalled))
-print(" ".join(uncalled))
+#print(" ".join(uncalled))
+print(*uncalled)
