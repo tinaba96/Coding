@@ -7,7 +7,7 @@ tmp = [0]*max(A)
 num = 0
 leng = 0
 
-for i in range(max(A)): # 0(n)  max: 10^5
+for i in range(max(A)): # O(n)  max: 10^5
     ans = min(A)*len(A)
     lengt = 0
     num += 1
@@ -26,3 +26,8 @@ for i in range(max(A)): # 0(n)  max: 10^5
 #print(tmp)
 
 print(max(tmp))
+
+
+# O(10^9) is too much
+
+
