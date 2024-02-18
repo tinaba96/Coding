@@ -10,7 +10,7 @@ dp[0][0] = 0
 
 for j in range(1, 10**5 + 1):
     for i in range(4+1):
-        if snuke[j] == [] or (not snuke[j][0] == i):
+        if snuke[j] == [] or snuke[j][0] != i:
             if i == 0:
                 dp[i][j] = max(dp[i][j-1], dp[i+1][j-1])
             elif i == 5:
