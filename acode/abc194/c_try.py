@@ -2,14 +2,17 @@ N = int(input())
 
 A = list(map(int, input().split()))
 
-a = 0
-b = 0
+total = 0
+tot = 0
 
 for i in range(N):
-    a += A[i]**2
+    total += A[i]**2
 
-for i in range(N):
-    b += A[i]**2
+for j in range(N):
+    tot += A[j]
 
+tot2 = tot**2
+
+print(N*total-tot2)
 
 

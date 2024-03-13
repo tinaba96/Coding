@@ -112,7 +112,7 @@ for j in range(2**K):
 print(ans)
 '''
 
-#modifying by myself -> not solved
+#modifying by myself
 N, M = list(map(int, input().split()))
 arr = []
 for i in  range(M):
@@ -133,7 +133,6 @@ for j in range(K):
     C, D = list(map(int, input().split()))
     temp.append((C, D))
 
-
 #print(str(bin(2**K)))
 cnt = 0
 tmp = []
@@ -149,7 +148,10 @@ for j in range(k2):
 
     #print(tmp)
     #temporary=dish
-    temporary = [0]*2**K
+
+    # temporary = [0]*2**K # this was the mistake
+
+    temporary = [0]*(N+1)  # this is the correct one
 
     for k in range(K):
         if j>>k & 1:
@@ -159,7 +161,7 @@ for j in range(k2):
 
         #temporary.append(temp[k][int(tmp[len(tmp)-1-k])])
         #temporary[temp[k][int(tmp[len(tmp)-1-k])]] += 1
-        #print(temporary)
+        # print(temporary)
 
 
     for t in range(M):

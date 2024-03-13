@@ -20,12 +20,18 @@ cnt = 0
 
 flag = False
 
+hh = 0
+
 for h in range(H):
     for w in range(W):
         if S[h][w] == '#' and flag == False:
+            if le2:
+                hh = 2
+            else:
+                hh = 1
             if w in le2:
                 cnt -= 1
-            elif w not in le2 and h > 1:
+            elif w not in le2 and hh > 1:
                 cnt += 1
             le.append(w)
             cnt += 1
@@ -36,34 +42,23 @@ for h in range(H):
             if w in re2:
                 #print('yes')
                 cnt -= 1
-            elif w not in re2 and h > 1:
+            elif w not in re2 and hh > 1:
                 cnt += 1
             re.append(w)
             cnt += 1
             flag = False
-    if len(re) > 1:
+    if len(re) > 1 and hh == 1:
         cnt += len(re)-1
-    if len(le) > 1:
+    if len(le) > 1 and hh == 1:
         cnt += len(le)-1
     le2 = le
     re2 = re
     re = []
     le = []
-    print(cnt)
+    #print(cnt)
 
 print(cnt+2)
 
-
-# doen't work for an input such as:
-#
-#   .....
-#   .#.#.
-#   .#.#.
-#   .###.
-#   .....
-
-# should be 8 but this outputs 10
-#
-
-
+# it is hard to represent a part of the block in this way
+# However, this modified c.py will be AC
 

@@ -15,3 +15,5 @@ for i in range(h-1):
             ans += 1
 
 print(ans)
+
+
