@@ -8,6 +8,8 @@ class Solution:
         visit = [[False for _ in range(n)] for p in range(m)]
         for i in range(m):
             for j in range(n):
+                if board[m][n] == 'x':
+                    continue
                 if board[m][n] == 'o':
                     # BFS or DFS
 
