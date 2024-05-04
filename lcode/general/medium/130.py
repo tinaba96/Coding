@@ -6,6 +6,7 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         visit = [[False for _ in range(n)] for p in range(m)]
+        d = []
         for i in range(m):
             for j in range(n):
                 if board[m][n] == 'x':
