@@ -13,6 +13,8 @@ class Solution:
                     continue
                 if board[m][n] == 'o':
                     # BFS or DFS
+                    for l, r in d:
+
 
 
 board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
