@@ -9,6 +9,7 @@ class Solution:
         d = [(-1, -1),(-1,1),(1, -1),(1,1)]
         for i in range(m):
             for j in range(n):
+                visit[i][j] = True
                 if board[m][n] == 'x':
                     continue
                 if board[m][n] == 'o':
