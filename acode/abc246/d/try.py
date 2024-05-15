@@ -31,7 +31,7 @@ for i in range(10**6):
 
 for i in range(10**6):
     b = i
-    Xn = X + fa**3 + fa**2*b + fa*b**2 + b**3
+    Xn = fa**3 + fa**2*b + fa*b**2 + b**3
     if Xn >= N:
         val = Xn
         fb = b
@@ -40,9 +40,10 @@ for i in range(10**6):
 for i in range(10**6):
     fa -= i
     Xf = fa**3 + fa**2*fb + fa*fb**2 + fb**3
-    if Xf >= N:
+    if Xf > N:
         val = Xf
         fb = b
+    else:
         break
 
 print(val)

@@ -6,7 +6,7 @@ s = set()
 a = set()
 b = set()
 
-a.add(A[0])
+a.add(A[0]) #x
 if B[0] in a:
     a.remove(B[0])
 else:
@@ -16,7 +16,7 @@ if C[0] in a:
 else:
     a.add(C[0])
 
-b.add(A[1])
+b.add(A[1]) #y
 if B[1] in b:
     b.remove(B[1])
 else:
@@ -26,6 +26,7 @@ if C[1] in b:
 else:
     b.add(C[1])
 
+'''
 for i in range(2):
     if A[i] in s:
         s.remove(A[i])
@@ -41,6 +42,7 @@ for i in range(2):
         s.remove(C[i])
     else:
         s.add(C[i])
+'''
 
 aa = list(a)
 bb = list(b)

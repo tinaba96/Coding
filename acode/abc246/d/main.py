@@ -31,7 +31,7 @@ for i in range(10**6):
 
 for i in range(10**6):
     b = i
-    Xn = fa**3 + fa**2*b + fa*b**2 + b**3
+    Xn = X + fa**3 + fa**2*b + fa*b**2 + b**3
     if Xn >= N:
         val = Xn
         fb = b

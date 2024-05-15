@@ -17,6 +17,7 @@ def solve():
         for col in range(N):
             for dr,dc in pat:
                 if judge(row,col,dr,dc):
+                    print(dr,dc)
                     return True
     return False
 

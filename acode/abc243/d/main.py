@@ -27,8 +27,9 @@ for i in range(len(LR)):
     # binary search if cntU < cntL+cntR
     print(i)
 
+# O(NlogN)
 # if cntU == cntL+cntR
-# depends on number of L and R
+# should be same position
 
 # if cntU > cntL+cntR
 # devide number of node in current level with number of node in taget level. quotient will be the position of the node in target level
