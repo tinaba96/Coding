@@ -6,25 +6,14 @@ if ke == 1:
     print(int(N*(N+1)/2))
     exit()
 
-def f(x):
-    k = len(str(x))
-    m = ''
-    if k >= 2:
-        for i in range(k-1):
-            m += '9'
-        m = int(m)
-    else:
-        m = 0
-
-    val = x - m
-    return val
-
 ans = 0 
 
 m = ''
 tmp = 9
 for i in range(ke-1):
     m += '9'
+    # should be this
+    #ans += tmp*(tmp+1)//2
     ans += tmp*(tmp+1)/2
     tmp *= 10
 
@@ -34,21 +23,14 @@ mn = int(m)
 
 vv = N - mn
 
+# should be this
+#tvv = vv*(vv+1)//2
 tvv = vv*(vv+1)/2
 
 ans += tvv
 
 
-v = N*(N+1)/2
-t = 1
-for i in range(ke-1):
-    t *= 10
-t -= 1
-vm = t*(t+1)/2
-
-val = v - vm
-
-#ans += val
-
 print(int(ans)%998244353)
+
+# we should always be aware of "/" since it actually has fraction which can leads to Wrong answer when we handle large number
 

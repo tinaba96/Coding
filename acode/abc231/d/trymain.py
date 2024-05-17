@@ -58,6 +58,8 @@ arr = [0 for i in range(N)]
 
 for m in range(M):
     A, B = list(map(int, input().split()))
+    A -= 1
+    B -= 1
     if uf.same(A, B):
         print('No')
         exit()
@@ -65,10 +67,10 @@ for m in range(M):
     arr[A] += 1
     arr[B] += 1
 
-print(uf)
-print(arr)
+#print(uf)
+#print(arr)
 
-for i in range(1, N+1):
+for i in range(N):
     if arr[i] > 2:
         print('No')
         exit()

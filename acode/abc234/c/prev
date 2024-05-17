@@ -1,0 +1,31 @@
+import itertools
+
+
+arr = ['0', '2']
+
+
+K = int(input())
+cnt = 2
+val = 2
+newval = 0
+while True:
+    newval += cnt
+
+    ans = []
+    if newval >= K:
+        d = K - val
+        for g in range(cnt-1):
+            ans.append('2')
+        #print(''.join(ans))
+        print(d)
+        ans.insert(d, '0')
+        print(ans)
+        exit()
+    val = newval
+    cnt += 1
+
+
+
+
+
+

@@ -20,6 +20,7 @@ def sizeint(v):
 #print(sizeint(123445))
 cnt = 0
 
+# 1. you did not cosider 0 at the end which leads to be difficult to finish the while loop since the val will possible to decrease which should not be
 def strch(x):
     s = str(x)
     if len(s) == 1:
@@ -48,6 +49,7 @@ def ch(cnt, val):
         ch(cnt+1, val*a)
         ch(cnt+1, strch(val))
 
+# 2. pas should be set() instead of an array. which makes very fast doing "not in pas" since it uses hash table to search
 pas = []
 
 while queue:
@@ -92,3 +94,5 @@ else:
     print(ans-1)
 
 
+# As I tested using main2.py and main3.py, I found out that 2 changes above is needed to make it AC
+# 1. is for solving WA and 2. is for solving TLE

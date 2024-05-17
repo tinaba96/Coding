@@ -1,0 +1,40 @@
+import itertools
+
+
+arr = ['0', '2']
+
+
+K = int(input())
+cnt = 2
+val = 2
+cc = 2
+keta = 2
+newval = 0
+while True:
+    newval += cnt
+
+    ans = []
+    if newval >= K:
+        print(keta)
+        break
+        d = K - val
+    val = newval
+    cnt += cc
+    cc += 1
+    keta += 1
+
+for i in range(keta):
+    ans.append('2')
+
+
+
+p_list = list(itertools.permutations(['0','2', '4', '8'], 4))
+print(p_list)
+
+ar = list(itertools.product('20', repeat=keta))
+ar.sort()
+ar = ar[len(ar)//2:]
+
+
+
+
