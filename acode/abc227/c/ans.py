@@ -6,3 +6,7 @@ for a in range(1,N+1):
 		if a*b*b>N: break
 		ans+=N//a//b-b+1
 print(ans)
+
+# O(n^(2/3))
+# https://manabitimes.jp/math/627
+

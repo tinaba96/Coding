@@ -23,4 +23,4 @@ for i in range(1, M):
     countD[count[elem[i-1]]] += dist
 print(*(countD[1:]))
 
-
+# ans.py and ans2.py is the same approach
