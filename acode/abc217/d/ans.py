@@ -9,3 +9,6 @@ for _ in range(q):
         a.insert(y,x)
     else:
         print(a[y]-a[y-1])
+
+
+# https://kanpurin.hatenablog.com/entry/2021/09/05/163703
