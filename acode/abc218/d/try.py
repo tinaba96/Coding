@@ -27,16 +27,58 @@ c = collections.Counter(ans)
 
 an = 0
 for i in c.keys():
-    #print(i)
     an += c[i]*(c[i]-1)//2
 print(an)
 
+
+# O(N^2) ?
+# I think this will works in terms of time complexity but I don't know there are so many WA
+
 '''
-for i in range(len(ans)):
-    ele = ans.pop()
-    if ele in ans:
-        cnt += 1
-print(cnt)
+40
+1 1
+2 1
+1 2
+2 2
+3 2
+1 3
+3 3
+2 3
+3 1
+2 4
+2 5
+1 5
+3 4
+3 5
+4 4
+4 1
+4 2
+5 4
+5 6
+5 8
+4 8
+3 7
+3 9
+5 1
+5 2
+5 3
+6 1
+6 2
+6 3
+6 4
+0 1
+0 2
+0 3
+0 4
+0 5
+0 0
+0 8
+0 7
+7 7
+7 6
 '''
+#127
+
+
 
 
