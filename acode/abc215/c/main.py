@@ -88,4 +88,4 @@ if len(S) >= 2:
     ans.append(A[0])
 print(ans)
 
-
+#only works for unique characters

@@ -24,7 +24,7 @@ def func(key):
     #print(top)
     dic[key] = 0
 
-    ind = top.index(key)
+    ind = top.index(key) # this is not good -> u should hvae another array which keeps the number of sylinder
     top[ind] = 0
     indexArr[ind] += 1
     if indexArr[ind] < keepSize[ind]:
@@ -34,7 +34,7 @@ def func(key):
         else:
             dic[listArr[ind][indexArr[ind]]] = 1
 
-    ind = top.index(key)
+    ind = top.index(key) # this is not good
     top[ind] = 0
     indexArr[ind] += 1
     if indexArr[ind] >= keepSize[ind]:
@@ -52,7 +52,7 @@ indexArr = [0] * M
 
 for k in range(N): 
     if dic[k] == 2:
-        ind = top.index(k) # it is better to have an array to keep the index instead of this
+        ind = top.index(k) # it is better to have an array to keep the index instead of this -> this very time consuming which leeds to O(M)
         top[ind] = 0
         indexArr[ind] += 1
         if indexArr[ind] < keepSize[ind]:
@@ -93,7 +93,19 @@ else:
 
 #this is already complex but you need at least another conditional branch whether the cylinder becamoe empty or not.
 
-# O(MK) ?
+# O(NM) 
+
+'''
+AC 12
+TLE 12
+RE 3
+'''
+
+# this is due to the complexity of .indec()
+# if u create another arr to keep the index, I think the complexity will be better and it became AC
+# but I have not tried it yet
+# the reason for RE is I think related to the complexity 
+# this is not checked since the test case is not open yet
 
     
 
