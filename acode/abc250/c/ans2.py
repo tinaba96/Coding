@@ -1,34 +1,28 @@
-N, Q= list(map(int, input().split( )))
-X = []
-for i in range(Q):
-    X.append(int(input()))
+from collections import defaultdict
+N, Q = map(int, input().split())
+X = [int(input()) for _ in range(Q)]
 
-integers = [i+1 for i in range(N)]
+num_to_idx= defaultdict(int)
+idx_to_num= defaultdict(int)
 
-int_to_loc = dict(zip(integers, integers))
-loc_to_int = dict(zip(integers, integers))
+for i in range(N):
+    num_to_idx[i+1] = i
+    idx_to_num[i] = i+1
 
-
-for xi in X:
-    xi_loc = int_to_loc[xi]
-    if xi_loc == N:
-        right_loc = xi_loc-1
+for num in X:
+    idx = num_to_idx[num]
+    if idx != N-1:
+        num_r = idx_to_num[idx+1]
+        idx_r = num_to_idx[num_r]
+        num_to_idx[num], num_to_idx[num_r] = idx_r, idx
+        idx_to_num[idx], idx_to_num[idx_r] = num_r, num
     else:
-        right_loc = xi_loc+1
-    right_int = loc_to_int[right_loc]
+        num_r = idx_to_num[idx-1]
+        idx_r = num_to_idx[num_r]
+        num_to_idx[num], num_to_idx[num_r] = idx_r, idx
+        idx_to_num[idx], idx_to_num[idx_r] = num_r, num
 
-    int_to_loc[xi] = right_loc
-    loc_to_int[right_loc] = xi
-
-    int_to_loc[right_int] = xi_loc 
-    loc_to_int[xi_loc] = right_int
-
-    #print(int_to_loc)
-    #print(loc_to_int)
-    #print()
-
-
-res = ""
-for i in loc_to_int.values():
-    res += f" {i}"
-print(res[1:])
+ans = [None]*N
+for i in range(1, 1+N):
+    ans[num_to_idx[i]] = i
+print(*ans)

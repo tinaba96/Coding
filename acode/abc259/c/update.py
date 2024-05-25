@@ -23,9 +23,9 @@ while True:
             break
     while T[indexT-1] == T[indexT]:
         cntT += 1
-        indexT += 1
-        if indexT == len(T):
+        if indexT+1 == len(T):
             break
+        indexT += 1
 
 
     if T[indexT-1] != S[indexS-1]:
@@ -55,12 +55,12 @@ if T[indexT-1] != S[-1]:
     exit()
 
 
-if len(T) > len(S) and T[indexS-1] == S[-1]:
+if len(T) > len(S) and T[indexT-1] == S[-1]:
 
-    if cntS <= 1:
+    if cntS <= 1 and cntT > 1:
         print('No')
         exit()
-    for t in range(indexS-1, len(T)):
+    for t in range(indexT-1, len(T)):
         if T[t] != S[-1]:
             print('No')
             exit()
