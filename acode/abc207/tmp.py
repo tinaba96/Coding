@@ -2,11 +2,8 @@ n = int(input())
 if n == 1:
     print('Yes')
     exit()
-# 複素数
-#s = [print(complex(*map(int, input().split()))) for _ in range(n)]
 s = [complex(*map(int, input().split())) for _ in range(n)]
 t = [complex(*map(int, input().split())) for _ in range(n)]
-#print(s)
 for i in range(n):
     for j in range(n):
         if i == j or abs(s[1] - s[0]) != abs(t[j] - t[i]):
@@ -15,14 +12,12 @@ for i in range(n):
         t2 = [(k - t[i]) * (s[1] - s[0]) for k in t]
         s2.sort(key=lambda x: (x.real, x.imag))
         t2.sort(key=lambda x: (x.real, x.imag))
-        print(s2)
         for k, l in zip(s2, t2):
-            if s2 != t2:
+            print(k)
+            print(l)
+            if k != l:
                 break
         else:
             print('Yes')
             exit()
-
 print('No')
-
-
