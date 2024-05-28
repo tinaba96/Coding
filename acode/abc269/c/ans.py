@@ -5,11 +5,13 @@ ans = []
 i = N
 
 while True:
-    ans.append(N)
+    ans.append(i)
     if i == 0:
         break
     i = (i-1)&N
 
-print(ans)
 
+
+for a in ans[::-1]:
+    print(a)
 

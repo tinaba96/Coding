@@ -1,0 +1,5 @@
+S = ''.join(input() for _ in range(10))
+p = S.find('#')
+q = S[::-1].find('#')
+print(p//10+1,10-q//10)
+print(p%10+1,10-q%10)
