@@ -386,6 +386,7 @@ class AVLTree:
                 v = v.lch
         return None
 
+    #magic method
     def __contains__(self, key): return self.member(key)
     def __getitem__(self, key): return self.get(key)
     def __setitem__(self, key, val): return self.insert(key, val)
@@ -409,6 +410,7 @@ for i, p in enumerate(P):
     if y:
         under[p] = y
         pile[p] = pile[y] + 1
+        print(avl[y]) # this is due to the magic methdod line391
         del avl[y]
         avl[p] = None
     else:
@@ -426,4 +428,5 @@ for i, p in enumerate(P):
 for i in range(1,N+1):
     print(res[i])
 
-
+# object delete del -> this is due to the magic method in the class defined in line393
+# https://yumarublog.com/python/del/
