@@ -1,4 +1,5 @@
-# due to the limit of recursion of python, this throws RE
+import sys
+sys.setrecursionlimit(500005)
 
 N, X, Y = list(map(int, input().split()))
 
@@ -15,19 +16,21 @@ seen = set()
 seen.add(str(X))
 ans = [X]
 
-def count(ans):
+def count(ans, seen):
     for k in range(len(mp[ans[-1]])):
-        if mp[ans[-1]][k] in ans:
+        if str(mp[ans[-1]][k]) in seen:
             continue
         if mp[ans[-1]][k] == Y:
             ans.append(Y)
             print(*ans)
             exit()
         ans.append(mp[ans[-1]][k])
-        count(ans)
+        seen.add(str(mp[ans[-2]][k]))
+        count(ans, seen)
         p = ans.pop()
+        seen.remove(str(p))
+        #seen.remove(str(mp[ans[-1]][k]))
 
-count(ans)
-
+count(ans, seen)
 
 
