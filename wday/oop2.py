@@ -85,3 +85,12 @@ for exam, score in all_scores.items():
     print(f"{exam}: {score}")
 
 
+# Assuming we already have the following setup:
+# student1, in_person_course, online_course, math_exam, physics_exam
+
+# Get all scores for Alice
+print(f"{student1} has the following exam scores:")
+for exam, score in student1.exam_scores.items():
+    print(f"Exam ID: {exam.exam_id}, Course: {exam.course.course_name}, Score: {score}")
+
+
