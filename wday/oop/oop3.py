@@ -43,6 +43,9 @@ class Course:
             self.student.append(student)
             student.enroll(self)
     
+    def add_exam(self, exam):
+        if exam not in self.exams:
+            self.exams.append(exam)
 
 
 class InPerson(Course):
