@@ -6,6 +6,9 @@
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         ans = ListNode()
+        while True:
+            ans.val = l1.val + l2.val
+        
 
 
 
